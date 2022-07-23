@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5396256698222121376}
   - component: {fileID: -1328291159500940739}
   - component: {fileID: 5396256698222121388}
-  - component: {fileID: -2852495595881042839}
   m_Layer: 5
   m_Name: DraggableBuilding
   m_TagString: Untagged
@@ -94,7 +93,7 @@ MonoBehaviour:
   _rectTransform: {fileID: 5396256698222121377}
   _shadow: {fileID: 5396256698222121388}
   _scale: 1
-  _canvasGroup: {fileID: -2852495595881042839}
+  _canvasGroup: {fileID: 0}
   _building: {fileID: 0}
 --- !u!114 &5396256698222121388
 MonoBehaviour:
@@ -111,15 +110,3 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!225 &-2852495595881042839
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396256698222121378}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0

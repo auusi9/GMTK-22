@@ -10,7 +10,6 @@ namespace UIGeneric
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Shadow _shadow;
         [SerializeField] private float _scale = 1.0f;
-        [SerializeField] private CanvasGroup _canvasGroup;
 
         public event Action RightClickEvent;
         
@@ -37,7 +36,7 @@ namespace UIGeneric
             {
                 return;
             }
-            _canvasGroup.blocksRaycasts = false;
+            //_canvasGroup.blocksRaycasts = false;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out Vector2 localPoint);
             transform.position = _canvas.transform.TransformPoint(localPoint) + _moveOffset;
@@ -60,7 +59,6 @@ namespace UIGeneric
             }
             
             _shadow.enabled = false;
-            _canvasGroup.blocksRaycasts = true;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -78,7 +76,7 @@ namespace UIGeneric
             PointerHandler.Instance.PanelClicked(GetHashCode());
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public virtual void OnPointerUp(PointerEventData eventData)
         {
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             _shadow.enabled = false;
