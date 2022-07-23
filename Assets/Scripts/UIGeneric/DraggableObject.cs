@@ -16,6 +16,7 @@ namespace UIGeneric
         
         private Canvas _canvas;
         private RectTransform _parent;
+        private Vector3 _moveOffset;
 
         public void Configure(Canvas canvas, RectTransform parent)
         {
@@ -25,6 +26,8 @@ namespace UIGeneric
         
         public void OnBeginDrag(PointerEventData eventData)
         {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out Vector2 localPoint);
+            _moveOffset = transform.position - _canvas.transform.TransformPoint(localPoint);
             OnDrag(eventData);
         }
 
@@ -36,7 +39,8 @@ namespace UIGeneric
             }
             _canvasGroup.blocksRaycasts = false;
 
-            _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out Vector2 localPoint);
+            transform.position = _canvas.transform.TransformPoint(localPoint) + _moveOffset;
             
             Vector3[] fourCornersArray = new Vector3[4];
             _parent.GetWorldCorners(fourCornersArray);
