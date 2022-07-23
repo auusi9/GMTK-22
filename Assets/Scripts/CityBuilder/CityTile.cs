@@ -7,6 +7,8 @@ namespace CityBuilder
     {
         [SerializeField] private RectTransform _rectTransform;
 
-        public Vector2 Size => _rectTransform.sizeDelta;
+        public Building Building { get; set; }
+
+        public bool Available => Building == null;
     }
 }

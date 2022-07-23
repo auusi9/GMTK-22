@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 5396256698222121377}
   - component: {fileID: 5396256698222121391}
   - component: {fileID: 5396256698222121376}
+  - component: {fileID: -3918243632806948530}
   - component: {fileID: -1328291159500940739}
   - component: {fileID: 5396256698222121388}
   m_Layer: 5
-  m_Name: DraggableBuilding
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5089323, g: 0.4669811, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -78,6 +79,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-3918243632806948530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396256698222121378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73ed88471fc4d7f9e0553c5acfeadba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cost:
+  - _resource: {fileID: 11400000, guid: b413e505f2689fe4c9b76758d992541c, type: 2}
+    _cost: 5
+  _draggableObject: {fileID: -1328291159500940739}
 --- !u!114 &-1328291159500940739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +110,7 @@ MonoBehaviour:
   _rectTransform: {fileID: 5396256698222121377}
   _shadow: {fileID: 5396256698222121388}
   _scale: 1
-  _canvasGroup: {fileID: 0}
-  _building: {fileID: 0}
+  _building: {fileID: -3918243632806948530}
 --- !u!114 &5396256698222121388
 MonoBehaviour:
   m_ObjectHideFlags: 0
