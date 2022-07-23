@@ -9,14 +9,6 @@ namespace CityBuilder
     public class MovingBuilding : DraggableObject
     {
         [SerializeField] private Building _building;
-
-        private GraphicRaycaster _graphicRaycaster;
-
-        public void Configure(Canvas canvas, RectTransform parent, GraphicRaycaster graphicRaycaster)
-        {
-            base.Configure(canvas, parent);
-            _graphicRaycaster = graphicRaycaster;
-        }
         
         public override void OnPointerUp(PointerEventData eventData)
         {
@@ -35,7 +27,7 @@ namespace CityBuilder
         private void TrySetBuilding(PointerEventData eventData)
         {
             var results = new List<RaycastResult>();
-            _graphicRaycaster.Raycast(eventData, results);
+            _gridCanvas.GraphicRaycaster.Raycast(eventData, results);
 
             CityTile currentTile = null;
 

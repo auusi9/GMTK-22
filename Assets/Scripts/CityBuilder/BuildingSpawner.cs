@@ -10,7 +10,6 @@ namespace CityBuilder
     {
         [SerializeField] private Building _building;
         [SerializeField] private Canvas _canvas;
-        [SerializeField] private GraphicRaycaster _graphicRaycaster;
         [SerializeField] private ResourcePrice[] _resourcePrices;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _unavailableAlpha = 0.5f;
@@ -82,7 +81,6 @@ namespace CityBuilder
             position.z = canvasTransform.position.z;
             
             _lastBuildingCreated = Instantiate(_building, position, _building.transform.rotation, canvasTransform);
-            _lastBuildingCreated.DraggableObject.Configure(_canvas, (RectTransform)canvasTransform, _graphicRaycaster);
             _lastBuildingCreated.DraggableObject.OnPointerDown(eventData);
 
             EventSystem.current.SetSelectedGameObject(_lastBuildingCreated.gameObject);

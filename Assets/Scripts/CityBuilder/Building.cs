@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Resources;
 using UIGeneric;
 using UnityEngine;
+using Workers;
 
 namespace CityBuilder
 {
@@ -11,9 +12,12 @@ namespace CityBuilder
     {
         [SerializeField] private BuildingCost[] _cost;
         [SerializeField] private MovingBuilding _draggableObject;
+        [SerializeField] private WorkerSpot[] _workerSpots;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
+
+        public WorkerSpot[] WorkerSpots => _workerSpots;
         
         public void PayCost()
         {
@@ -26,6 +30,16 @@ namespace CityBuilder
         public bool CanAfford()
         {
             return _cost.All(x => x.CanAfford());
+        }
+
+        public bool HasAvailableSpot()
+        {
+            return _workerSpots.Any(x => x.Available);
+        }
+
+        public WorkerSpot GetAvailableSpot()
+        {
+            return _workerSpots.FirstOrDefault(x => x.Available);
         }
     }
 

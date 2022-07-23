@@ -10,23 +10,16 @@ namespace UIGeneric
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Shadow _shadow;
         [SerializeField] private float _scale = 1.0f;
+        [SerializeField] protected GridCanvas _gridCanvas;
 
         public event Action RightClickEvent;
         
-        private Canvas _canvas;
-        private RectTransform _parent;
         private Vector3 _moveOffset;
 
-        public void Configure(Canvas canvas, RectTransform parent)
-        {
-            _canvas = canvas;
-            _parent = parent;
-        }
-        
         public void OnBeginDrag(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out Vector2 localPoint);
-            _moveOffset = transform.position - _canvas.transform.TransformPoint(localPoint);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_gridCanvas.Canvas.transform as RectTransform, eventData.position, _gridCanvas.Canvas.worldCamera, out Vector2 localPoint);
+            _moveOffset = transform.position - _gridCanvas.Canvas.transform.TransformPoint(localPoint);
             OnDrag(eventData);
         }
 
@@ -36,13 +29,12 @@ namespace UIGeneric
             {
                 return;
             }
-            //_canvasGroup.blocksRaycasts = false;
 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, eventData.position, _canvas.worldCamera, out Vector2 localPoint);
-            transform.position = _canvas.transform.TransformPoint(localPoint) + _moveOffset;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_gridCanvas.Canvas.transform as RectTransform, eventData.position, _gridCanvas.Canvas.worldCamera, out Vector2 localPoint);
+            transform.position = _gridCanvas.Canvas.transform.TransformPoint(localPoint) + _moveOffset;
             
             Vector3[] fourCornersArray = new Vector3[4];
-            _parent.GetWorldCorners(fourCornersArray);
+            _gridCanvas.Parent.GetWorldCorners(fourCornersArray);
 
             Vector3 pos = _rectTransform.position;
 
