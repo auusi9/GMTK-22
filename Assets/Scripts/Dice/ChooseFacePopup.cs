@@ -10,6 +10,7 @@ namespace Dice
         [SerializeField] private FaceUI[] _currentFaces;
         [SerializeField] private Button _accept;
         [SerializeField] private ChooseDicePopup _chooseDicePopup;
+        [SerializeField] private DiceInventory _diceInventory;
 
         private int _currentIndexSelected = -1;
         private Die _die;
@@ -56,7 +57,8 @@ namespace Dice
 
         public void AcceptChange()
         {
-            _die.AddFace(_newFace, _currentIndexSelected);
+            Face face = _die.AddFace(_newFace, _currentIndexSelected);
+            _diceInventory.AcceptedNewFace(face);
             ClosePopup();
         }
 

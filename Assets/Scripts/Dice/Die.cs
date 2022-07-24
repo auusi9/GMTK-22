@@ -34,7 +34,7 @@ namespace Dice
             }
         }
 
-        public void AddFace(Face face, int index)
+        public Face AddFace(Face face, int index)
         {
             if (_faces[index] != null)
             {
@@ -42,6 +42,7 @@ namespace Dice
             }
 
             _faces[index] = Object.Instantiate(face);
+            return _faces[index];
         }
 
         public Sprite GetFirstSprite()

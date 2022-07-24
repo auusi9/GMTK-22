@@ -396,6 +396,7 @@ MonoBehaviour:
   _spacing: {x: 0, y: 0}
   _padding: {x: 10, y: 30}
   _tilePrefab: {fileID: 3922522253632853468, guid: a358a6210788b0347929e475b5b291c4, type: 3}
+  _cityMapLocator: {fileID: 11400000, guid: e89947743f20c1c46a8f392d8ce58b3a, type: 2}
 --- !u!114 &518249285
 MonoBehaviour:
   m_ObjectHideFlags: 0

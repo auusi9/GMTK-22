@@ -11,7 +11,6 @@ namespace Workers
     {
         [SerializeField] private Worker _worker;
         
-        
         public override void OnPointerUp(PointerEventData eventData)
         {
             base.OnPointerUp(eventData);

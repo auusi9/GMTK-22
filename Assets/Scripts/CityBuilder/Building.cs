@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography;
 using Dice;
 using Resources;
-using UIGeneric;
 using UnityEngine;
 using Workers;
 
@@ -15,14 +13,57 @@ namespace CityBuilder
         [SerializeField] private MovingBuilding _draggableObject;
         [SerializeField] private WorkerSpot[] _workerSpots;
         [SerializeField] private GrantFace _grantFace;
+        [SerializeField] private CityMapLocator _cityMapLocator;
+        [SerializeField] private Scenery _scenery;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
 
         public WorkerSpot[] WorkerSpots => _workerSpots;
+        public Scenery Scenery => _scenery;
 
         public Action Spawned;
-        
+        public Action Destroyed;
+
+        private Face _face;
+        private int _x, _y;
+
+        private void Start()
+        {
+            if(_grantFace != null)
+                _grantFace.NewFace += NewFace;
+        }
+
+        private void OnDestroy()
+        {
+            if (_face != null)
+            {
+                _face.Destroying -= Destroying;
+            }
+            
+            if(_grantFace != null)
+                _grantFace.NewFace -= NewFace;
+            
+            Destroyed?.Invoke();
+        }
+
+        private void NewFace(Face obj)
+        {
+            obj.SetBuilding(this);
+            _face = obj;
+            _face.Destroying += Destroying;
+        }
+
+        private void Destroying()
+        {
+            _face = null;
+        }
+
+        public Building[] GetNearBuildings()
+        {
+            return _cityMapLocator.GetBuildingsNextToPosition(_x, _y);
+        }
+
         public void PayCost()
         {
             foreach (BuildingCost cost in _cost)
@@ -51,6 +92,30 @@ namespace CityBuilder
         public WorkerSpot GetAvailableSpot()
         {
             return _workerSpots.FirstOrDefault(x => x.Available);
+        }
+
+        public void SetPosition(int currentTileX, int currentTileY)
+        {
+            _x = currentTileX;
+            _y = currentTileY;
+
+            Building[] buildings = GetNearBuildings();
+
+            foreach (var build in buildings)
+            {
+                if (build != null)
+                {
+                    build.NotifyNewNeighbour();
+                }
+            }
+        }
+
+        private void NotifyNewNeighbour()
+        {
+            if (_face != null)
+            {
+                _face.CalculateLevel();
+            }
         }
     }
 

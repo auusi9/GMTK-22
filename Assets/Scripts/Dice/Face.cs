@@ -23,12 +23,32 @@ namespace Dice
         public Sprite Sprite => _sprite;
         public string Description => _description;
 
+        public Building _building;
+
         public Action Destroying;
 
         public Resource Resource => _resource;
-        public void SetReward(int newReward)
+
+        private int _currentReward;
+
+        private void OnEnable()
         {
-            _reward = newReward;
+            _currentReward = _reward;
+        }
+
+        public void SetBuilding(Building building)
+        {
+            _building = building;
+            _building.Destroyed += ToDestroy;
+            CalculateLevel();
+        }
+
+        private void OnDestroy()
+        {
+            if (_building != null)
+            {
+                _building.Destroyed -= ToDestroy;
+            }
         }
 
         public void ToDestroy()
@@ -44,8 +64,8 @@ namespace Dice
 
         public void GiveReward()
         {
-            _resource.AddResource(_reward);
-            Debug.Log(_resource.name + " Given reward " + _reward);
+            _resource.AddResource(_currentReward);
+            Debug.Log(_resource.name + " Given reward " + _currentReward);
         }
 
         public void GiveCombo(int combo)
@@ -60,6 +80,26 @@ namespace Dice
                     _combo.ResourceReward.AddResource(_combo.Reward);
                 }
             }
+        }
+
+        public void CalculateLevel()
+        {
+            if(_building == null)
+                return;
+
+            Building[] buildings = _building.GetNearBuildings();
+
+            int number = _reward;
+
+            foreach (var building in buildings)
+            {
+                if (building != null && building.Scenery != null && building.Scenery.Resource == _resource)
+                {
+                    number++;
+                }
+            }
+
+            _currentReward = number;
         }
     }
     

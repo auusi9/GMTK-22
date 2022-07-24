@@ -49,6 +49,7 @@ namespace CityBuilder
             }
 
             _building.PayCost();
+            _building.SetPosition(currentTile.X, currentTile.Y);
             transform.SetParent(currentTile.transform);
             transform.localPosition = Vector3.zero;
             Destroy(this);

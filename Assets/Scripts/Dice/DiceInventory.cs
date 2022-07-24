@@ -34,6 +34,8 @@ namespace Dice
             {
                 DestroyImmediate(dice);
             }
+            
+            _dice.Clear();
         }
 
         private void ResourceChanged(int obj)
