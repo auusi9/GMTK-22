@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ce19afa5534b3ca4d58234fa92cee3, type: 3}
+  m_Name: OreFace
+  m_EditorClassIdentifier: 
+  _resource: {fileID: 11400000, guid: 28be618c6d7564242bf09406d284abc4, type: 2}
+  _hasCombo: 1
+  _combo:
+    _comboNeeded: 3
+    _reward: 1
+    _resourceReward: {fileID: 11400000, guid: ed66b0643ad90124292d54ce41e532f0, type: 2}
+    _extraCondition: {fileID: 0}
+  _reward: 1
+  _maxReward: 5
+  _minPrice: 1
+  _priceXReward: 1
+  _sprite: {fileID: 0}
+  _description: 

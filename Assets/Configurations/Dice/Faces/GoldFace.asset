@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ce19afa5534b3ca4d58234fa92cee3, type: 3}
+  m_Name: GoldFace
+  m_EditorClassIdentifier: 
+  _resource: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
+  _hasCombo: 0
+  _combo:
+    _comboNeeded: 3
+    _reward: 1
+    _resourceReward: {fileID: 11400000, guid: edbaea57e8350ad43ae3e74550a15c03, type: 2}
+    _extraCondition: {fileID: 0}
+  _reward: 5
+  _maxReward: 10
+  _minPrice: 1
+  _priceXReward: 1
+  _sprite: {fileID: 0}
+  _description: 

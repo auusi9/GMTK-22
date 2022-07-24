@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
+using Dice;
 using Resources;
 using UIGeneric;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace CityBuilder
         [SerializeField] private BuildingCost[] _cost;
         [SerializeField] private MovingBuilding _draggableObject;
         [SerializeField] private WorkerSpot[] _workerSpots;
+        [SerializeField] private GrantFace _grantFace;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
@@ -24,6 +26,11 @@ namespace CityBuilder
             foreach (BuildingCost cost in _cost)
             {
                 cost.Resource.RemoveResource(cost.Cost);
+            }
+
+            if (_grantFace != null)
+            {
+                _grantFace.Grant();
             }
         }
 
