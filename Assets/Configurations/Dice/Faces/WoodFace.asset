@@ -24,4 +24,4 @@ MonoBehaviour:
   _minPrice: 1
   _priceXReward: 1
   _sprite: {fileID: 21300000, guid: 172b620a99cac364a927e2cff21bc1d6, type: 3}
-  _description: This is wood
+  _description: Wood
