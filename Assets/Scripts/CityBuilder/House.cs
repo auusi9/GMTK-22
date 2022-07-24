@@ -11,6 +11,16 @@ namespace CityBuilder
 
         private void Start()
         {
+            _building.Spawned += Spawned;
+        }
+
+        private void OnDestroy()
+        {
+            _building.Spawned -= Spawned;
+        }
+
+        private void Spawned()
+        {
             foreach (var workerSpot in _building.WorkerSpots)
             {
                 Worker worker = Instantiate(_worker, transform);

@@ -24,7 +24,8 @@ namespace Dice
         public string Description => _description;
 
         public Action Destroying;
-        
+
+        public Resource Resource => _resource;
         public void SetReward(int newReward)
         {
             _reward = newReward;
@@ -40,6 +41,26 @@ namespace Dice
         {
             return _minPrice + _priceXReward * _reward;
         }
+
+        public void GiveReward()
+        {
+            _resource.AddResource(_reward);
+            Debug.Log(_resource.name + " Given reward " + _reward);
+        }
+
+        public void GiveCombo(int combo)
+        {
+            if(!_hasCombo)
+                return;
+
+            if (_combo.ComboNeeded <= combo)
+            {
+                if (_combo.ExtraCondition == null || _combo.ExtraCondition.IsValid())
+                {
+                    _combo.ResourceReward.AddResource(_combo.Reward);
+                }
+            }
+        }
     }
     
     [Serializable]
@@ -49,6 +70,11 @@ namespace Dice
         [SerializeField] private int _reward;
         [SerializeField] private Resource _resourceReward;
         [SerializeField] private FaceComboCondition _extraCondition;
+
+        public int ComboNeeded => _comboNeeded;
+        public int Reward => _reward;
+        public Resource ResourceReward => _resourceReward;
+        public FaceComboCondition ExtraCondition => _extraCondition;
     }
 
     public abstract class FaceComboCondition : ScriptableObject

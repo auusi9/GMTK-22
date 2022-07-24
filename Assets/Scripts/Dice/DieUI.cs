@@ -14,13 +14,24 @@ namespace Dice
         public Action<DieUI> DieSelected;
 
         public Die Die => _die;
-        
+
         public void SetDie(Die die)
         {
             _die = die;
 
             _icon.sprite = _die.GetFirstSprite();
             SetDeselected();
+        }
+
+        public void SetFace(Face face)
+        {
+            if (face == null)
+            {
+                _icon.sprite = _die.GetDefaultSprite();
+                return;
+            }
+            
+            _icon.sprite = face.Sprite;
         }
 
         public void SetSelected()

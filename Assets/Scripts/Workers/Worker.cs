@@ -12,6 +12,7 @@ namespace Workers
         [SerializeField] private float _noEnergyEfficency = 0.6f;
         [SerializeField] private float _energyDuration = 60f;
         [SerializeField] private float _restDuration = 60f;
+        [SerializeField] private WorkerInventory _workerInventory;
 
         public WorkerSpot CurrentSpot;
         public DraggableWorker DraggableWorker => _draggableWorker;
@@ -21,6 +22,7 @@ namespace Workers
         private void Start()
         {
             _energy = _maxEnergy;
+            _workerInventory.AddWorker(this);
         }
 
         public float Work()
@@ -52,7 +54,10 @@ namespace Workers
 
             return 1f;
         }
-        
-        
+
+        private void OnDestroy()
+        {
+            _workerInventory.RemoveWorker(this);
+        }
     }
 }

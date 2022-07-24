@@ -16,9 +16,11 @@ namespace Dice
         [SerializeField] private Transform _parent;
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private Resource _gold;
+        [SerializeField] private Image _rollerBlocker;
 
         private List<RollDice> _dicesSelected = new List<RollDice>();
         private List<RollDice> _allDices = new List<RollDice>();
+        private List<Face> _rolledFaces = new List<Face>();
 
         private void Start()
         {
@@ -42,6 +44,7 @@ namespace Dice
             RollDice rollDice = Instantiate(_rollDicePrefab, _parent);
             rollDice.Die.SetDie(die);
             rollDice.Die.DieSelected += DieSelected;
+            rollDice.DieRolled += DieRolled;
             _allDices.Add(rollDice);
         }
 
@@ -93,7 +96,7 @@ namespace Dice
             int price = 0;
             foreach (var dice in _dicesSelected)
             {
-                price = dice.Die.Die.GetPrice();
+                price += dice.Die.Die.GetPrice();
             }
 
             return price;
@@ -106,12 +109,50 @@ namespace Dice
 
         public void RollSelectedDice()
         {
+            _rollerBlocker.gameObject.SetActive(true);
+            _rollButton.interactable = false;
+            _selectAll.interactable = false;
+            _rolledFaces.Clear();
+            
             foreach (var die in _dicesSelected)
             {
                 die.Roll();
             }
             
             _gold.RemoveResource(GetTotalPrice());
+        }
+        
+        private void DieRolled(Face face)
+        {
+            _rolledFaces.Add(face);
+            
+            if (_dicesSelected.Count == _rolledFaces.Count)
+            {
+                FinishedRolling();
+            }
+        }
+
+        private void FinishedRolling()
+        {
+            IEnumerable<IGrouping<Resource, Face>> groupBy = _rolledFaces.Where(x => x != null).GroupBy(x => x.Resource);
+
+            foreach (var dieFace in groupBy)
+            {
+                int number = 0;
+                foreach (var face in dieFace)
+                {
+                    face.GiveReward();
+                    number++;
+                }
+
+                Face current = dieFace.GetEnumerator().Current;
+                if (current != null) current.GiveCombo(number);
+            }
+            
+            _rolledFaces.Clear();
+            _rollerBlocker.gameObject.SetActive(false);
+            _selectAll.interactable = true;
+            CalculatePrice();
         }
 
         public void SelectAll(bool select)

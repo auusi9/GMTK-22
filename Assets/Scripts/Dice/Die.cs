@@ -60,12 +60,17 @@ namespace Dice
             return _defaultIcon;
         }
 
+        public Sprite GetDefaultSprite()
+        {
+            return _defaultIcon;
+        }
+
         public Sprite GetRandomSprite(Sprite iconSprite)
         {
             if(_faces == null)
                 OnEnable();
 
-            List<Sprite> _possibleSprites = new List<Sprite>();
+            List<Sprite> possibleSprites = new List<Sprite>();
 
             bool defaultIconAdded = false;
             for (var i = 0; i < _faces.Length; i++)
@@ -74,19 +79,19 @@ namespace Dice
                 {
                     if (_faces[i].Sprite != iconSprite)
                     {
-                        _possibleSprites.Add(_faces[i].Sprite);
+                        possibleSprites.Add(_faces[i].Sprite);
                     }
                 }
                 else if(_defaultIcon != iconSprite && defaultIconAdded == false)
                 {
                     defaultIconAdded = true;
-                    _possibleSprites.Add(_defaultIcon);
+                    possibleSprites.Add(_defaultIcon);
                 }
             }
 
-            if (_possibleSprites.Count > 0)
+            if (possibleSprites.Count > 0)
             {
-                return _possibleSprites[Random.Range(0, _possibleSprites.Count)];
+                return possibleSprites[Random.Range(0, possibleSprites.Count)];
             }
             
             return _defaultIcon;
@@ -107,6 +112,14 @@ namespace Dice
             }
 
             return price;
+        }
+        
+        public Face GetRandomFace()
+        {
+            if(_faces == null)
+                OnEnable();
+
+            return _faces[Random.Range(0, _faces.Length)];
         }
     }
 }

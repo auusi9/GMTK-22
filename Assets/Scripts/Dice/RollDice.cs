@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Dice
@@ -11,6 +12,8 @@ namespace Dice
 
         public DieUI Die => _dieUI;
         
+        public Action<Face> DieRolled;
+
         public void Roll()
         {
             _dieUI.ChangeFace();
@@ -32,6 +35,10 @@ namespace Dice
                 time += Time.deltaTime;
                 faceChange += Time.deltaTime;
             }
+
+            Face face = _dieUI.Die.GetRandomFace();
+            _dieUI.SetFace(face);
+            DieRolled?.Invoke(face);
         }
     }
 }

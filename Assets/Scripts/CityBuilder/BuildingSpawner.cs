@@ -16,7 +16,7 @@ namespace CityBuilder
 
         private Building _lastBuildingCreated;
 
-        private void OnEnable()
+        private void Start()
         {
             foreach (var resourcePrice in _resourcePrices)
             {
@@ -36,7 +36,7 @@ namespace CityBuilder
             }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             foreach (var cost in _building.Cost)
             {

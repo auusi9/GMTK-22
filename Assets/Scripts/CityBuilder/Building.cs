@@ -20,6 +20,8 @@ namespace CityBuilder
         public BuildingCost[] Cost => _cost;
 
         public WorkerSpot[] WorkerSpots => _workerSpots;
+
+        public Action Spawned;
         
         public void PayCost()
         {
@@ -32,6 +34,8 @@ namespace CityBuilder
             {
                 _grantFace.Grant();
             }
+            
+            Spawned?.Invoke();
         }
 
         public bool CanAfford()
