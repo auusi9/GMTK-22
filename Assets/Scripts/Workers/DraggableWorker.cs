@@ -50,5 +50,35 @@ namespace Workers
                 _worker.CurrentSpot.SetWorker(_worker);
             }
         }
+
+        public override void OnDrag(PointerEventData eventData)
+        {
+            base.OnDrag(eventData);
+            
+            var results = new List<RaycastResult>();
+            _gridCanvas.GraphicRaycaster.Raycast(eventData, results);
+
+            WorkerSpot currentTile = null;
+
+            foreach (var hit in results)
+            {
+                var slot = hit.gameObject.GetComponent<WorkerSpot>();
+                if (slot && slot.Available)
+                {
+                    currentTile = slot;
+                    _worker.transform.position = slot.transform.position;
+                    break;
+                }
+
+                var building = hit.gameObject.GetComponent<Building>();
+
+                if (building && building.HasAvailableSpot())
+                {
+                    currentTile = building.GetAvailableSpot();
+                    _worker.transform.position = currentTile.transform.position; 
+                    break;
+                }
+            }
+        }
     }
 }

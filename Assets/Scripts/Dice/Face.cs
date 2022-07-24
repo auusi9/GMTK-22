@@ -59,7 +59,7 @@ namespace Dice
 
         public int GetPrice()
         {
-            return _minPrice + _priceXReward * _reward;
+            return _minPrice + _priceXReward * _currentReward;
         }
 
         public void GiveReward()

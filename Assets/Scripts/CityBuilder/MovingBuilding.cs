@@ -54,5 +54,25 @@ namespace CityBuilder
             transform.localPosition = Vector3.zero;
             Destroy(this);
         }
+
+        public override void OnDrag(PointerEventData eventData)
+        {
+            base.OnDrag(eventData);
+            var results = new List<RaycastResult>();
+            _gridCanvas.GraphicRaycaster.Raycast(eventData, results);
+
+            CityTile currentTile = null;
+
+            foreach (var hit in results)
+            {
+                var slot = hit.gameObject.GetComponent<CityTile>();
+                if (slot && slot.Available)
+                {
+                    currentTile = slot;
+                    transform.position = slot.transform.position;
+                    break;
+                }
+            }
+        }
     }
 }

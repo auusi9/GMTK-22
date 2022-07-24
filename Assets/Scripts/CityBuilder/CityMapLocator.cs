@@ -16,5 +16,10 @@ namespace CityBuilder
         {
             return _cityMap.GetBuildingsNextToPosition(x, y);
         }
+
+        public void SetTilePosition(CityTile tile)
+        {
+            _cityMap.SetTileAtPosition(tile);
+        }
     }
 }

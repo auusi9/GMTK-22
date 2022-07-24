@@ -23,7 +23,7 @@ namespace UIGeneric
             OnDrag(eventData);
         }
 
-        public void OnDrag(PointerEventData eventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {
