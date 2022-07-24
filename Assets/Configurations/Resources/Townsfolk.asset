@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultValue: 0
   _maxValue: 2147483647
-  _sprite: {fileID: 21300000, guid: 35ba83db0f3dfa84ea1d68a041aebd88, type: 3}
+  _sprite: {fileID: 21300000, guid: ea407b4b5548928439e8007603c7465e, type: 3}
