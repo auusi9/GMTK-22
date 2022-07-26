@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _diceThreshHold: 10
   _diceInventory: {fileID: 11400000, guid: 2b9c86738ba368845903bdb459863479, type: 2}
+  _workerResource: {fileID: 11400000, guid: 86fc9755a1482f647974bf621a766037, type: 2}

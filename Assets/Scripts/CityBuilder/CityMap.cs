@@ -77,7 +77,7 @@ namespace CityBuilder
             Point point = WorldPositionToGrid(((RectTransform)tile.transform).anchoredPosition);
             
             tile.SetPosition(point.X, point.Y);
-            if (_grid[point.X, point.Y] != null)
+            if (_grid[point.X, point.Y] == null)
             {
                 _grid[point.X, point.Y] = tile;
             }
