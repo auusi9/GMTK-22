@@ -23,5 +23,6 @@ MonoBehaviour:
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 6527413ea4bb622458641bd7750d2b74, type: 3}
   _description: 
+  _building: {fileID: 0}

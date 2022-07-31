@@ -16,5 +16,5 @@ MonoBehaviour:
   _worker: {fileID: 11400000, guid: 86fc9755a1482f647974bf621a766037, type: 2}
   _food: {fileID: 11400000, guid: 5a61bd989679da54aa229a3862d26c6e, type: 2}
   _foodXFolk: 2
-  _dayDuration: 0.25
-  DayCount: 5
+  _dayDuration: 5
+  DayCount: 12

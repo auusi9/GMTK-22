@@ -23,5 +23,6 @@ MonoBehaviour:
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 21300000, guid: 7273ffdc852b1994ba9f6b54f56baba4, type: 3}
+  _sprite: {fileID: 21300000, guid: 7dfcbb9a4a582e04fa949cf1aa98248c, type: 3}
   _description: Stone
+  _building: {fileID: 0}

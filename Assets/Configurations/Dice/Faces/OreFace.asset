@@ -23,5 +23,6 @@ MonoBehaviour:
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 21300000, guid: c26d2044c3eb0ff4fa5ebd4f18166264, type: 3}
+  _sprite: {fileID: 21300000, guid: cc91233ce1ed3ed4b9b7f7401be445c9, type: 3}
   _description: Ore
+  _building: {fileID: 0}

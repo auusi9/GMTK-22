@@ -23,5 +23,6 @@ MonoBehaviour:
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 21300000, guid: 2fb0b45c129505740a3a5e266d1bbaff, type: 3}
+  _sprite: {fileID: 21300000, guid: 86aa8419f3b45324f87aeec1e92e4903, type: 3}
   _description: Clay
+  _building: {fileID: 0}
