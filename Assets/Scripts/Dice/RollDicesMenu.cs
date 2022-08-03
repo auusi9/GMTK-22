@@ -139,14 +139,15 @@ namespace Dice
             foreach (var dieFace in groupBy)
             {
                 int number = 0;
+                Face lastFace = null;
                 foreach (var face in dieFace)
                 {
                     face.GiveReward();
+                    lastFace = face;
                     number++;
                 }
 
-                Face current = dieFace.GetEnumerator().Current;
-                if (current != null) current.GiveCombo(number);
+                if (lastFace != null) lastFace.GiveCombo(number);
             }
             
             _rolledFaces.Clear();
