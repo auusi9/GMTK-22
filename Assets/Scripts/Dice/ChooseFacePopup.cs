@@ -1,4 +1,5 @@
 ﻿using System;
+using UIGeneric;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace Dice
         [SerializeField] private Button _accept;
         [SerializeField] private ChooseDicePopup _chooseDicePopup;
         [SerializeField] private DiceInventory _diceInventory;
+        [SerializeField] private TimeManager _timeManager;
 
         private int _currentIndexSelected = -1;
         private Die _die;
@@ -34,7 +36,7 @@ namespace Dice
 
         public void ShowPopup(Die die, Face newFace)
         {
-            Time.timeScale = 0f;
+            _timeManager.PauseGame(GetHashCode());
             
             _newFace = newFace;
             _die = die;
@@ -51,7 +53,7 @@ namespace Dice
 
         private void ClosePopup()
         {
-            Time.timeScale = 1f;
+            _timeManager.ResumeGame(GetHashCode());
             gameObject.SetActive(false);
         }
 

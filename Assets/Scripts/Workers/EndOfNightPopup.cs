@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Dice;
 using Resources;
 using TMPro;
+using UIGeneric;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +31,7 @@ namespace Workers
         [SerializeField] private string _foodxFolkTextDescription = "x{0} FoodxFolk";
         [SerializeField] private float _timeBetweenFields = 0.1f;
         [SerializeField] private float _timeLerpValue = 0.5f;
+        [SerializeField] private TimeManager _timeManager;
         
         private void Awake()
         {
@@ -44,6 +46,8 @@ namespace Workers
 
         private void DayFinished()
         {
+            _timeManager.PauseGame(GetHashCode());
+
             _finishGameButton.gameObject.SetActive(false);
             _aceiteButton.gameObject.SetActive(false);
             gameObject.SetActive(true);
@@ -141,6 +145,11 @@ namespace Workers
         {
             _dayNight.StartNewDay();
             gameObject.SetActive(false);
+        }
+
+        private void ClosePopup()
+        {
+            _timeManager.ResumeGame(GetHashCode());
         }
         
         private class Animation

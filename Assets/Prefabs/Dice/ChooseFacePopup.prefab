@@ -470,6 +470,7 @@ MonoBehaviour:
   _accept: {fileID: 2859078127714738384}
   _chooseDicePopup: {fileID: 0}
   _diceInventory: {fileID: 11400000, guid: 2b9c86738ba368845903bdb459863479, type: 2}
+  _timeManager: {fileID: 11400000, guid: 9f337c0c691069c41a4b92a713fcbe43, type: 2}
 --- !u!222 &2859078127978368838
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -527,7 +528,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &3554586162810601026
 MonoBehaviour:

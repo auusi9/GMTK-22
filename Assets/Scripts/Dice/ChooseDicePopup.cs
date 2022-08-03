@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UIGeneric;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ namespace Dice
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private ChooseFacePopup _chooseFacePopup;
         [SerializeField] private Button _selectDie;
+        [SerializeField] private TimeManager _timeManager;
 
         private List<DieUI> _diceUI = new List<DieUI>();
         private DieUI _currentSelected;
@@ -32,7 +34,7 @@ namespace Dice
 
         public void ShowPopup(Face newFace)
         {
-            Time.timeScale = 0f;
+            _timeManager.PauseGame(GetHashCode());
             if (_diceUI.Count < _diceInventory.Dice.Count)
             {
                 int extraUI = _diceInventory.Dice.Count - _diceUI.Count;
@@ -84,7 +86,7 @@ namespace Dice
 
         private void ClosePopup()
         {
-            Time.timeScale = 1f;
+            _timeManager.ResumeGame(GetHashCode());
             gameObject.SetActive(false);
         }
 
