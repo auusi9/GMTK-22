@@ -10,9 +10,7 @@ namespace Resources
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private string _textFormat = "{0}";
-        [SerializeField] private float _incrementXSecond = 5f;
 
-        
         public void SetBuildingCost(BuildingCost cost)
         {
             gameObject.SetActive(true);

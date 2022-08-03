@@ -30,9 +30,6 @@ namespace Workers
         [SerializeField] private string _foodxFolkTextDescription = "x{0} FoodxFolk";
         [SerializeField] private float _timeBetweenFields = 0.1f;
         [SerializeField] private float _timeLerpValue = 0.5f;
-
-        private int _deadPeople = 0;
-        private int _neededFood = 0;
         
         private void Awake()
         {
@@ -56,17 +53,17 @@ namespace Workers
             animations.Add(new Animation(_foodText.transform.parent.gameObject, _foodText,true, true, 0, _food.Value, false, string.Empty));
             animations.Add(new Animation(_foodxFolkText.transform.parent.gameObject, _foodxFolkText,true, false, 0, _dayNight.FoodXFolk, true, _foodxFolkTextDescription));
             animations.Add(new Animation(_line, null, false,false, 0, 0, false, string.Empty));
-
-            _deadPeople = _dayNight.WorkersToRemove(out int neededFood);
+            
+            int deadPeople = _dayNight.WorkersToRemove(out int neededFood);
             _noWorkersDied.gameObject.SetActive(false);
             _workersDying.gameObject.SetActive(false);
 
             animations.Add(new Animation(_requiredfoodText.transform.parent.gameObject, _requiredfoodText, true,true, _food.Value, neededFood, false, string.Empty));
 
-            if (_deadPeople > 0)
+            if (deadPeople > 0)
             {
-                animations.Add(new Animation(_workersDying.gameObject, _workersDying,true, true, _folks.Value, _deadPeople, true, _workersDyingDescription));
-                animations.Add(new Animation(_remainingFolks.gameObject, _remainingFolks,true, true, _folks.Value, _folks.Value - _deadPeople, true, _workersRemainingDescription));
+                animations.Add(new Animation(_workersDying.gameObject, _workersDying,true, true, _folks.Value, deadPeople, true, _workersDyingDescription));
+                animations.Add(new Animation(_remainingFolks.gameObject, _remainingFolks,true, true, _folks.Value, _folks.Value - deadPeople, true, _workersRemainingDescription));
             }
             else
             {

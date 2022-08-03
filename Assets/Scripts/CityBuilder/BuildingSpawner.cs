@@ -18,6 +18,14 @@ namespace CityBuilder
 
         private void Start()
         {
+            foreach (var cost in _building.Cost)
+            {
+                cost.Resource.ResourceChanged += ResourceChanged;
+            }
+        }
+
+        private void OnEnable()
+        {
             foreach (var resourcePrice in _resourcePrices)
             {
                 resourcePrice.gameObject.SetActive(false);
@@ -29,11 +37,8 @@ namespace CityBuilder
             {
                 _resourcePrices[i].SetBuildingCost(_building.Cost[i]);
             }
-
-            foreach (var cost in _building.Cost)
-            {
-                cost.Resource.ResourceChanged += ResourceChanged;
-            }
+            
+            ResourceChanged(0);
         }
 
         private void OnDestroy()
