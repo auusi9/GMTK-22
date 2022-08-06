@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1d95d75a61d67b4f808911d851b8934
+guid: 256ea03a0b16b514ba90ff97da98bd40
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 15, y: 15, z: 18, w: 18}
+  spriteBorder: {x: 0, y: 14, z: 0, w: 53}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -85,7 +85,7 @@ TextureImporter:
     compressionQuality: 100
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
