@@ -1,5 +1,7 @@
 ﻿using System;
 using Resources;
+using TMPro;
+using UIGeneric;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,9 +11,11 @@ namespace CityBuilder
     public class BuildingSpawner : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private Building _building;
-        [SerializeField] private Canvas _canvas;
+        [SerializeField] private GridCanvas _canvas;
         [SerializeField] private ResourcePrice[] _resourcePrices;
-        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Image _image;
+        [SerializeField] private TextMeshProUGUI _title;
+        [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private float _unavailableAlpha = 0.5f;
 
         private Building _lastBuildingCreated;
@@ -37,6 +41,9 @@ namespace CityBuilder
             {
                 _resourcePrices[i].SetBuildingCost(_building.Cost[i]);
             }
+
+            _title.text = _building.BuildingName;
+            _description.text = _building.BuildingDescription;
             
             ResourceChanged(0);
         }
@@ -63,13 +70,17 @@ namespace CityBuilder
 
         private void Available()
         {
-            _canvasGroup.alpha = 1f;
+            var imageColor = _image.color;
+            imageColor.a = 1f;
+            _image.color = imageColor;
             enabled = true;
         }
 
         private void UnAvailable()
         {
-            _canvasGroup.alpha = _unavailableAlpha;
+            var imageColor = _image.color;
+            imageColor.a = _unavailableAlpha;
+            _image.color = imageColor;
             enabled = false;
         }
 
@@ -81,8 +92,8 @@ namespace CityBuilder
             }
             
             
-            Vector3 position = _canvas.worldCamera.ScreenToWorldPoint(Input.mousePosition);
-            var canvasTransform = _canvas.transform;
+            Vector3 position = _canvas.Canvas.worldCamera.ScreenToWorldPoint(Input.mousePosition);
+            var canvasTransform = _canvas.Canvas.transform;
             position.z = canvasTransform.position.z;
             
             _lastBuildingCreated = Instantiate(_building, position, _building.transform.rotation, canvasTransform);

@@ -12,6 +12,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2052592641634598290}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingName
+      value: Fence
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingDescription
+      value: "Set it on a tile adjacent to a Stable to give 1x to that face\u2019s
+        resource."
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[0]._cost
       value: 20
       objectReference: {fileID: 0}

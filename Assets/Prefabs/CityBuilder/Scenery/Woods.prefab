@@ -12,6 +12,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6187974310378769872}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingName
+      value: Woods
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingDescription
+      value: "Set it on a tile adjacent to a Lumber mill to give 1x to that face\u2019s
+        resource."
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[0]._cost
       value: 10
       objectReference: {fileID: 0}

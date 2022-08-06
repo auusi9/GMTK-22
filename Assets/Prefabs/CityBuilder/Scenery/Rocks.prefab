@@ -12,6 +12,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5339199662532725839}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingName
+      value: Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _buildingDescription
+      value: "Set it on a tile adjacent to a Quarry to give 1x to that face\u2019s
+        resource."
+      objectReference: {fileID: 0}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[0]._resource
       value: 
       objectReference: {fileID: 11400000, guid: d3bd486964d6a4045adfa1b2c03c4f0a, type: 2}

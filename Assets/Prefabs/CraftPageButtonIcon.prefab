@@ -1250,13 +1250,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _building: {fileID: 0}
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 11400000, guid: a11839f05ffcc9a4f8b8f1956168d8be, type: 2}
   _resourcePrices:
   - {fileID: 1380566964109704878}
   - {fileID: 5967225945282210774}
   - {fileID: 7405119339313471509}
   - {fileID: 8603885656666209238}
-  _canvasGroup: {fileID: 0}
+  _image: {fileID: 8707713941287758011}
+  _title: {fileID: 7894420268084341323}
+  _description: {fileID: 9063095303586602117}
   _unavailableAlpha: 0.5
 --- !u!114 &8442271454674731185
 MonoBehaviour:

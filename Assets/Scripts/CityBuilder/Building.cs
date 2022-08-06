@@ -15,12 +15,17 @@ namespace CityBuilder
         [SerializeField] private GrantFace _grantFace;
         [SerializeField] private CityMapLocator _cityMapLocator;
         [SerializeField] private Scenery _scenery;
+        [SerializeField] private string _buildingName;
+        [SerializeField] private string _buildingDescription;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
 
         public WorkerSpot[] WorkerSpots => _workerSpots;
         public Scenery Scenery => _scenery;
+
+        public string BuildingName => _buildingName;
+        public string BuildingDescription => _buildingDescription;
 
         public Action Spawned;
         public Action Destroyed;
