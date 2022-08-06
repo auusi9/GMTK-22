@@ -1114,6 +1114,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7903934468229260606, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903934468504374118, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_Name
       value: BottomUI_NEW
