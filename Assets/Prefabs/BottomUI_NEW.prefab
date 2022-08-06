@@ -493,7 +493,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 667149012983080982}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: CloseButtonPressed
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -745,13 +745,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7903934468229260606}
+  m_TargetGraphic: {fileID: 2709444356476438693}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: DiceButtonPressed
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -991,13 +991,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7903934468229260606}
+  m_TargetGraphic: {fileID: 6098540311872547807}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 667149012983080982}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+        m_MethodName: CraftButtonPressed
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1052,6 +1052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7903934468388892884}
+  - component: {fileID: 7560841649461611760}
   m_Layer: 5
   m_Name: TabsMenu
   m_TagString: Untagged
@@ -1082,6 +1083,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7560841649461611760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903934468388892907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d42bafacfa40f6ad05509cf7f721ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closeButton: {fileID: 7903934467675107649}
+  _craftButton: {fileID: 7903934468229260605}
+  _diceButton: {fileID: 7903934467892445453}
+  _craftMenu: {fileID: 667149012983080982}
+  _diceMenu: {fileID: 1245385770443174224}
+  _buttonEnabled: {fileID: 21300000, guid: f964e617b51a2814abff17a230e28e96, type: 3}
+  _buttonDisabled: {fileID: 21300000, guid: 00c15f074c475ba41a38a97bbefa92c0, type: 3}
 --- !u!1 &7903934468504374118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1398,11 @@ PrefabInstance:
 --- !u!224 &1245385770443174223 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3995557132814807583, guid: 1649e144b2cd21347b6e30b202e72ea0, type: 3}
+  m_PrefabInstance: {fileID: 2754916304885580624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1245385770443174224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3995557132814807552, guid: 1649e144b2cd21347b6e30b202e72ea0, type: 3}
   m_PrefabInstance: {fileID: 2754916304885580624}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9143077144177729190
