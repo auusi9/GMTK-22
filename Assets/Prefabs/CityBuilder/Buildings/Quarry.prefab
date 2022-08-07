@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _buildingDescription
-      value: Gives you 1 Stone face. Every Rock adjacent improves this face.
+      value: Gives you 1 Stone face. <br><br>Every Rock adjacent improves this face.
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _workerSpots.Array.size

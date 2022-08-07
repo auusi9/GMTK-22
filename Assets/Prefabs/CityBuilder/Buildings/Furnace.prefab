@@ -21,8 +21,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _buildingDescription
-      value: Gives you 1 Clay face. Every Clay deposit adjacent improves this face.
-        It allows you to obtain Bricks and Polished stones.
+      value: Gives you 1 Clay face. <br><br>Every Clay deposit adjacent improves
+        this face. <br><br>It allows you to obtain Bricks and Polished stones.
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _workerSpots.Array.size

@@ -16,7 +16,8 @@ namespace CityBuilder
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _description;
-        [SerializeField] private float _unavailableAlpha = 0.5f;
+        [SerializeField] private Color _colorAvailable;
+        [SerializeField] private Color _colorUnavailable;
 
         private Building _lastBuildingCreated;
 
@@ -70,17 +71,13 @@ namespace CityBuilder
 
         private void Available()
         {
-            var imageColor = _image.color;
-            imageColor.a = 1f;
-            _image.color = imageColor;
+            _image.color = _colorAvailable;
             enabled = true;
         }
 
         private void UnAvailable()
         {
-            var imageColor = _image.color;
-            imageColor.a = _unavailableAlpha;
-            _image.color = imageColor;
+            _image.color = _colorUnavailable;
             enabled = false;
         }
 
