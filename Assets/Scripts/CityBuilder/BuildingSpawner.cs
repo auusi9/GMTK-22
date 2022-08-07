@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace CityBuilder
 {
-    public class BuildingSpawner : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+    public class BuildingSpawner : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Building _building;
         [SerializeField] private GridCanvas _canvas;
@@ -96,6 +96,7 @@ namespace CityBuilder
             _lastBuildingCreated.DraggableObject.OnPointerDown(eventData);
 
             EventSystem.current.SetSelectedGameObject(_lastBuildingCreated.gameObject);
+            PointerHandler.Instance.PanelClicked(GetHashCode());
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -137,6 +138,20 @@ namespace CityBuilder
             
             _lastBuildingCreated?.DraggableObject.OnPointerUp(eventData);
             _lastBuildingCreated = null;
+            PointerHandler.Instance.PanelReleased(GetHashCode());
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (_lastBuildingCreated == null)
+            {
+                PointerHandler.Instance.PanelHovered(GetHashCode());
+            }
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            PointerHandler.Instance.PanelStoppedHovering(GetHashCode());
         }
     }
 }

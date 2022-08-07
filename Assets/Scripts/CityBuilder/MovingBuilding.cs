@@ -22,6 +22,8 @@ namespace CityBuilder
             {
                 Destroy(gameObject);
             }
+            
+            PointerHandler.Instance.PanelStoppedHovering(GetHashCode());
         }
 
         private void TrySetBuilding(PointerEventData eventData)
