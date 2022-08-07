@@ -9,6 +9,7 @@ namespace Dice
     {
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _description;
+        [SerializeField] private Shadow _shadow;
 
         private Face _face;
         
@@ -26,6 +27,7 @@ namespace Dice
             }
 
             _icon.sprite = _face.Sprite;
+            _shadow.effectColor = _face.ShadowColor;
             _description.text = _face.Description;
         }
 

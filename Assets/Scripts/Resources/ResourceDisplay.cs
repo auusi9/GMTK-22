@@ -9,6 +9,7 @@ namespace Resources
     {
         [SerializeField] private Resource _resource;
         [SerializeField] private Image _image;
+        [SerializeField] private Shadow _shadow;
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private string _textFormat = "{0}";
         [SerializeField] private float _incrementXSecond = 5f;
@@ -22,6 +23,7 @@ namespace Resources
             _resource.RemovedResource += RemovedResource;
             
             _image.sprite = _resource.Sprite;
+            _shadow.effectColor = _resource.ShadowColor;
             _text.text = string.Format(_textFormat, _resource.Value);
             _currentValue = _resource.Value;
         }

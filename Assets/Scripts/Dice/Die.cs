@@ -10,6 +10,7 @@ namespace Dice
     public class Die : ScriptableObject
     {
         [SerializeField] private Sprite _defaultIcon;
+        [SerializeField] private Color _defaultColor;
         
         private Face[] _faces = new Face[6];
         
@@ -45,8 +46,9 @@ namespace Dice
             return _faces[index];
         }
 
-        public Sprite GetFirstSprite()
+        public Sprite GetFirstSprite(out Color shadowColor)
         {
+            shadowColor = _defaultColor;
             if(_faces == null)
                 OnEnable();
             
@@ -54,6 +56,7 @@ namespace Dice
             {
                 if (_faces[i] != null)
                 {
+                    shadowColor = _faces[i].ShadowColor;
                     return _faces[i].Sprite;
                 }
             }
@@ -61,17 +64,19 @@ namespace Dice
             return _defaultIcon;
         }
 
-        public Sprite GetDefaultSprite()
+        public Sprite GetDefaultSprite(out Color shadowColor)
         {
+            shadowColor = _defaultColor;
             return _defaultIcon;
         }
 
-        public Sprite GetRandomSprite(Sprite iconSprite)
+        public Sprite GetRandomSprite(Sprite iconSprite, out Color shadowColor)
         {
             if(_faces == null)
                 OnEnable();
 
             List<Sprite> possibleSprites = new List<Sprite>();
+            List<Color> possibleColor = new List<Color>();
 
             bool defaultIconAdded = false;
             for (var i = 0; i < _faces.Length; i++)
@@ -81,20 +86,26 @@ namespace Dice
                     if (_faces[i].Sprite != iconSprite)
                     {
                         possibleSprites.Add(_faces[i].Sprite);
+                        possibleColor.Add(_faces[i].ShadowColor);
+                        
                     }
                 }
                 else if(_defaultIcon != iconSprite && defaultIconAdded == false)
                 {
                     defaultIconAdded = true;
                     possibleSprites.Add(_defaultIcon);
+                    possibleColor.Add(_defaultColor);
                 }
             }
 
             if (possibleSprites.Count > 0)
             {
-                return possibleSprites[Random.Range(0, possibleSprites.Count)];
+                int randomNumber = Random.Range(0, possibleSprites.Count);
+                shadowColor = possibleColor[randomNumber];
+                return possibleSprites[randomNumber];
             }
-            
+
+            shadowColor = _defaultColor;
             return _defaultIcon;
         }
 

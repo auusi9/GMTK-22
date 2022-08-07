@@ -8,6 +8,7 @@ namespace Dice
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Image _selectedUI;
+        [SerializeField] private Shadow _shadow;
 
         private Die _die;
 
@@ -19,7 +20,8 @@ namespace Dice
         {
             _die = die;
 
-            _icon.sprite = _die.GetFirstSprite();
+            _icon.sprite = _die.GetFirstSprite(out Color shadowColor);
+            _shadow.effectColor = shadowColor;
             SetDeselected();
         }
 
@@ -27,11 +29,13 @@ namespace Dice
         {
             if (face == null)
             {
-                _icon.sprite = _die.GetDefaultSprite();
+                _icon.sprite = _die.GetDefaultSprite(out Color shadowColor);
+                _shadow.effectColor = shadowColor;
                 return;
             }
             
             _icon.sprite = face.Sprite;
+            _shadow.effectColor = face.ShadowColor;
         }
 
         public void SetSelected()
@@ -51,7 +55,8 @@ namespace Dice
 
         public void ChangeFace()
         {
-            _icon.sprite = _die.GetRandomSprite(_icon.sprite);
+            _icon.sprite = _die.GetRandomSprite(_icon.sprite, out Color shadowColor);
+            _shadow.effectColor = shadowColor;
         }
     }
 }

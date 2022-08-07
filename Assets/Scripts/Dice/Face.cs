@@ -17,13 +17,13 @@ namespace Dice
         [SerializeField] private int _priceXReward;
 
         [Header("UI")] 
-        [SerializeField] private Sprite _sprite;
         [SerializeField] private string _description;
 
-        public Sprite Sprite => _sprite;
+        public Sprite Sprite => _resource.Sprite;
+        public Color ShadowColor => _resource.ShadowColor;
         public string Description => _description;
 
-        public Building _building;
+        [HideInInspector] public Building _building;
 
         public Action Destroying;
 

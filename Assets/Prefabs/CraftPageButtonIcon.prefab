@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 3537775063236206197}
+  _shadow: {fileID: 9069158700227561710}
   _text: {fileID: 7802288605799230850}
   _textFormat: '{0}'
 --- !u!1 &3185918101571323117
@@ -548,6 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 4192661689635943457}
+  _shadow: {fileID: 8558224809049948225}
   _text: {fileID: 306072778233636661}
   _textFormat: '{0}'
 --- !u!1 &3840150407641755002
@@ -885,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 6796513289969061371}
+  _shadow: {fileID: 4389785431895807920}
   _text: {fileID: 7734799880759423528}
   _textFormat: '{0}'
 --- !u!1 &4610584851567150195
@@ -1382,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 8693839669899566839}
+  _shadow: {fileID: 7285136782730200164}
   _text: {fileID: 4409157699841331984}
   _textFormat: '{0}'
 --- !u!1 &6586722903867725881
