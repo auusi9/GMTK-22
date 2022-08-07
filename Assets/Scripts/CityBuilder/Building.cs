@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dice;
 using Resources;
@@ -11,24 +12,27 @@ namespace CityBuilder
     {
         [SerializeField] private BuildingCost[] _cost;
         [SerializeField] private MovingBuilding _draggableObject;
-        [SerializeField] private WorkerSpot[] _workerSpots;
+        [SerializeField] private List<WorkerSpot> _workerSpots;
         [SerializeField] private GrantFace _grantFace;
         [SerializeField] private CityMapLocator _cityMapLocator;
         [SerializeField] private Scenery _scenery;
+        [SerializeField] private House _house;
         [SerializeField] private string _buildingName;
         [SerializeField] private string _buildingDescription;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
 
-        public WorkerSpot[] WorkerSpots => _workerSpots;
+        public List<WorkerSpot> WorkerSpots => _workerSpots;
         public Scenery Scenery => _scenery;
+        public House House => _house;
 
         public string BuildingName => _buildingName;
         public string BuildingDescription => _buildingDescription;
 
-        public Action Spawned;
-        public Action Destroyed;
+        public event Action Spawned;
+        public event Action Destroyed;
+        public event Action NewNeighbour;
 
         private Face _face;
         private int _x, _y;
@@ -44,11 +48,15 @@ namespace CityBuilder
             if (_face != null)
             {
                 _face.Destroying -= Destroying;
+                _face = null;
             }
             
             if(_grantFace != null)
                 _grantFace.NewFace -= NewFace;
             
+            _cityMapLocator.RemoveBuildingFromPosition(this, _x, _y);
+            
+            NotifyNeighbours();
             Destroyed?.Invoke();
         }
 
@@ -64,9 +72,14 @@ namespace CityBuilder
             _face = null;
         }
 
-        public Building[] GetNearBuildings()
+        public Building[] Get4NearBuildings()
         {
-            return _cityMapLocator.GetBuildingsNextToPosition(_x, _y);
+            return _cityMapLocator.Get4BuildingsNextToPosition(_x, _y);
+        }
+        
+        public Building[] Get8NearBuildings()
+        {
+            return _cityMapLocator.Get8BuildingsNextToPosition(_x, _y);
         }
 
         public void PayCost()
@@ -104,7 +117,12 @@ namespace CityBuilder
             _x = currentTileX;
             _y = currentTileY;
 
-            Building[] buildings = GetNearBuildings();
+            NotifyNeighbours();
+        }
+
+        private void NotifyNeighbours()
+        {
+            Building[] buildings = Get8NearBuildings();
 
             foreach (var build in buildings)
             {
@@ -121,6 +139,8 @@ namespace CityBuilder
             {
                 _face.CalculateLevel();
             }
+            
+            NewNeighbour?.Invoke();
         }
     }
 

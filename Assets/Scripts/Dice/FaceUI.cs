@@ -15,7 +15,7 @@ namespace Dice
         
         private Face _face;
         
-        public Action<FaceUI> FaceSelected;
+        public event Action<FaceUI> FaceSelected;
 
         public void SetFace(Face face)
         {

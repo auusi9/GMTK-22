@@ -38,7 +38,7 @@ namespace CityBuilder
             */ 
         }
 
-        public Building[] GetBuildingsNextToPosition(int x, int y)
+        public Building[] Get4BuildingsNextToPosition(int x, int y)
         {
             Building[] buildings = new Building[4];
             
@@ -46,6 +46,26 @@ namespace CityBuilder
             buildings[1] = GetBuildingInPosition(x + 1, y);
             buildings[2] = GetBuildingInPosition(x, y + 1);
             buildings[3] = GetBuildingInPosition(x, y - 1);
+
+            return buildings;
+        }
+        
+        public Building[] Get8BuildingsNextToPosition(int x, int y)
+        {
+            Building[] buildings = new Building[8];
+
+            int k = 0;
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    if (i != 0 || j != 0)
+                    {
+                        buildings[k] = GetBuildingInPosition(x + i, y + j);
+                        k++;
+                    }
+                }
+            }
 
             return buildings;
         }
@@ -80,6 +100,19 @@ namespace CityBuilder
             if (_grid[point.X, point.Y] == null)
             {
                 _grid[point.X, point.Y] = tile;
+            }
+        }
+
+        public void RemoveBuildingFromPosition(Building building, int x, int y)
+        {
+            if (x < 0 || y < 0 || x >= _x || y >= _y || _grid[x, y] == null)
+            {
+                return;
+            }
+            
+            if (_grid[x, y] != null && _grid[x, y].Building == building)
+            {
+                _grid[x, y].Building = null;
             }
         }
     }

@@ -9,7 +9,7 @@ namespace Dice
         [SerializeField] private Face _face;
         [SerializeField] private DiceInventory _diceInventory;
 
-        public Action<Face> NewFace;
+        public event Action<Face> NewFace;
         
         public void Grant(Building building)
         {   

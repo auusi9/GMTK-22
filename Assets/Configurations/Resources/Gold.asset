@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faf3866f51d4f3fa7379d5d76bace05, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  _defaultValue: 20
+  _defaultValue: 50
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: b3a5fd9025c3725468cc8ff92ae37d3b, type: 3}
+  _shadowColor: {r: 0, g: 0, b: 0, a: 0}

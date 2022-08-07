@@ -15,7 +15,7 @@ namespace Dice
         
         private Die _die;
 
-        public Action<DieUI> DieSelected;
+        public event Action<DieUI> DieSelected;
 
         public Die Die => _die;
 

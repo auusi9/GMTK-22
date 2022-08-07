@@ -15,10 +15,10 @@ namespace Dice
 
         public List<Die> Dice => _dice;
 
-        public Action<Face> NewFaceAdded;
-        public Action NewFaceDiscarded;
-        public Action<Face> NewFaceAccepted;
-        public Action<Die> NewDice;
+        public event Action<Face> NewFaceAdded;
+        public event Action NewFaceDiscarded;
+        public event Action<Face> NewFaceAccepted;
+        public event Action<Die> NewDice;
 
         private void OnEnable()
         {

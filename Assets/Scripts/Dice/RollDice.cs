@@ -12,7 +12,7 @@ namespace Dice
 
         public DieUI Die => _dieUI;
         
-        public Action<Face> DieRolled;
+        public event Action<Face> DieRolled;
 
         public void Roll()
         {

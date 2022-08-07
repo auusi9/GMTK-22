@@ -20,9 +20,9 @@ namespace Resources
 
         public Color ShadowColor => _shadowColor;
 
-        public Action<int> ResourceChanged;
-        public Action<int> AddedResource;
-        public Action<int> RemovedResource;
+        public event Action<int> ResourceChanged;
+        public event Action<int> AddedResource;
+        public event Action<int> RemovedResource;
         
         private void OnEnable()
         {

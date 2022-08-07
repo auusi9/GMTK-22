@@ -25,8 +25,8 @@ namespace Dice
 
         [HideInInspector] public Building _building;
 
-        public Action Destroying;
-        public Action RewardChanged;
+        public event Action Destroying;
+        public event Action RewardChanged;
 
         public Resource Resource => _resource;
         public int CurrentReward => _currentReward;
@@ -89,7 +89,7 @@ namespace Dice
             if(_building == null)
                 return;
 
-            Building[] buildings = _building.GetNearBuildings();
+            Building[] buildings = _building.Get4NearBuildings();
 
             int number = _reward;
 

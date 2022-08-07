@@ -16,8 +16,8 @@ namespace Workers
 
         private float _currentProgress;
         
-        public Action DayFinished;
-        public Action StartDay;
+        public event Action DayFinished;
+        public event Action StartDay;
 
         public int DayCount;
 
