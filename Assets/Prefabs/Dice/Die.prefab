@@ -95,6 +95,8 @@ MonoBehaviour:
   _icon: {fileID: 1349111702371487068}
   _selectedUI: {fileID: 1349111704083445963}
   _shadow: {fileID: 2387913277248716326}
+  _sceneryValue: {fileID: 3583325784467518726}
+  _textFormat: x{0}
 --- !u!114 &1349111702361768462
 MonoBehaviour:
   m_ObjectHideFlags: 0

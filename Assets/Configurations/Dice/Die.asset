@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b38f1d2f8c4bd9b86573df95c9edb7, type: 3}
   m_Name: Die
   m_EditorClassIdentifier: 
-  _defaultIcon: {fileID: 21300000, guid: 268fe0f314af38640b31be826170dfe4, type: 3}
+  _defaultFace: {fileID: 11400000, guid: 9ceacd6abbdcd4341a4961f4c49f39ed, type: 2}

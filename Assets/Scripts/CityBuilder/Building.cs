@@ -52,7 +52,7 @@ namespace CityBuilder
             Destroyed?.Invoke();
         }
 
-        private void NewFace(Face obj)
+        public void NewFace(Face obj)
         {
             obj.SetBuilding(this);
             _face = obj;
@@ -78,7 +78,7 @@ namespace CityBuilder
 
             if (_grantFace != null)
             {
-                _grantFace.Grant();
+                _grantFace.Grant(this);
             }
             
             Spawned?.Invoke();

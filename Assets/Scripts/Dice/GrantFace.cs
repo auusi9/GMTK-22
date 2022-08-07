@@ -1,4 +1,5 @@
 ﻿using System;
+using CityBuilder;
 using UnityEngine;
 
 namespace Dice
@@ -10,11 +11,15 @@ namespace Dice
 
         public Action<Face> NewFace;
         
-        public void Grant()
+        public void Grant(Building building)
         {   
             _diceInventory.NewFaceAccepted += NewFaceAccepted;
             _diceInventory.NewFaceDiscarded += NewFaceDiscarded;
-            _diceInventory.NewFace(_face);
+
+            Face face = Instantiate(_face);
+            
+            building.NewFace(face);
+            _diceInventory.NewFace(face);
         }
 
         private void NewFaceAccepted(Face newFace)

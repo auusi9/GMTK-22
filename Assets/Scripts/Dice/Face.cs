@@ -26,9 +26,11 @@ namespace Dice
         [HideInInspector] public Building _building;
 
         public Action Destroying;
+        public Action RewardChanged;
 
         public Resource Resource => _resource;
-
+        public int CurrentReward => _currentReward;
+        
         private int _currentReward;
 
         private void OnEnable()
@@ -100,6 +102,7 @@ namespace Dice
             }
 
             _currentReward = number;
+            RewardChanged?.Invoke();
         }
     }
     

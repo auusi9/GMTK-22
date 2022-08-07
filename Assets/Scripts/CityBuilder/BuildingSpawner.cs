@@ -21,7 +21,7 @@ namespace CityBuilder
 
         private Building _lastBuildingCreated;
 
-        private void Start()
+        private void Awake()
         {
             foreach (var cost in _building.Cost)
             {
@@ -87,8 +87,7 @@ namespace CityBuilder
             {
                 return;
             }
-            
-            
+
             Vector3 position = _canvas.Canvas.worldCamera.ScreenToWorldPoint(Input.mousePosition);
             var canvasTransform = _canvas.Canvas.transform;
             position.z = canvasTransform.position.z;

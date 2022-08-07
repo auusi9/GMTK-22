@@ -16,6 +16,7 @@ namespace UIGeneric
         private void OnEnable()
         {
             _currentVelocityIndex = 0;
+            _pauseViews.Clear();
         }
 
         public void NextSpeed()

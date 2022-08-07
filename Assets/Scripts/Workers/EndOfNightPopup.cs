@@ -144,7 +144,7 @@ namespace Workers
         public void AcceptButton()
         {
             _dayNight.StartNewDay();
-            gameObject.SetActive(false);
+            ClosePopup();
         }
 
         private void ClosePopup()

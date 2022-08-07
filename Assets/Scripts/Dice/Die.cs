@@ -9,8 +9,7 @@ namespace Dice
     [CreateAssetMenu(menuName = "Dice/Die", fileName = "Die", order = 2)]
     public class Die : ScriptableObject
     {
-        [SerializeField] private Sprite _defaultIcon;
-        [SerializeField] private Color _defaultColor;
+        [SerializeField] private Face _defaultFace;
         
         private Face[] _faces = new Face[6];
         
@@ -42,13 +41,12 @@ namespace Dice
                 _faces[index].ToDestroy();
             }
 
-            _faces[index] = Object.Instantiate(face);
+            _faces[index] = face;
             return _faces[index];
         }
 
-        public Sprite GetFirstSprite(out Color shadowColor)
+        public Face GetFirstFace()
         {
-            shadowColor = _defaultColor;
             if(_faces == null)
                 OnEnable();
             
@@ -56,57 +54,49 @@ namespace Dice
             {
                 if (_faces[i] != null)
                 {
-                    shadowColor = _faces[i].ShadowColor;
-                    return _faces[i].Sprite;
+                    return _faces[i];
                 }
             }
 
-            return _defaultIcon;
+            return _defaultFace;
         }
 
-        public Sprite GetDefaultSprite(out Color shadowColor)
+        public Face GetDefaultFace()
         {
-            shadowColor = _defaultColor;
-            return _defaultIcon;
+            return _defaultFace;
         }
 
-        public Sprite GetRandomSprite(Sprite iconSprite, out Color shadowColor)
+        public Face GetRandomFace(Face currentFace)
         {
             if(_faces == null)
                 OnEnable();
 
-            List<Sprite> possibleSprites = new List<Sprite>();
-            List<Color> possibleColor = new List<Color>();
+            List<Face> possibleFaces = new List<Face>();
 
             bool defaultIconAdded = false;
             for (var i = 0; i < _faces.Length; i++)
             {
                 if (_faces[i] != null)
                 {
-                    if (_faces[i].Sprite != iconSprite)
+                    if (_faces[i].Sprite != currentFace.Sprite && _faces[i].CurrentReward != currentFace.CurrentReward)
                     {
-                        possibleSprites.Add(_faces[i].Sprite);
-                        possibleColor.Add(_faces[i].ShadowColor);
-                        
+                        possibleFaces.Add(_faces[i]);
                     }
                 }
-                else if(_defaultIcon != iconSprite && defaultIconAdded == false)
+                else if(_defaultFace.Sprite != currentFace.Sprite && defaultIconAdded == false)
                 {
                     defaultIconAdded = true;
-                    possibleSprites.Add(_defaultIcon);
-                    possibleColor.Add(_defaultColor);
+                    possibleFaces.Add(_defaultFace);
                 }
             }
 
-            if (possibleSprites.Count > 0)
+            if (possibleFaces.Count > 0)
             {
-                int randomNumber = Random.Range(0, possibleSprites.Count);
-                shadowColor = possibleColor[randomNumber];
-                return possibleSprites[randomNumber];
+                int randomNumber = Random.Range(0, possibleFaces.Count);
+                return possibleFaces[randomNumber];
             }
 
-            shadowColor = _defaultColor;
-            return _defaultIcon;
+            return _defaultFace;
         }
 
         public int GetPrice()

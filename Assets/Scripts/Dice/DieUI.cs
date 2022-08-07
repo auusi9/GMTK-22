@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,33 +10,85 @@ namespace Dice
         [SerializeField] private Image _icon;
         [SerializeField] private Image _selectedUI;
         [SerializeField] private Shadow _shadow;
-
+        [SerializeField] private TextMeshProUGUI _sceneryValue;
+        [SerializeField] private string _textFormat = "x{0}";
+        
         private Die _die;
 
         public Action<DieUI> DieSelected;
 
         public Die Die => _die;
 
+        private Face _currentFace;
+
         public void SetDie(Die die)
         {
             _die = die;
-
-            _icon.sprite = _die.GetFirstSprite(out Color shadowColor);
-            _shadow.effectColor = shadowColor;
+            SwapFace(_die.GetFirstFace());
             SetDeselected();
+        }
+
+        private void SetFaceInfo()
+        {
+            _icon.sprite = _currentFace.Sprite;
+            _shadow.effectColor = _currentFace.ShadowColor;
+            SetReward(_currentFace.CurrentReward);
+        }
+
+        private void SwapFace(Face newFace)
+        {
+            if(newFace == _currentFace)
+                return;
+            
+            if (_currentFace != null)
+            {
+                _currentFace.Destroying -= FaceDestroyed;
+                _currentFace.RewardChanged -= RewardChanged;
+            }
+
+            if (newFace == null)
+                newFace = _die.GetDefaultFace();
+            
+            _currentFace = newFace;
+            _currentFace.Destroying += FaceDestroyed;
+            _currentFace.RewardChanged += RewardChanged;
+            SetFaceInfo();
+        }
+
+        private void RewardChanged()
+        {
+            SetFaceInfo();
+        }
+
+        private void FaceDestroyed()
+        {
+            _currentFace.Destroying -= FaceDestroyed;
+            _currentFace.RewardChanged -= RewardChanged;
+            
+            SwapFace(_die.GetRandomFace(_currentFace));
+        }
+
+        private void SetReward(int value)
+        {
+            if (value != 0)
+            {
+                _sceneryValue.text = string.Format(_textFormat, value);
+            }
+            else
+            {
+                _sceneryValue.text = string.Empty;
+            }
         }
 
         public void SetFace(Face face)
         {
             if (face == null)
             {
-                _icon.sprite = _die.GetDefaultSprite(out Color shadowColor);
-                _shadow.effectColor = shadowColor;
+                SwapFace(_die.GetDefaultFace());
                 return;
             }
             
-            _icon.sprite = face.Sprite;
-            _shadow.effectColor = face.ShadowColor;
+            SwapFace(face);
         }
 
         public void SetSelected()
@@ -55,8 +108,7 @@ namespace Dice
 
         public void ChangeFace()
         {
-            _icon.sprite = _die.GetRandomSprite(_icon.sprite, out Color shadowColor);
-            _shadow.effectColor = shadowColor;
+            SwapFace(_die.GetRandomFace(_currentFace));
         }
     }
 }

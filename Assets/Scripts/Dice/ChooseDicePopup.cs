@@ -92,6 +92,7 @@ namespace Dice
 
         public void Cancel()
         {
+            _selectingFace.ToDestroy();
             _diceInventory.DiscardedNewFace();
             ClosePopup();
         }

@@ -10,7 +10,9 @@ namespace Dice
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private Shadow _shadow;
-
+        [SerializeField] private TextMeshProUGUI _sceneryValue;
+        [SerializeField] private string _textFormat = "x{0}";
+        
         private Face _face;
         
         public Action<FaceUI> FaceSelected;
@@ -23,11 +25,13 @@ namespace Dice
             {
                 _icon.sprite = null;
                 _description.text = "Dice face is empty";
+                _sceneryValue.text = string.Empty;
                 return;
             }
 
             _icon.sprite = _face.Sprite;
             _shadow.effectColor = _face.ShadowColor;
+            _sceneryValue.text = string.Format(_textFormat, _face.CurrentReward);
             _description.text = _face.Description;
         }
 
