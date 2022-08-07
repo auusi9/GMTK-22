@@ -18,11 +18,10 @@ MonoBehaviour:
     _comboNeeded: 3
     _reward: 1
     _resourceReward: {fileID: 11400000, guid: 957990f9a8676b044abfaa0c0cd40aff, type: 2}
-    _extraCondition: {fileID: 0}
+    _extraCondition: {fileID: 11400000, guid: 1d452b22f3acfed4bb89e8243db208ac, type: 2}
   _reward: 1
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 21300000, guid: 7dfcbb9a4a582e04fa949cf1aa98248c, type: 3}
   _description: Stone
   _building: {fileID: 0}

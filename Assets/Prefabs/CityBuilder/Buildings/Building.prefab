@@ -177,7 +177,11 @@ MonoBehaviour:
   _workerSpots: []
   _grantFace: {fileID: 0}
   _cityMapLocator: {fileID: 11400000, guid: e89947743f20c1c46a8f392d8ce58b3a, type: 2}
+  _buildingLibrary: {fileID: 11400000, guid: 19b8404576aa2204d9aa0763a30d251d, type: 2}
   _scenery: {fileID: 0}
+  _house: {fileID: 0}
+  _buildingName: 
+  _buildingDescription: 
 --- !u!114 &-1328291159500940739
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ namespace Dice
                 }
             }
         }
-
+        
         public void CalculateLevel()
         {
             if(_building == null)
@@ -123,13 +123,5 @@ namespace Dice
     public abstract class FaceComboCondition : ScriptableObject
     {
         public abstract bool IsValid();
-    }
-
-    public class OwnsBuilding : FaceComboCondition
-    {
-        public override bool IsValid()
-        {
-            return true;
-        }
     }
 }

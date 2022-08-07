@@ -18,11 +18,10 @@ MonoBehaviour:
     _comboNeeded: 3
     _reward: 1
     _resourceReward: {fileID: 11400000, guid: ed66b0643ad90124292d54ce41e532f0, type: 2}
-    _extraCondition: {fileID: 0}
+    _extraCondition: {fileID: 11400000, guid: 6c877b3b3066a834b842797a678aa5d8, type: 2}
   _reward: 1
   _maxReward: 5
   _minPrice: 1
   _priceXReward: 1
-  _sprite: {fileID: 21300000, guid: cc91233ce1ed3ed4b9b7f7401be445c9, type: 3}
   _description: Ore
   _building: {fileID: 0}

@@ -15,6 +15,7 @@ namespace CityBuilder
         [SerializeField] private List<WorkerSpot> _workerSpots;
         [SerializeField] private GrantFace _grantFace;
         [SerializeField] private CityMapLocator _cityMapLocator;
+        [SerializeField] private BuildingLibrary _buildingLibrary;
         [SerializeField] private Scenery _scenery;
         [SerializeField] private House _house;
         [SerializeField] private string _buildingName;
@@ -55,6 +56,7 @@ namespace CityBuilder
                 _grantFace.NewFace -= NewFace;
             
             _cityMapLocator.RemoveBuildingFromPosition(this, _x, _y);
+            _buildingLibrary.DestroyedBuilding(this);
             
             NotifyNeighbours();
             Destroyed?.Invoke();
@@ -94,6 +96,7 @@ namespace CityBuilder
                 _grantFace.Grant(this);
             }
             
+            _buildingLibrary.NewBuilding(this);
             Spawned?.Invoke();
         }
 
