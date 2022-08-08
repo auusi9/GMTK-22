@@ -210,6 +210,18 @@ MonoBehaviour:
     _secondResource: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
     _amountFirstResource: 1
     _amountSecondResource: 10
+  - _firstResource: {fileID: 11400000, guid: d3bd486964d6a4045adfa1b2c03c4f0a, type: 2}
+    _secondResource: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
+    _amountFirstResource: 1
+    _amountSecondResource: 15
+  - _firstResource: {fileID: 11400000, guid: f483b291cd9ab97429253894f850edf8, type: 2}
+    _secondResource: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
+    _amountFirstResource: 1
+    _amountSecondResource: 20
+  - _firstResource: {fileID: 11400000, guid: 28be618c6d7564242bf09406d284abc4, type: 2}
+    _secondResource: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
+    _amountFirstResource: 1
+    _amountSecondResource: 30
   _marketPairPrefab: {fileID: 2767362792214387122, guid: f33066382b3b6e84cbc7f72e97e38e5d, type: 3}
   _container: {fileID: 3399068875271302137}
   _marketPopup: {fileID: 2669974673339059080}
