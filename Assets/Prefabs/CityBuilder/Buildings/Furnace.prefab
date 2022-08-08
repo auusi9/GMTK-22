@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _buildingDescription
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[1]._cost
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[2]._cost
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[1]._resource
       value: 
-      objectReference: {fileID: 11400000, guid: f483b291cd9ab97429253894f850edf8, type: 2}
+      objectReference: {fileID: 11400000, guid: edbaea57e8350ad43ae3e74550a15c03, type: 2}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[2]._resource
       value: 

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _buildingDescription
-      value: it does nothing
+      value: Surround it by 8 Homes to give 2 more Townsfolk to each one of them.
       objectReference: {fileID: 0}
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _cost.Array.data[0]._cost

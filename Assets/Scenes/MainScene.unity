@@ -1414,6 +1414,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7093130272211879045, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
+      propertyPath: _building
+      value: 
+      objectReference: {fileID: 6641746408731061445, guid: 92de834445427df48bb98015d6483fe9, type: 3}
     - target: {fileID: 7357247484264022377, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1749,6 +1753,10 @@ PrefabInstance:
     - target: {fileID: 7903934468504374119, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7986532634535569381, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
+      propertyPath: m_Name
+      value: BoulderSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 8004516596582130739, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_AnchorMax.y
