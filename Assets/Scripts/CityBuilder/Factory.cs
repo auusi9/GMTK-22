@@ -11,6 +11,16 @@ namespace CityBuilder
         [SerializeField] private float _seconds;
 
         private float _nextCoin = 0f;
+
+        public FactoryInfo GetFactoryInfo()
+        {
+            return new FactoryInfo()
+            {
+                Coins = _coins,
+                Seconds = _seconds,
+                ResourceName = _gold.ResourceName
+            };
+        }
         
         private void Update()
         {
@@ -28,5 +38,12 @@ namespace CityBuilder
             _nextCoin = coinsCreated - Mathf.FloorToInt(coinsCreated);
             _gold.AddResource(Mathf.FloorToInt(coinsCreated));
         }
+    }
+
+    public class FactoryInfo
+    {
+        public int Coins;
+        public float Seconds;
+        public string ResourceName;
     }
 }

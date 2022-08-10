@@ -7,12 +7,11 @@ using UnityEngine.EventSystems;
 
 namespace CityBuilder
 {
-    public class Market : MonoBehaviour, IPointerDownHandler
+    public class Market : MonoBehaviour
     {
         [SerializeField] private List<TradeablePair> _tradeablePairs = new List<TradeablePair>();
         [SerializeField] private MarketPair _marketPairPrefab;
         [SerializeField] private Transform _container;
-        [SerializeField] private GameObject _marketPopup;
 
         private List<MarketPair> _marketPairs = new List<MarketPair>();
         
@@ -24,11 +23,6 @@ namespace CityBuilder
                 marketPair.SetTradeablePair(tradeablePair);
                 _marketPairs.Add(marketPair);
             }
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            _marketPopup.gameObject.SetActive(true);
         }
     }
 

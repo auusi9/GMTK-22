@@ -9,6 +9,7 @@ namespace Resources
         [SerializeField] private Resource _resource;
         [SerializeField] private Image _image;
         [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private Shadow _shadow;
         [SerializeField] private string _textFormat = "{0}";
 
         public void SetInformation(Resource resource, int amount)
@@ -16,6 +17,7 @@ namespace Resources
             _resource = resource;
             _image.sprite = _resource.Sprite;
             _text.text = string.Format(_textFormat, amount);
+            _shadow.effectColor = _resource.ShadowColor;
         }
     }
 }

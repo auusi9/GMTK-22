@@ -10,6 +10,7 @@ namespace Resources
         [SerializeField] private int _maxValue = Int32.MaxValue;
         [SerializeField] private Sprite _sprite;
         [SerializeField] private Color _shadowColor;
+        [SerializeField] private string _resourceName;
 
         public Sprite Sprite => _sprite;
         
@@ -17,6 +18,7 @@ namespace Resources
         private int _currentMaxValue = 0;
 
         public int Value => _currentValue;
+        public string ResourceName => _resourceName;
 
         public Color ShadowColor => _shadowColor;
 
