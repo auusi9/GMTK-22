@@ -10,6 +10,8 @@ namespace Dice
     public class Die : ScriptableObject
     {
         [SerializeField] private Face _defaultFace;
+
+        public event Action NewFace;
         
         private Face[] _faces = new Face[6];
         
@@ -42,6 +44,7 @@ namespace Dice
             }
 
             _faces[index] = face;
+            NewFace?.Invoke();
             return _faces[index];
         }
 

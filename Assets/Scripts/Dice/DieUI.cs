@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +16,9 @@ namespace Dice
         [SerializeField] private Shadow _shadow;
         [SerializeField] private TextMeshProUGUI _sceneryValue;
         [SerializeField] private string _textFormat = "x{0}";
-        
+        [SerializeField] private TextMeshProUGUI _facesInfo;
+        [SerializeField] private string _textFormatForFacesInfo = "x{0} {1} <br>";
+
         private Die _die;
 
         public event Action<DieUI> DieSelected;
@@ -23,9 +29,47 @@ namespace Dice
 
         public void SetDie(Die die)
         {
+            if (_die != null)
+                _die.NewFace -= SetFacesInfo;
+            
             _die = die;
+            _die.NewFace += SetFacesInfo;
+            
+            SetFacesInfo();
             SwapFace(_die.GetFirstFace());
             SetDeselected();
+        }
+
+        private void OnDestroy()
+        {
+            if (_die != null)
+                _die.NewFace -= SetFacesInfo;
+        }
+
+        private void SetFacesInfo()
+        {
+            if(_facesInfo == null)
+                return;
+            
+            StringBuilder stringBuilder = new StringBuilder();
+            IEnumerable<IGrouping<Resource, Face>> groupBy = _die.Faces.Where(x => x != null).GroupBy(x => x.Resource);
+
+            int totalFaces = 0;
+            foreach (var dieFace in groupBy)
+            {
+                List<Face> faces = dieFace.ToList();
+                stringBuilder.Append(
+                    string.Format(_textFormatForFacesInfo, faces.Count.ToString(), faces[0].Resource.ResourceName));
+                totalFaces += faces.Count;
+            }
+
+            if (totalFaces < _die.Faces.Length)
+            {
+                stringBuilder.Append(
+                    string.Format(_textFormatForFacesInfo, (_die.Faces.Length - totalFaces).ToString(), "Empty"));
+            }
+
+            _facesInfo.text = stringBuilder.ToString();
         }
 
         private void SetFaceInfo()
