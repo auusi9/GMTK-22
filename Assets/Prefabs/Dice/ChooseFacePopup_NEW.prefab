@@ -519,6 +519,7 @@ MonoBehaviour:
   _diceInventory: {fileID: 11400000, guid: 2b9c86738ba368845903bdb459863479, type: 2}
   _chooseFacePopup: {fileID: 2859078127978368833}
   _accept: {fileID: 2859078127714738384}
+  _acceptButtonCanvasGroup: {fileID: 7102518993218126080}
   _timeManager: {fileID: 11400000, guid: 9f337c0c691069c41a4b92a713fcbe43, type: 2}
 --- !u!114 &2859078127978368833
 MonoBehaviour:
@@ -2876,6 +2877,11 @@ MonoBehaviour:
 --- !u!224 &2859078127714738385 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 599023362122871632, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
+  m_PrefabInstance: {fileID: 3458013522900341633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7102518993218126080 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5578943571039588993, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
   m_PrefabInstance: {fileID: 3458013522900341633}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6191684443189876282

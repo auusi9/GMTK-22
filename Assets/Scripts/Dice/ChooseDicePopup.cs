@@ -14,6 +14,7 @@ namespace Dice
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private ChooseFacePopup _chooseFacePopup;
         [SerializeField] private Button _accept;
+        [SerializeField] private CanvasGroup _acceptButtonCanvasGroup;
         [SerializeField] private TimeManager _timeManager;
 
         private List<DieUI> _diceUI = new List<DieUI>();
@@ -69,6 +70,7 @@ namespace Dice
             _selectingFace = newFace;
             _faceUI.SetFace(newFace);
             _accept.interactable = false;
+            _acceptButtonCanvasGroup.alpha = 0.3f;
             _currentSelected = null;
             gameObject.SetActive(true);
         }
@@ -113,13 +115,16 @@ namespace Dice
 
             _currentSelected = dieUI;
             _currentSelected.SetSelected();
+            _chooseFacePopup.ResetPopup();
             _chooseFacePopup.SetDice(_currentSelected.Die, _selectingFace, false);
             _accept.interactable = false;
+            _acceptButtonCanvasGroup.alpha = 0.3f;
         }
 
         private void FaceSelected()
         {
             _accept.interactable = true;
+            _acceptButtonCanvasGroup.alpha = 1f;
         }
 
         private void ClosePopup()

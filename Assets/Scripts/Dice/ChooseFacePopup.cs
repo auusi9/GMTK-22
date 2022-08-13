@@ -33,6 +33,11 @@ namespace Dice
             }        
         }
 
+        public void ResetPopup()
+        {
+            _currentIndexSelected = -1;
+        }
+
         public void SetDice(Die die, Face newFace, bool hover)
         {
             _newFace = newFace;
@@ -40,7 +45,14 @@ namespace Dice
 
             for (int i = 0; i < _currentFaces.Length; i++)
             {
-                SetFace(die, i, hover);
+                if (_currentIndexSelected == i && !hover)
+                {
+                    _currentFaces[_currentIndexSelected].SetFace(_newFace, hover, true);
+                }
+                else
+                {
+                    SetFace(die, i, hover);
+                }
             }
         }
 
