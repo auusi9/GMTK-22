@@ -24,7 +24,7 @@ namespace Resources
             
             _image.sprite = _resource.Sprite;
             Color shadowColor = _resource.ShadowColor;
-            shadowColor.a = 0.5f;
+            shadowColor.a = 0.75f;
             _shadow.effectColor = shadowColor;
             _text.text = string.Format(_textFormat, _resource.Value);
             _currentValue = _resource.Value;
