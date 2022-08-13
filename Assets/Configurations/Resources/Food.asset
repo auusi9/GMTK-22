@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faf3866f51d4f3fa7379d5d76bace05, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: 
-  _defaultValue: 1000
+  _defaultValue: 10
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: d11a66641d3fe394091fb462edca5500, type: 3}
   _shadowColor: {r: 0.45490196, g: 0.89411765, b: 0.21568628, a: 1}

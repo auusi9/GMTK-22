@@ -150,6 +150,7 @@ namespace Workers
         private void ClosePopup()
         {
             _timeManager.ResumeGame(GetHashCode());
+            gameObject.SetActive(false);
         }
         
         private class Animation
