@@ -15,5 +15,5 @@ MonoBehaviour:
   _defaultValue: 0
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: f08c20388713ee84982045ea607b35ac, type: 3}
-  _shadowColor: {r: 0, g: 0, b: 0, a: 0}
+  _shadowColor: {r: 0.88235295, g: 0.31764707, b: 0.31764707, a: 1}
   _resourceName: Bricks

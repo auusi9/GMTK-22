@@ -15,5 +15,5 @@ MonoBehaviour:
   _defaultValue: 0
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: c40b7b5d77dfa8c4bae23ce6e0cd87a9, type: 3}
-  _shadowColor: {r: 0, g: 0, b: 0, a: 0}
+  _shadowColor: {r: 0.7176471, g: 0.74509805, b: 0.85490197, a: 1}
   _resourceName: Polished stone

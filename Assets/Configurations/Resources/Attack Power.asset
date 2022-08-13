@@ -15,5 +15,5 @@ MonoBehaviour:
   _defaultValue: 0
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: 6527413ea4bb622458641bd7750d2b74, type: 3}
-  _shadowColor: {r: 0, g: 0, b: 0, a: 0}
+  _shadowColor: {r: 0.85882354, g: 0.42745098, b: 1, a: 1}
   _resourceName: Attack power

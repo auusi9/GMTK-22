@@ -15,5 +15,5 @@ MonoBehaviour:
   _defaultValue: 10
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: d11a66641d3fe394091fb462edca5500, type: 3}
-  _shadowColor: {r: 0, g: 0, b: 0, a: 0}
+  _shadowColor: {r: 0.45490196, g: 0.89411765, b: 0.21568628, a: 1}
   _resourceName: Food

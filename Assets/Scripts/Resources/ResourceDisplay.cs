@@ -23,7 +23,9 @@ namespace Resources
             _resource.RemovedResource += RemovedResource;
             
             _image.sprite = _resource.Sprite;
-            _shadow.effectColor = _resource.ShadowColor;
+            Color shadowColor = _resource.ShadowColor;
+            shadowColor.a = 0.5f;
+            _shadow.effectColor = shadowColor;
             _text.text = string.Format(_textFormat, _resource.Value);
             _currentValue = _resource.Value;
         }
