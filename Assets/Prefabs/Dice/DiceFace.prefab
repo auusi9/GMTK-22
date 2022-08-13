@@ -265,6 +265,10 @@ GameObject:
   - component: {fileID: 5387684067627104129}
   - component: {fileID: 6605703771931420790}
   - component: {fileID: 2528927898608591617}
+  - component: {fileID: 3759543590276826159}
+  - component: {fileID: 3768959686460745701}
+  - component: {fileID: 6588146709071975794}
+  - component: {fileID: 7847617094469289531}
   m_Layer: 5
   m_Name: DiceFace
   m_TagString: Untagged
@@ -349,6 +353,11 @@ MonoBehaviour:
   _shadow: {fileID: 1899029488632992474}
   _sceneryValue: {fileID: 3992468597748017811}
   _textFormat: x{0}
+  _faceUIEmpty: {fileID: 3759543590276826159}
+  _faceUIHover: {fileID: 3768959686460745701}
+  _faceUISet: {fileID: 6588146709071975794}
+  _faceUISelected: {fileID: 7847617094469289531}
+  _button: {fileID: 2528927898608591617}
 --- !u!114 &6605703771931420790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +427,110 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3759543590276826159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472564310540435980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: Empty
+  _gameObjectsToChange:
+  - Value: 0
+    Go: {fileID: 4162097064971908701}
+  - Value: 0
+    Go: {fileID: 5392418353209330169}
+  - Value: 0
+    Go: {fileID: 5589809855264395039}
+  _images:
+  - Value: {r: 0.77254903, g: 0.7647059, b: 0.74509805, a: 1}
+    Graphic: {fileID: 1368415011574254953}
+--- !u!114 &3768959686460745701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472564310540435980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: Hover
+  _gameObjectsToChange:
+  - Value: 0
+    Go: {fileID: 4162097064971908701}
+  - Value: 1
+    Go: {fileID: 5392418353209330169}
+  - Value: 1
+    Go: {fileID: 5589809855264395039}
+  _images:
+  - Value: {r: 0.77254903, g: 0.7647059, b: 0.74509805, a: 1}
+    Graphic: {fileID: 1368415011574254953}
+  - Value: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 0.29803923}
+    Graphic: {fileID: 1202228776433672174}
+  - Value: {r: 0.77254903, g: 0.7647059, b: 0.74509805, a: 1}
+    Graphic: {fileID: 3992468597748017811}
+--- !u!114 &6588146709071975794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472564310540435980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: Set
+  _gameObjectsToChange:
+  - Value: 0
+    Go: {fileID: 4162097064971908701}
+  - Value: 1
+    Go: {fileID: 5392418353209330169}
+  - Value: 1
+    Go: {fileID: 5589809855264395039}
+  _images:
+  - Value: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 1}
+    Graphic: {fileID: 1368415011574254953}
+  - Value: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 1}
+    Graphic: {fileID: 1202228776433672174}
+  - Value: {r: 0.2, g: 0.15686275, b: 0.15686275, a: 1}
+    Graphic: {fileID: 3992468597748017811}
+--- !u!114 &7847617094469289531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4472564310540435980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: Selected
+  _gameObjectsToChange:
+  - Value: 1
+    Go: {fileID: 4162097064971908701}
+  - Value: 1
+    Go: {fileID: 5392418353209330169}
+  - Value: 1
+    Go: {fileID: 5589809855264395039}
+  _images:
+  - Value: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 1}
+    Graphic: {fileID: 1368415011574254953}
+  - Value: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 1}
+    Graphic: {fileID: 1202228776433672174}
+  - Value: {r: 0.2, g: 0.15686275, b: 0.15686275, a: 1}
+    Graphic: {fileID: 3992468597748017811}
 --- !u!1 &5392418353209330169
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +930,6 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: -1582350373
+  m_SortingOrder: 11
   m_TargetDisplay: 0

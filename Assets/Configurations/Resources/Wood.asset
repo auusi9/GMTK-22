@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faf3866f51d4f3fa7379d5d76bace05, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  _defaultValue: 20
+  _defaultValue: 2000
   _maxValue: 2147483647
   _sprite: {fileID: 21300000, guid: 08f5988c4509a77448c14aa587b6a02f, type: 3}
   _shadowColor: {r: 1, g: 0.67058825, b: 0.15294118, a: 1}
