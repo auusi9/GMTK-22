@@ -9,11 +9,11 @@ namespace Dice
     public class ChooseDicePopup : MonoBehaviour
     {
         [SerializeField] private DieUI _dieUIPrefab;
-        [SerializeField] private FaceUI _faceUI;
+        [SerializeField] private NewFaceArea _faceUI;
         [SerializeField] private Transform _gridParent;
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private ChooseFacePopup _chooseFacePopup;
-        [SerializeField] private Button _selectDie;
+        [SerializeField] private Button _accept;
         [SerializeField] private TimeManager _timeManager;
 
         private List<DieUI> _diceUI = new List<DieUI>();
@@ -24,11 +24,13 @@ namespace Dice
         private void Awake()
         {
             _diceInventory.NewFaceAdded += ShowPopup;
+            _chooseFacePopup.FaceSelected += FaceSelected;
             gameObject.SetActive(false);
         }
 
         private void OnDestroy()
         {
+            _chooseFacePopup.FaceSelected -= FaceSelected;
             _diceInventory.NewFaceAdded -= ShowPopup;
         }
 
@@ -42,6 +44,8 @@ namespace Dice
                 {
                     DieUI dieUI = Instantiate(_dieUIPrefab, _gridParent);
                     dieUI.DieSelected += DieSelected;
+                    dieUI.DieStartHovered += DieStartHover;
+                    dieUI.DieStopHover += DieStopHover;
                     _diceUI.Add(dieUI);
                 }
             }
@@ -60,11 +64,39 @@ namespace Dice
                 }
             }
 
+            _chooseFacePopup.SetEmpty();
+
             _selectingFace = newFace;
             _faceUI.SetFace(newFace);
-            _selectDie.interactable = false;
+            _accept.interactable = false;
             _currentSelected = null;
             gameObject.SetActive(true);
+        }
+
+        private void DieStopHover(DieUI dieUI)
+        {
+            if (_currentSelected == dieUI)
+            {
+                return;
+            }
+
+            if (_currentSelected == null)
+            {
+                _chooseFacePopup.SetEmpty();
+                return;
+            }
+            
+            _chooseFacePopup.SetDice(_currentSelected.Die, _selectingFace, false);
+        }
+
+        private void DieStartHover(DieUI dieUI)
+        {
+            if (_currentSelected == dieUI)
+            {
+                return;
+            }
+            
+            _chooseFacePopup.SetDice(dieUI.Die, _selectingFace, true);
         }
 
         private void DieSelected(DieUI dieUI)
@@ -81,7 +113,13 @@ namespace Dice
 
             _currentSelected = dieUI;
             _currentSelected.SetSelected();
-            _selectDie.interactable = true;
+            _chooseFacePopup.SetDice(_currentSelected.Die, _selectingFace, false);
+            _accept.interactable = false;
+        }
+
+        private void FaceSelected()
+        {
+            _accept.interactable = true;
         }
 
         private void ClosePopup()
@@ -97,10 +135,10 @@ namespace Dice
             ClosePopup();
         }
 
-        public void SelectDie()
+        public void AcceptDice()
         {
+            _chooseFacePopup.AcceptChange();
             ClosePopup();
-            _chooseFacePopup.ShowPopup(_currentSelected.Die, _selectingFace);
         }
     }
 }

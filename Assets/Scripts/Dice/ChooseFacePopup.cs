@@ -7,22 +7,21 @@ namespace Dice
 {
     public class ChooseFacePopup : MonoBehaviour
     {
-        [SerializeField] private FaceUI _faceUI;
         [SerializeField] private FaceUI[] _currentFaces;
-        [SerializeField] private Button _accept;
-        [SerializeField] private ChooseDicePopup _chooseDicePopup;
         [SerializeField] private DiceInventory _diceInventory;
-        [SerializeField] private TimeManager _timeManager;
+        [SerializeField] private FaceUI _replaceMessage;
 
         private int _currentIndexSelected = -1;
         private Die _die;
         private Face _newFace;
 
+        public event Action FaceSelected;
+
         private void Start()
         {
             foreach (var faceUI in _currentFaces)
             {
-                faceUI.FaceSelected += FaceSelected;
+                faceUI.FaceSelected += NewFaceSelected;
             }
         }
 
@@ -30,51 +29,54 @@ namespace Dice
         {
             foreach (var faceUI in _currentFaces)
             {
-                faceUI.FaceSelected -= FaceSelected;
+                faceUI.FaceSelected -= NewFaceSelected;
             }        
         }
 
-        public void ShowPopup(Die die, Face newFace)
+        public void SetDice(Die die, Face newFace, bool hover)
         {
-            _timeManager.PauseGame(GetHashCode());
-            
             _newFace = newFace;
             _die = die;
-            _faceUI.SetFace(newFace);
 
             for (int i = 0; i < _currentFaces.Length; i++)
             {
-                _currentFaces[i].SetFace(die.Faces[i]);
+                SetFace(die, i, hover);
             }
-
-            _accept.interactable = false;
-            gameObject.SetActive(true);
         }
 
-        private void ClosePopup()
+        private void SetFace(Die die, int i, bool hover)
         {
-            _timeManager.ResumeGame(GetHashCode());
-            gameObject.SetActive(false);
+            if (die.Faces[i] == null)
+            {
+                _currentFaces[i].SetFace(die.GetDefaultFace(), hover);
+            }
+            else
+            {
+                _currentFaces[i].SetFace(die.Faces[i], hover);
+            }
         }
 
         public void AcceptChange()
         {
             Face face = _die.AddFace(_newFace, _currentIndexSelected);
             _diceInventory.AcceptedNewFace(face);
-            ClosePopup();
         }
 
-        public void GoBack()
+        private void NewFaceSelected(FaceUI selectedFace)
         {
-            ClosePopup();
-            _chooseDicePopup.ShowPopup(_newFace);
-        }
-
-        private void FaceSelected(FaceUI selectedFace)
-        {
+            if (selectedFace.Face != null && selectedFace.Face != _newFace && selectedFace.Face != _die.GetDefaultFace())
+            {
+                _replaceMessage.SetFace(selectedFace.Face);
+                _replaceMessage.gameObject.SetActive(true);
+            }
+            else
+            {
+                _replaceMessage.gameObject.SetActive(false);
+            }
+            
             if (_currentIndexSelected >= 0)
             {
-                _currentFaces[_currentIndexSelected].SetFace(_die.Faces[_currentIndexSelected]);     
+                SetFace(_die, _currentIndexSelected, false);
             }
             
             for (int i = 0; i < _currentFaces.Length; i++)
@@ -86,7 +88,16 @@ namespace Dice
             }
             
             _currentFaces[_currentIndexSelected].SetFace(_newFace);
-            _accept.interactable = true;
+            
+            FaceSelected?.Invoke();
+        }
+
+        public void SetEmpty()
+        {
+            foreach (var faceUI in _currentFaces)
+            {
+                faceUI.SetEmpty();
+            }
         }
     }
 }

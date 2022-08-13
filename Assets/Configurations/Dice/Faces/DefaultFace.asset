@@ -23,5 +23,5 @@ MonoBehaviour:
   _maxReward: 0
   _minPrice: 0
   _priceXReward: 0
-  _description: 
+  _description: Empty
   _building: {fileID: 0}

@@ -5,11 +5,12 @@ using System.Text;
 using Resources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Dice
 {
-    public class DieUI : MonoBehaviour
+    public class DieUI : MonoBehaviour, IPointerMoveHandler, IPointerExitHandler
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Image _selectedUI;
@@ -22,6 +23,8 @@ namespace Dice
         private Die _die;
 
         public event Action<DieUI> DieSelected;
+        public event Action<DieUI> DieStartHovered;
+        public event Action<DieUI> DieStopHover;
 
         public Die Die => _die;
 
@@ -153,6 +156,16 @@ namespace Dice
         public void ChangeFace()
         {
             SwapFace(_die.GetRandomFace(_currentFace));
+        }
+
+        public void OnPointerMove(PointerEventData eventData)
+        {
+            DieStartHovered?.Invoke(this);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            DieStopHover?.Invoke(this);
         }
     }
 }
