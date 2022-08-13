@@ -17,7 +17,7 @@ namespace Dice
         [SerializeField] private Shadow _shadow;
         [SerializeField] private TextMeshProUGUI _sceneryValue;
         [SerializeField] private string _textFormat = "x{0}";
-        [SerializeField] private TextMeshProUGUI _facesInfo;
+        [SerializeField] private List<FaceUI> _facesInfo;
         [SerializeField] private string _textFormatForFacesInfo = "x{0} {1} <br>";
 
         private Die _die;
@@ -53,26 +53,25 @@ namespace Dice
         {
             if(_facesInfo == null)
                 return;
-            
-            StringBuilder stringBuilder = new StringBuilder();
-            IEnumerable<IGrouping<Resource, Face>> groupBy = _die.Faces.Where(x => x != null).GroupBy(x => x.Resource);
 
-            int totalFaces = 0;
-            foreach (var dieFace in groupBy)
+            for (var i = 0; i < _facesInfo.Count; i++)
             {
-                List<Face> faces = dieFace.ToList();
-                stringBuilder.Append(
-                    string.Format(_textFormatForFacesInfo, faces.Count.ToString(), faces[0].Resource.ResourceName));
-                totalFaces += faces.Count;
+                var face = _facesInfo[i];
+                face.SetFace(_die.Faces[i]);
+                SetFace(_die, i);
             }
-
-            if (totalFaces < _die.Faces.Length)
+        }
+        
+        private void SetFace(Die die, int i)
+        {
+            if (die.Faces[i] == null)
             {
-                stringBuilder.Append(
-                    string.Format(_textFormatForFacesInfo, (_die.Faces.Length - totalFaces).ToString(), "Empty"));
+                _facesInfo[i].SetFace(die.GetDefaultFace());
             }
-
-            _facesInfo.text = stringBuilder.ToString();
+            else
+            {
+                _facesInfo[i].SetFace(die.Faces[i]);
+            }
         }
 
         private void SetFaceInfo()
