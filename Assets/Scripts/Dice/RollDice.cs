@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Dice
 {
@@ -9,6 +10,10 @@ namespace Dice
         [SerializeField] private DieUI _dieUI;
         [SerializeField] private float _faceChangeTime = 0.15f;
         [SerializeField] private float _rollTime = 1f;
+        [SerializeField] private RectTransform _containerRectTrans;
+        [SerializeField] private float _strength = 10f;
+        [SerializeField] private int _vibrato = 10;
+        [SerializeField] private float _randomness = 30f;
 
         public DieUI Die => _dieUI;
         
@@ -18,6 +23,8 @@ namespace Dice
         {
             _dieUI.ChangeFace();
             StartCoroutine(RollRoutine());
+            _containerRectTrans.DOShakeRotation(_rollTime, new Vector3(0,0, _strength), _vibrato, _randomness, true);
+            _containerRectTrans.DOShakePosition(_rollTime, new Vector3(_strength, _strength, _strength), _vibrato, _randomness, true);
         }
 
         private IEnumerator RollRoutine()
@@ -29,6 +36,7 @@ namespace Dice
                 if (faceChange >= _faceChangeTime)
                 {
                     _dieUI.ChangeFace();
+                    faceChange = 0f;
                 }
 
                 yield return 0;

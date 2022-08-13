@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DG.Tweening;
 using Resources;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,11 @@ namespace Dice
         [SerializeField] private TextMeshProUGUI _sceneryValue;
         [SerializeField] private string _textFormat = "x{0}";
         [SerializeField] private List<FaceUI> _facesInfo;
-        [SerializeField] private string _textFormatForFacesInfo = "x{0} {1} <br>";
+        [SerializeField] private RectTransform _containerRectTrans;
+        [SerializeField] private float _rollTime = 1f;
+        [SerializeField] private float _strength = -0.5f;
+        [SerializeField] private int _vibrato = 10;
+        [SerializeField] private float _randomness = 30f;
 
         private Die _die;
 
@@ -140,11 +145,13 @@ namespace Dice
         public void SetSelected()
         {
             _selectedUI.gameObject.SetActive(true);
+            _containerRectTrans.DOShakeScale(_rollTime, new Vector3(_strength, _strength, _strength), _vibrato, _randomness, true).SetUpdate(true);
         }
 
         public void SetDeselected()
         {
             _selectedUI.gameObject.SetActive(false);
+            _containerRectTrans.DOShakeScale(_rollTime, new Vector3(_strength, _strength, _strength), _vibrato, _randomness, true).SetUpdate(true);
         }
 
         public void Clicked()
