@@ -4,19 +4,20 @@ using Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UIGeneric;
 
 namespace Dice
 {
     public class RollDicesMenu : MonoBehaviour
     {
         [SerializeField] private RollDice _rollDicePrefab;
-        [SerializeField] private Button _rollButton;
         [SerializeField] private Toggle _selectAll;
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Transform _parent;
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private Resource _gold;
         [SerializeField] private Image _rollerBlocker;
+        [SerializeField] private ButtonAnimations _newRollButton;
 
         private List<RollDice> _dicesSelected = new List<RollDice>();
         private List<RollDice> _allDices = new List<RollDice>();
@@ -31,6 +32,8 @@ namespace Dice
 
             _diceInventory.NewDice += NewDice;
             _gold.ResourceChanged += GoldChanged;
+
+            _newRollButton.SetEnable(_dicesSelected.Count != 0);
         }
 
         private void OnDestroy()
@@ -83,11 +86,11 @@ namespace Dice
 
             if (price > _gold.Value || _dicesSelected.Count == 0)
             {
-                _rollButton.interactable = false;
+                _newRollButton.SetEnable(false);
             }
             else
             {
-                _rollButton.interactable = true;
+                _newRollButton.SetEnable(true);
             }
         }
 
@@ -110,7 +113,7 @@ namespace Dice
         public void RollSelectedDice()
         {
             _rollerBlocker.gameObject.SetActive(true);
-            _rollButton.interactable = false;
+            _newRollButton.SetEnable(false);
             _selectAll.interactable = false;
             _rolledFaces.Clear();
             
