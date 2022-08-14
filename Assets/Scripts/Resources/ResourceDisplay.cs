@@ -11,6 +11,7 @@ namespace Resources
         [SerializeField] private Image _image;
         [SerializeField] private Shadow _shadow;
         [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private string _textFormat = "{0}";
         [SerializeField] private float _incrementXSecond = 5f;
 
@@ -28,6 +29,7 @@ namespace Resources
             _shadow.effectColor = shadowColor;
             _text.text = string.Format(_textFormat, _resource.Value);
             _currentValue = _resource.Value;
+            _description.text = _resource.ResourceName;
         }
 
         private void OnDisable()
