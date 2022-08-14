@@ -1241,6 +1241,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonRoll
       objectReference: {fileID: 0}
+    - target: {fileID: 2411022776156018227, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411022776156018227, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411022776156018227, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000076293945
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb734f58e8f04314ab99025782c3e326, type: 3}
 --- !u!224 &1547641121229023080 stripped
