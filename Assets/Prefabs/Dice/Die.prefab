@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 3124984503916613464}
+  _canvasGroup: {fileID: 5849512781324205878}
 --- !u!225 &2521873327994031521
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1115,6 +1116,7 @@ GameObject:
   - component: {fileID: 891721351246198357}
   - component: {fileID: 8163881661192144995}
   - component: {fileID: 3024575069563331943}
+  - component: {fileID: 5849512781324205878}
   m_Layer: 5
   m_Name: InfoMenu
   m_TagString: Untagged
@@ -1173,6 +1175,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3124984503916613464}
   m_CullTransparentMesh: 1
+--- !u!225 &5849512781324205878
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3124984503916613464}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3167975029855623439
 GameObject:
   m_ObjectHideFlags: 0
