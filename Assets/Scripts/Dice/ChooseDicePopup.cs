@@ -13,8 +13,7 @@ namespace Dice
         [SerializeField] private Transform _gridParent;
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private ChooseFacePopup _chooseFacePopup;
-        [SerializeField] private Button _accept;
-        [SerializeField] private CanvasGroup _acceptButtonCanvasGroup;
+        [SerializeField] private ButtonAnimations _newAcceptButton;
         [SerializeField] private TimeManager _timeManager;
 
         private List<DieUI> _diceUI = new List<DieUI>();
@@ -69,8 +68,7 @@ namespace Dice
 
             _selectingFace = newFace;
             _faceUI.SetFace(newFace);
-            _accept.interactable = false;
-            _acceptButtonCanvasGroup.alpha = 0.3f;
+            _newAcceptButton.SetEnable(false);
             _currentSelected = null;
             gameObject.SetActive(true);
         }
@@ -117,14 +115,12 @@ namespace Dice
             _currentSelected.SetSelected();
             _chooseFacePopup.ResetPopup();
             _chooseFacePopup.SetDice(_currentSelected.Die, _selectingFace, false);
-            _accept.interactable = false;
-            _acceptButtonCanvasGroup.alpha = 0.3f;
+            _newAcceptButton.SetEnable(false);
         }
 
         private void FaceSelected()
         {
-            _accept.interactable = true;
-            _acceptButtonCanvasGroup.alpha = 1f;
+            _newAcceptButton.SetEnable(true);
         }
 
         private void ClosePopup()

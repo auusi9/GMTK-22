@@ -20,6 +20,11 @@ namespace UIGeneric
         [Header("Disabled")]
         [SerializeField] private bool _enabled = true;
 
+        private void OnEnable()
+        {
+            _targetTransform.localScale = Vector3.one;
+            _targetImage.fillAmount = 0f;
+        }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
