@@ -464,6 +464,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7204949266956092691, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8889829992935064568, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_SizeDelta.x
       value: 93
@@ -482,6 +486,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+--- !u!114 &316521405511139118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7534395427518122747, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+  m_PrefabInstance: {fileID: 7848382385644631509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e7f47c5e6443e581c1d33c8e7971eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2698944935534322843 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
@@ -533,6 +548,8 @@ MonoBehaviour:
   _gold: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
   _coins: 5
   _seconds: 10
+  _showAmountEarned: {fileID: 316521405511139118}
+  _showAmountEarnedDelay: 2
 --- !u!1001 &9041874665448038958
 PrefabInstance:
   m_ObjectHideFlags: 0

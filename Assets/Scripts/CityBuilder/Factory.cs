@@ -9,8 +9,12 @@ namespace CityBuilder
         [SerializeField] private Resource _gold;
         [SerializeField] private int _coins;
         [SerializeField] private float _seconds;
+        [SerializeField] private ShowAmountEarned _showAmountEarned;
+        [SerializeField] private float _showAmountEarnedDelay;
 
         private float _nextCoin = 0f;
+        private float _nextShow = 0f;
+        private int _coinsEarnedSinceLastShow = 0;
 
         public FactoryInfo GetFactoryInfo()
         {
@@ -35,8 +39,19 @@ namespace CityBuilder
                 }
             }
 
-            _nextCoin = coinsCreated - Mathf.FloorToInt(coinsCreated);
-            _gold.AddResource(Mathf.FloorToInt(coinsCreated));
+            int intCoinsCreated = Mathf.FloorToInt(coinsCreated);
+            _nextCoin = coinsCreated - intCoinsCreated;
+            _gold.AddResource(intCoinsCreated);
+
+            _nextShow += Time.deltaTime;
+            _coinsEarnedSinceLastShow += intCoinsCreated;
+
+            if (_nextShow >= _showAmountEarnedDelay && _coinsEarnedSinceLastShow > 0)
+            {
+                _showAmountEarned.Show(_coinsEarnedSinceLastShow);
+                _nextShow = 0f;
+                _coinsEarnedSinceLastShow = 0;
+            }
         }
     }
 

@@ -30,6 +30,9 @@ namespace Dice
 
         public Resource Resource => _resource;
         public int CurrentReward => _currentReward;
+
+        public bool HasCombo => _hasCombo && (_combo.ExtraCondition == null || _combo.ExtraCondition.IsValid());
+        public int ComboNeeded => _combo.ComboNeeded;
         
         private int _currentReward;
 
@@ -64,24 +67,30 @@ namespace Dice
             return _minPrice + _priceXReward * _currentReward;
         }
 
-        public void GiveReward()
+        public int GiveReward(int comboGiven)
         {
-            _resource.AddResource(_currentReward);
-            Debug.Log(_resource.name + " Given reward " + _currentReward);
+            if (_currentReward - comboGiven <= 0)
+                return 0;
+            
+            _resource.AddResource(_currentReward - comboGiven);
+            Debug.Log(_resource.name + " Given reward " + (_currentReward - comboGiven));
+            return (_currentReward - comboGiven);
         }
 
-        public void GiveCombo(int combo)
+        public int GiveCombo(int combo)
         {
             if(!_hasCombo)
-                return;
+                return 0;
 
-            if (_combo.ComboNeeded <= combo)
+            if (_combo.ExtraCondition == null || _combo.ExtraCondition.IsValid())
             {
-                if (_combo.ExtraCondition == null || _combo.ExtraCondition.IsValid())
-                {
-                    _combo.ResourceReward.AddResource(_combo.Reward);
-                }
+                int comboReward = _combo.Reward * combo;
+                    _combo.ResourceReward.AddResource(comboReward);
+                Debug.Log(_combo.ResourceReward.ResourceName + " Given COMBO " + comboReward);
+                return comboReward;
             }
+
+            return 0;
         }
         
         public void CalculateLevel()

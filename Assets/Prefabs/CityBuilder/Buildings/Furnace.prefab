@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7ba4afa202efdf445ad677086f4e6dff, type: 3}
     - target: {fileID: 2495470267398484677, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2495470267398484677, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_SizeDelta.y
@@ -332,11 +332,24 @@ MonoBehaviour:
   _gold: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
   _coins: 15
   _seconds: 10
+  _showAmountEarned: {fileID: 9024140251822864240}
+  _showAmountEarnedDelay: 2
 --- !u!224 &6868264206331096106 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5396256698222121377, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
   m_PrefabInstance: {fileID: 1563772749036338571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9024140251822864240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7534395427518122747, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+  m_PrefabInstance: {fileID: 1563772749036338571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e7f47c5e6443e581c1d33c8e7971eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7077488848059285936
 PrefabInstance:
   m_ObjectHideFlags: 0

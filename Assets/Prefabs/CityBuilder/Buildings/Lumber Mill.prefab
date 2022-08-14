@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7204949266956092691, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8889829992935064568, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_SizeDelta.x
       value: 98
@@ -516,3 +520,16 @@ MonoBehaviour:
   _gold: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
   _coins: 5
   _seconds: 10
+  _showAmountEarned: {fileID: 4151873556458183914}
+  _showAmountEarnedDelay: 2
+--- !u!114 &4151873556458183914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7534395427518122747, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+  m_PrefabInstance: {fileID: 5841704970940618257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e7f47c5e6443e581c1d33c8e7971eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2,12 +2,15 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Resources;
 
 namespace Dice
 {
     public class RollDice : MonoBehaviour
     {
         [SerializeField] private DieUI _dieUI;
+        [SerializeField] private ShowAmountEarned _showAmountEarned;
+        [SerializeField] private ShowAmountEarned _showAmountEarnedCombo;
         [SerializeField] private float _faceChangeTime = 0.15f;
         [SerializeField] private float _rollTime = 1f;
         [SerializeField] private RectTransform _containerRectTrans;
@@ -17,7 +20,7 @@ namespace Dice
 
         public DieUI Die => _dieUI;
         
-        public event Action<Face> DieRolled;
+        public event Action<RollDice, Face> DieRolled;
 
         public void Roll()
         {
@@ -46,7 +49,23 @@ namespace Dice
 
             Face face = _dieUI.Die.GetRandomFace();
             _dieUI.SetFace(face);
-            DieRolled?.Invoke(face);
+            DieRolled?.Invoke(this, face);
+        }
+
+        public void ShowAmountEarned(int amount)
+        {
+            if(amount == 0)
+                return;
+            
+            _showAmountEarned.Show(amount);
+        }        
+        
+        public void ShowAmountEarnedCombo(int amount)
+        {
+            if(amount == 0)
+                return;
+            
+            _showAmountEarnedCombo.Show(amount);
         }
     }
 }

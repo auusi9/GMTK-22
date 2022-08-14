@@ -21,7 +21,7 @@ namespace Dice
 
         private List<RollDice> _dicesSelected = new List<RollDice>();
         private List<RollDice> _allDices = new List<RollDice>();
-        private List<Face> _rolledFaces = new List<Face>();
+        private List<RolledFace> _rolledFaces = new List<RolledFace>();
 
         private void Start()
         {
@@ -125,9 +125,9 @@ namespace Dice
             _gold.RemoveResource(GetTotalPrice());
         }
         
-        private void DieRolled(Face face)
+        private void DieRolled(RollDice die, Face face)
         {
-            _rolledFaces.Add(face);
+            _rolledFaces.Add(new RolledFace(die, face));
             
             if (_dicesSelected.Count == _rolledFaces.Count)
             {
@@ -135,28 +135,72 @@ namespace Dice
             }
         }
 
+        public class RolledFace
+        {
+            public RollDice Die;
+            public Face Face;
+
+            public RolledFace(RollDice die, Face face)
+            {
+                Die = die;
+                Face = face;
+            }
+        }
+        
         private void FinishedRolling()
         {
-            IEnumerable<IGrouping<Resource, Face>> groupBy = _rolledFaces.Where(x => x != null).GroupBy(x => x.Resource);
+            IEnumerable<IGrouping<Resource, RolledFace>> groupBy = _rolledFaces.Where(x => x.Face != null).GroupBy(x => x.Face.Resource);
 
             foreach (var dieFace in groupBy)
             {
-                int number = 0;
-                Face lastFace = null;
-                foreach (var face in dieFace)
-                {
-                    face.GiveReward();
-                    lastFace = face;
-                    number++;
-                }
+                List<RolledFace> rolledFaces = dieFace.ToList();
 
-                if (lastFace != null) lastFace.GiveCombo(number);
+                if (rolledFaces[0].Face.HasCombo)
+                {
+                    rolledFaces.Sort((x, y) => x.Face.CurrentReward.CompareTo(y.Face.CurrentReward));
+                    
+                    List<List<RolledFace>> list = rolledFaces.Select((x, i) => new { Index = i, Value = x })
+                        .GroupBy(x => x.Index / rolledFaces[0].Face.ComboNeeded)
+                        .Select(x => x.Select(v => v.Value).ToList())
+                        .ToList();
+
+                    foreach (var chunk in list)
+                    {
+                        GiveRewards(chunk);
+                    }
+                }
+                else
+                {
+                    foreach (var face in rolledFaces)
+                    {
+                        face.Die.ShowAmountEarned(face.Face.GiveReward(0));
+                    }
+                }
             }
             
             _rolledFaces.Clear();
             _rollerBlocker.gameObject.SetActive(false);
             _selectAll.interactable = true;
             CalculatePrice();
+        }
+
+        private void GiveRewards(List<RolledFace> rolledFaces)
+        {
+            int minReward = rolledFaces.Min(x => x.Face.CurrentReward);
+
+            if (rolledFaces.Count % rolledFaces[0].Face.ComboNeeded == 0)
+            {
+                rolledFaces[0].Die.ShowAmountEarnedCombo(rolledFaces[0].Face.GiveCombo(minReward));
+            }
+            else
+            {
+                minReward = 0;
+            }
+            
+            foreach (var rolledFace in rolledFaces)
+            {
+                rolledFace.Die.ShowAmountEarned(rolledFace.Face.GiveReward(minReward));
+            }
         }
 
         public void SelectAll(bool select)
