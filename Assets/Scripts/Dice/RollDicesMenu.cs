@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Dice.FaceUIBehaviours;
 using Resources;
 using TMPro;
 using UnityEngine;
@@ -11,13 +12,14 @@ namespace Dice
     public class RollDicesMenu : MonoBehaviour
     {
         [SerializeField] private RollDice _rollDicePrefab;
-        [SerializeField] private Toggle _selectAll;
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Transform _parent;
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private Resource _gold;
         [SerializeField] private Image _rollerBlocker;
         [SerializeField] private ButtonAnimations _newRollButton;
+        [SerializeField] private FaceUIBehaviour _notEnoughMoney;
+        [SerializeField] private FaceUIBehaviour _enoughMoney;
 
         private List<RollDice> _dicesSelected = new List<RollDice>();
         private List<RollDice> _allDices = new List<RollDice>();
@@ -49,6 +51,7 @@ namespace Dice
             rollDice.Die.DieSelected += DieSelected;
             rollDice.DieRolled += DieRolled;
             _allDices.Add(rollDice);
+            CalculatePrice();
         }
 
         private void DieSelected(DieUI selectedDie)
@@ -60,10 +63,6 @@ namespace Dice
                 selectedDie.SetDeselected();
                 CalculatePrice();
                 
-                if (_dicesSelected.Count != _allDices.Count)
-                {
-                    _selectAll.SetIsOnWithoutNotify(false);
-                }
                 return;
             }
             
@@ -71,11 +70,6 @@ namespace Dice
             _dicesSelected.Add(selectedDice);
             selectedDie.SetSelected();
             CalculatePrice();
-
-            if (_dicesSelected.Count == _allDices.Count)
-            {
-                _selectAll.SetIsOnWithoutNotify(true);
-            }
         }
 
         private void CalculatePrice()
@@ -84,7 +78,18 @@ namespace Dice
 
             _priceText.text = price.ToString();
 
-            if (price > _gold.Value || _dicesSelected.Count == 0)
+            bool notEnoughMoney = price > _gold.Value;
+            
+            if (notEnoughMoney)
+            {
+                _notEnoughMoney.DoBehaviour();
+            }
+            else
+            {
+                _enoughMoney.DoBehaviour();
+            }
+
+            if (notEnoughMoney || _dicesSelected.Count == 0)
             {
                 _newRollButton.SetEnable(false);
             }
@@ -114,7 +119,6 @@ namespace Dice
         {
             _rollerBlocker.gameObject.SetActive(true);
             _newRollButton.SetEnable(false);
-            _selectAll.interactable = false;
             _rolledFaces.Clear();
             
             foreach (var die in _dicesSelected)
@@ -180,7 +184,6 @@ namespace Dice
             
             _rolledFaces.Clear();
             _rollerBlocker.gameObject.SetActive(false);
-            _selectAll.interactable = true;
             CalculatePrice();
         }
 

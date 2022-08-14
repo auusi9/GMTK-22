@@ -467,13 +467,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rollDicePrefab: {fileID: 1349111702361768462, guid: 7fd175a4e5ed1ac4db01904b1921afc3, type: 3}
-  _selectAll: {fileID: 0}
   _priceText: {fileID: 6048141286703979061}
   _parent: {fileID: 3995557131614784047}
   _diceInventory: {fileID: 11400000, guid: 2b9c86738ba368845903bdb459863479, type: 2}
   _gold: {fileID: 11400000, guid: 605c0dbf7155604498891ab3cf18d38f, type: 2}
   _rollerBlocker: {fileID: 3716469377971914994}
   _newRollButton: {fileID: 6744416804583083876}
+  _notEnoughMoney: {fileID: 8540209319673287511}
+  _enoughMoney: {fileID: 172642053933784922}
 --- !u!114 &8446433814469151235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +639,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6048141287581191643}
+  - component: {fileID: 8540209319673287511}
+  - component: {fileID: 172642053933784922}
   m_Layer: 5
   m_Name: PriceBox
   m_TagString: Untagged
@@ -666,6 +669,44 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 12}
   m_SizeDelta: {x: 156.5, y: 42}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &8540209319673287511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6048141287581191644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: NoMoney
+  _gameObjectsToChange: []
+  _images:
+  - Value: {r: 0.972549, g: 0.972549, b: 0.94509804, a: 1}
+    Graphic: {fileID: 6048141286703979061}
+  - Value: {r: 0.9882353, g: 0.40392157, b: 0.40392157, a: 1}
+    Graphic: {fileID: 5748742319300139700}
+--- !u!114 &172642053933784922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6048141287581191644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d209fca628e4f93a4760baf40bf1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateForUI: YesMoney
+  _gameObjectsToChange: []
+  _images:
+  - Value: {r: 0.2, g: 0.15686275, b: 0.15686275, a: 1}
+    Graphic: {fileID: 6048141286703979061}
+  - Value: {r: 0.972549, g: 0.972549, b: 0.94509804, a: 1}
+    Graphic: {fileID: 5748742319300139700}
 --- !u!1 &6531645833667426733
 GameObject:
   m_ObjectHideFlags: 0

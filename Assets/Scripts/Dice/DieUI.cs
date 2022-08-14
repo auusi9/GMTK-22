@@ -109,6 +109,7 @@ namespace Dice
         private void RewardChanged()
         {
             SetFaceInfo();
+            SetFacesInfo();
         }
 
         private void FaceDestroyed()
@@ -167,6 +168,7 @@ namespace Dice
         public void OnPointerMove(PointerEventData eventData)
         {
             DieStartHovered?.Invoke(this);
+            SetFacesInfo();
         }
 
         public void OnPointerExit(PointerEventData eventData)
