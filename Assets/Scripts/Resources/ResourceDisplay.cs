@@ -41,8 +41,14 @@ namespace Resources
             if (_resource.Value != (int)_currentValue)
             {
                 float diff = _resource.Value - _currentValue;
-                
-                _currentValue += (Time.deltaTime * _incrementXSecond) * Mathf.Sign(diff);
+
+                float inc = _incrementXSecond;
+                if (_incrementXSecond < Mathf.Abs(diff))
+                {
+                    inc += (Mathf.Abs(diff) - _incrementXSecond);
+                }
+
+                _currentValue += (Time.deltaTime * inc) * Mathf.Sign(diff);
                 
                 _text.text = string.Format(_textFormat, (int)_currentValue);
             }
