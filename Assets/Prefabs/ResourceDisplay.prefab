@@ -455,7 +455,7 @@ MonoBehaviour:
   _shadow: {fileID: 8154629827142347873}
   _text: {fileID: 5747445487886463333}
   _textFormat: '{0}'
-  _incrementXSecond: 10
+  _incrementXSecond: 50
 --- !u!225 &6907082127408057335
 CanvasGroup:
   m_ObjectHideFlags: 0
