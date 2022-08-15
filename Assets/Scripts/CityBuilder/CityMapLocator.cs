@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CityBuilder
 {
@@ -30,6 +31,11 @@ namespace CityBuilder
         public void RemoveBuildingFromPosition(Building building, int x, int y)
         {
             _cityMap.RemoveBuildingFromPosition(building, x, y);
+        }
+        
+        public List<Building> GetBuildingsInRadius(int x, int y, int radius)
+        {
+            return _cityMap.GetBuildingsInRadius(x, y, radius);
         }
     }
 }

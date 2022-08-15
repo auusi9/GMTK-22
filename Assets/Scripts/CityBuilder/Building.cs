@@ -18,6 +18,7 @@ namespace CityBuilder
         [SerializeField] private BuildingLibrary _buildingLibrary;
         [SerializeField] private Scenery _scenery;
         [SerializeField] private House _house;
+        [SerializeField] private Factory _factory;
         [SerializeField] private string _buildingName;
         [SerializeField] private string _buildingDescription;
 
@@ -27,6 +28,7 @@ namespace CityBuilder
         public List<WorkerSpot> WorkerSpots => _workerSpots;
         public Scenery Scenery => _scenery;
         public House House => _house;
+        public Factory Factory => _factory;
 
         public string BuildingName => _buildingName;
         public string BuildingDescription => _buildingDescription;
@@ -82,6 +84,11 @@ namespace CityBuilder
         public Building[] Get8NearBuildings()
         {
             return _cityMapLocator.Get8BuildingsNextToPosition(_x, _y);
+        }
+
+        public List<Building> GetBuildingsInRadius(int radius)
+        {
+            return _cityMapLocator.GetBuildingsInRadius(_x, _y, radius);
         }
 
         public void PayCost()

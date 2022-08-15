@@ -18,6 +18,8 @@ namespace Workers
 
         public WorkerSpot CurrentSpot;
         public DraggableWorker DraggableWorker => _draggableWorker;
+        public bool IsTired => _energy <= 0;
+        public bool IsFullyRested => _energy >= _maxEnergy;
 
         private float _energy;
 

@@ -116,6 +116,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: _factory
+      value: 
+      objectReference: {fileID: 4690234104107257538}
+    - target: {fileID: -3918243632806948530, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: _buildingName
       value: Forge
       objectReference: {fileID: 0}

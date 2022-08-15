@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,6 +79,28 @@ namespace CityBuilder
             }
             
             return _grid[x, y].Building;
+        }
+
+        public List<Building> GetBuildingsInRadius(int x, int y, int radius)
+        {
+            List<Building> buildings = new List<Building>();
+
+            int r = radius / 2;
+
+            for (int i = -r; i < r + 1; i++)
+            {
+                for (int j = -r; j < r + 1; j++)
+                {
+                    if (i != 0 || j != 0)
+                    {
+                        Building building = GetBuildingInPosition(x + i, y + j);
+                        if(building != null)
+                            buildings.Add(building);
+                    }
+                }
+            }
+
+            return buildings;
         }
         
         public Point WorldPositionToGrid(Vector2 position)
