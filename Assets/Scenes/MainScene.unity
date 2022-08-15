@@ -540,6 +540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1252245221}
     m_Modifications:
+    - target: {fileID: 2619353124524678585, guid: a500859b160552c499610011710e85bf, type: 3}
+      propertyPath: _removedTilesOnstart
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6929997503631724364, guid: a500859b160552c499610011710e85bf, type: 3}
       propertyPath: m_Name
       value: Field
