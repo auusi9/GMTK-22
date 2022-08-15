@@ -686,6 +686,7 @@ MonoBehaviour:
   _buildingLibrary: {fileID: 11400000, guid: 19b8404576aa2204d9aa0763a30d251d, type: 2}
   _scenery: {fileID: 0}
   _house: {fileID: 0}
+  _factory: {fileID: 0}
   _buildingName: 
   _buildingDescription: 
 --- !u!114 &-1328291159500940739
@@ -1148,7 +1149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 960726816979082835, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 55
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 960726816979082835, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1176,6 +1177,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
+--- !u!1 &6294666329750954263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4175704856087050839, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
+  m_PrefabInstance: {fileID: 7973676863817767744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &5421709027745817403
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294666329750954263}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10
+  m_TargetDisplay: 0
 --- !u!224 &7204949266956092691 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 960726816979082835, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}

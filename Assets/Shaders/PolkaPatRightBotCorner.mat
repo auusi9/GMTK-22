@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _IntensityTex:
-        m_Texture: {fileID: 2800000, guid: 93d84af11c1583143a5c8b2e82ac960a, type: 3}
+        m_Texture: {fileID: 2800000, guid: a3d59b55e416feb4085eae1ad6d79f1e, type: 3}
         m_Scale: {x: -0.49, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IntensityTex02:
@@ -42,11 +42,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaStep: 1
-    - _DispSpeed: 0.75
+    - _AlphaStep: 1.1
+    - _DispSpeed: 0.5
     - _DispX: 0.3
     - _DispY: 0.5
-    - _PolkaRange: 1
+    - _PolkaRange: 0.4
     - _PolkaSize: 8
     - _SmoothStep: 0.01
     - _UnscaledTime: 0

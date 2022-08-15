@@ -43,7 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaStep: 1
-    - _DispSpeed: 0.75
+    - _DispSpeed: 0.5
     - _DispX: 0.3
     - _DispY: 0.5
     - _PolkaRange: 1
