@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PolkaPatCenter
+  m_Shader: {fileID: 4800000, guid: efa1bfacbcdd6b240ba4fa8ca6fdc62c, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _IntensityTex:
+        m_Texture: {fileID: 2800000, guid: 236223919e887cb489d6b38a4573e6ce, type: 3}
+        m_Scale: {x: -0.49, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IntensityTex02:
+        m_Texture: {fileID: 2800000, guid: f8dbc46acae74304fb24cea8dfade9e0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: ff37fdcf4e390f94a85ea48e687b4cc6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PolkaTex:
+        m_Texture: {fileID: 2800000, guid: 78dfc034702041745a16d56e0dcb6865, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex:
+        m_Texture: {fileID: 2800000, guid: 78dfc034702041745a16d56e0dcb6865, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaStep: 1
+    - _DispSpeed: 0.75
+    - _DispX: 0.3
+    - _DispY: 0.5
+    - _PolkaRange: 1
+    - _PolkaSize: 8
+    - _SmoothStep: 0.01
+    - _UnscaledTime: 0
+    - _UseUnscaledTime: 0
+    m_Colors:
+    - _Color: {r: 0.40784314, g: 0.75686276, b: 1, a: 1}
+  m_BuildTextureStacks: []
