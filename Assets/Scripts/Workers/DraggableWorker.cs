@@ -10,16 +10,60 @@ namespace Workers
     {
         [SerializeField] private Worker _worker;
 
+        private bool _moving = false;
+        private bool _canPlace = false;
+        
+        private void Update()
+        {
+            if (_moving)
+            {
+                PointerEventData eventData = (EventSystem.current.currentInputModule as StandaloneInputModuleCustom)?.GetLastPointerEventDataPublic(-1);
+
+                if (Input.GetMouseButtonDown(0) && _canPlace)
+                {
+                    OnEndDrag(eventData);
+                    _moving = false;
+                    _canPlace = false;
+                    _gridCanvas.GraphicRaycaster.enabled = true;
+                    TrySetWorker(eventData);
+                    PointerHandler.Instance.PanelReleased(GetHashCode()); 
+                    return;
+                }
+
+                if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+                {
+                    _moving = false;
+                    _canPlace = false;
+                    _gridCanvas.GraphicRaycaster.enabled = true;
+                    _worker.CurrentSpot.SetWorker(_worker); 
+                    return;
+                }
+                
+                OnDrag(eventData);
+            }
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            base.OnPointerDown(eventData);
+            
+            if (_moving || eventData.button != PointerEventData.InputButton.Left )
+            {
+                return;
+            }
+
+            _gridCanvas.GraphicRaycaster.enabled = false;
+            _moving = true;
+        }
+        
         public override void OnPointerUp(PointerEventData eventData)
         {
             base.OnPointerUp(eventData);
             
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (_moving && eventData.button == PointerEventData.InputButton.Left )
             {
-                return;
+                _canPlace = true;
             }
-            
-            TrySetWorker(eventData);
         }
 
         private void TrySetWorker(PointerEventData eventData)

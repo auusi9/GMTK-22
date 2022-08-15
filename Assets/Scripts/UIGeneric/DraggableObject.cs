@@ -53,7 +53,7 @@ namespace UIGeneric
             _shadow.enabled = false;
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public virtual void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
             {

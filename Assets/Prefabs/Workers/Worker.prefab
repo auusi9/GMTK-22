@@ -121,6 +121,7 @@ MonoBehaviour:
   _scale: 1
   _gridCanvas: {fileID: 11400000, guid: a11839f05ffcc9a4f8b8f1956168d8be, type: 2}
   _worker: {fileID: 1582941479751766320}
+  _graphicRaycaster: {fileID: 932025264087447271}
 --- !u!114 &1582941479751766322
 MonoBehaviour:
   m_ObjectHideFlags: 0
