@@ -76,5 +76,11 @@ namespace CityBuilder
                 }
             }
         }
+
+        public void Released()
+        {
+            PointerHandler.Instance.PanelReleased(GetHashCode());
+            PointerHandler.Instance.PanelStoppedHovering(GetHashCode());
+        }
     }
 }

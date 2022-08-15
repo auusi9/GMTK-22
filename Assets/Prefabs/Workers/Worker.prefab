@@ -102,6 +102,7 @@ MonoBehaviour:
   _energyDuration: 60
   _restDuration: 60
   _workerInventory: {fileID: 11400000, guid: 01e9a45467d1da64395db7e0e5e4de61, type: 2}
+  _houseInventory: {fileID: 11400000, guid: c54d1d1c7599ef54ebab4e54068b761e, type: 2}
   CurrentSpot: {fileID: 0}
 --- !u!114 &1582941479751766323
 MonoBehaviour:

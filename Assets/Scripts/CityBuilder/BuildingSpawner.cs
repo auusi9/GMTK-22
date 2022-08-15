@@ -20,6 +20,7 @@ namespace CityBuilder
         [SerializeField] private Color _colorUnavailable;
 
         private Building _lastBuildingCreated;
+        private bool _constructing = false;
 
         private void Awake()
         {
@@ -57,6 +58,42 @@ namespace CityBuilder
             }
         }
 
+        private void Update()
+        {
+            if (_constructing)
+            {
+                PointerEventData eventData = (EventSystem.current.currentInputModule as StandaloneInputModuleCustom)?.GetLastPointerEventDataPublic(-1);
+                
+                if (Input.GetMouseButtonDown(0))
+                {
+                    OnEndDrag(eventData);
+                    _constructing = false;
+                    _lastBuildingCreated?.DraggableObject.OnPointerUp(eventData);
+                    _lastBuildingCreated = null;
+                    PointerHandler.Instance.PanelReleased(GetHashCode()); 
+                    return;
+                }
+
+                if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+                {
+                    CancelConstruction();
+                    return;
+                }
+                
+                OnDrag(eventData);
+            }
+        }
+
+        private void CancelConstruction()
+        {
+            _constructing = false;
+            _lastBuildingCreated.DraggableObject.Released();
+            Destroy(_lastBuildingCreated.gameObject);
+            _lastBuildingCreated = null;
+            PointerHandler.Instance.PanelReleased(GetHashCode());
+            PointerHandler.Instance.PanelStoppedHovering(GetHashCode());
+        }
+
         private void ResourceChanged(int obj)
         {
             if (_building.CanAfford())
@@ -83,6 +120,11 @@ namespace CityBuilder
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (_constructing)
+            {
+                return;
+            }
+            
             if (eventData.button == PointerEventData.InputButton.Right)
             {
                 return;
@@ -131,14 +173,12 @@ namespace CityBuilder
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (eventData.button == PointerEventData.InputButton.Right )
             {
                 return;
             }
-            
-            _lastBuildingCreated?.DraggableObject.OnPointerUp(eventData);
-            _lastBuildingCreated = null;
-            PointerHandler.Instance.PanelReleased(GetHashCode());
+
+            _constructing = true;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Resources;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace CityBuilder
         [SerializeField] private Building _building;
         [SerializeField] private Worker _worker;
         [SerializeField] private WorkerSpot[] _hiddenSpots;
+        [SerializeField] private HouseInventory _houseInventory;
 
         private List<Worker> _workers = new List<Worker>();
 
@@ -25,15 +27,29 @@ namespace CityBuilder
         private void OnDestroy()
         {
             _building.Spawned -= Spawned;
+            _houseInventory.RemoveHouse(this);
         }
 
         private void Spawned()
         {
             foreach (var workerSpot in _building.WorkerSpots)
             {
+                workerSpot.IsResting = true;
                 Worker worker = Instantiate(_worker, transform);
                 workerSpot.SetWorker(worker);
             }
+            
+            _houseInventory.AddHouse(this);
+        }
+
+        public bool HasEmptySpots()
+        {
+            return _building.HasAvailableSpot();
+        }
+
+        public WorkerSpot GetEmptySpot()
+        {
+            return _building.GetAvailableSpot();
         }
 
         public void HideHiddenSpots()
@@ -63,6 +79,7 @@ namespace CityBuilder
             
             foreach (var workerSpot in _hiddenSpots)
             {
+                workerSpot.IsResting = true;
                 workerSpot.gameObject.SetActive(true);
                 Worker worker = Instantiate(_worker, transform);
                 workerSpot.SetWorker(worker);

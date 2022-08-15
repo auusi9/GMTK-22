@@ -14,6 +14,7 @@ namespace Workers
         [SerializeField] private float _energyDuration = 60f;
         [SerializeField] private float _restDuration = 60f;
         [SerializeField] private WorkerInventory _workerInventory;
+        [SerializeField] private HouseInventory _houseInventory;
 
         public WorkerSpot CurrentSpot;
         public DraggableWorker DraggableWorker => _draggableWorker;
@@ -24,6 +25,12 @@ namespace Workers
         {
             _energy = _maxEnergy;
             _workerInventory.AddWorker(this);
+            _draggableWorker.RightClickEvent += GoToRest;
+        }
+
+        private void GoToRest()
+        {
+            _houseInventory.SetWorkerToNearestHouse(this);
         }
 
         public float Work()
@@ -59,6 +66,7 @@ namespace Workers
         private void OnDestroy()
         {
             _workerInventory.RemoveWorker(this);
+            _draggableWorker.RightClickEvent -= GoToRest;
         }
     }
 }

@@ -70,6 +70,11 @@ namespace UIGeneric
 
         public virtual void OnPointerUp(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                return;
+            }
+            
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             _shadow.enabled = false;
             PointerHandler.Instance.PanelReleased(GetHashCode());

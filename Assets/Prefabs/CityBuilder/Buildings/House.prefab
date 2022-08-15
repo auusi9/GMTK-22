@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1d4df170c75090f438cdf1f0b120046c, type: 3}
+    - target: {fileID: 2495470267398484677, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5396256698222121376, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -336,6 +340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 7204949266956092691, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8889829992935064568, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -391,6 +399,7 @@ MonoBehaviour:
   _hiddenSpots:
   - {fileID: 6294858933681855018}
   - {fileID: 2604686687436328551}
+  _houseInventory: {fileID: 11400000, guid: c54d1d1c7599ef54ebab4e54068b761e, type: 2}
 --- !u!224 &7766737192852704978 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5396256698222121377, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}

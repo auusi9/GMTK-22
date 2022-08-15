@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorHovered: {fileID: 2800000, guid: d010389fb243c684b94a64f012c4e4dc, type: 3}
-  _cursorClickedPanel: {fileID: 2800000, guid: d010389fb243c684b94a64f012c4e4dc, type: 3}
+  _cursorClickedPanel: {fileID: 2800000, guid: c36c6adb296fcd04aabf3bf4dd3b3d09, type: 3}
   _cursorClicked: {fileID: 2800000, guid: 449a342f353ab0942ac5035393227dc2, type: 3}
   _defaultCursor: {fileID: 2800000, guid: e575888f6aa91b243b6dd96f2e65103e, type: 3}
 --- !u!4 &1022460377
@@ -610,11 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6929997503631724365, guid: a500859b160552c499610011710e85bf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6929997503631724365, guid: a500859b160552c499610011710e85bf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6929997503631724365, guid: a500859b160552c499610011710e85bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -746,7 +746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371368768}
   - component: {fileID: 1371368767}
-  - component: {fileID: 1371368766}
+  - component: {fileID: 1371368769}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -754,26 +754,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1371368766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371368765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1371368767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,6 +784,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1371368769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371368765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fe47b0a1014d46992311c800f803f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1001 &1577243360
 PrefabInstance:
   m_ObjectHideFlags: 0

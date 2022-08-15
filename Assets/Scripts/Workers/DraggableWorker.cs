@@ -3,17 +3,21 @@ using CityBuilder;
 using UIGeneric;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Workers
 {
     public class DraggableWorker : DraggableObject
     {
         [SerializeField] private Worker _worker;
-        
+
         public override void OnPointerUp(PointerEventData eventData)
         {
             base.OnPointerUp(eventData);
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                return;
+            }
             
             TrySetWorker(eventData);
         }
@@ -54,6 +58,11 @@ namespace Workers
         public override void OnDrag(PointerEventData eventData)
         {
             base.OnDrag(eventData);
+            
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                return;
+            }
             
             var results = new List<RaycastResult>();
             _gridCanvas.GraphicRaycaster.Raycast(eventData, results);

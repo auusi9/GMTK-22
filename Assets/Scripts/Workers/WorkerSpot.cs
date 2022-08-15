@@ -8,6 +8,8 @@ namespace Workers
         public bool Available => !_currentWorker;
 
         public Worker Worker => _currentWorker;
+
+        public bool IsResting;
         
         public void SetWorker(Worker worker)
         {

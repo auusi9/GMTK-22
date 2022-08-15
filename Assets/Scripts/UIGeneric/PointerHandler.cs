@@ -10,8 +10,8 @@ namespace UIGeneric
         [SerializeField] private Texture2D _cursorClicked;
         [SerializeField] private Texture2D _defaultCursor;
         
-        private readonly List<int> _panelsHovered = new List<int>();
-        private readonly List<int> _panelsClicked = new List<int>();
+        private List<int> _panelsHovered = new List<int>();
+        private List<int> _panelsClicked = new List<int>();
 
         private bool _isClicked;
         private Vector2 _cursorHotspot = new Vector2(25, 27);
@@ -25,8 +25,11 @@ namespace UIGeneric
 
         public void PanelHovered(int panel)
         {
-            _panelsHovered.Add(panel);
-
+            if (!_panelsHovered.Contains(panel))
+            {
+                _panelsHovered.Add(panel);
+            }
+            
             SetPointerImage();
         }
 
@@ -42,7 +45,10 @@ namespace UIGeneric
 
         public void PanelClicked(int panel)
         {
-            _panelsClicked.Add(panel);
+            if (!_panelsClicked.Contains(panel))
+            {
+                _panelsClicked.Add(panel);
+            }
             
             SetPointerImage();
         }
