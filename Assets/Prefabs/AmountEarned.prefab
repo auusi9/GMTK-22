@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 8770730374930728789}
+  _icon: {fileID: 116105483790631636}
+  _color: {fileID: 6926774982555688645}
   _textFormat: x{0}
 --- !u!225 &3069663304857405064
 CanvasGroup:

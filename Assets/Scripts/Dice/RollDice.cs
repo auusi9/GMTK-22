@@ -52,20 +52,20 @@ namespace Dice
             DieRolled?.Invoke(this, face);
         }
 
-        public void ShowAmountEarned(int amount)
+        public void ShowAmountEarned(int amount, Resource resource)
         {
             if(amount == 0)
                 return;
             
-            _showAmountEarned.Show(amount);
+            _showAmountEarned.Show(amount, resource);
         }        
         
-        public void ShowAmountEarnedCombo(int amount)
+        public void ShowAmountEarnedCombo(int amount, Resource resource)
         {
             if(amount == 0)
                 return;
             
-            _showAmountEarnedCombo.Show(amount);
+            _showAmountEarnedCombo.Show(amount, resource);
         }
     }
 }

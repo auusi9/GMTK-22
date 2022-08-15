@@ -33,6 +33,8 @@ namespace Dice
 
         public bool HasCombo => _hasCombo && (_combo.ExtraCondition == null || _combo.ExtraCondition.IsValid());
         public int ComboNeeded => _combo.ComboNeeded;
+
+        public Resource ComboResource => _combo.ResourceReward;
         
         private int _currentReward;
 

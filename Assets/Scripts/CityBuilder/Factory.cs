@@ -48,7 +48,7 @@ namespace CityBuilder
 
             if (_nextShow >= _showAmountEarnedDelay && _coinsEarnedSinceLastShow > 0)
             {
-                _showAmountEarned.Show(_coinsEarnedSinceLastShow);
+                _showAmountEarned.Show(_coinsEarnedSinceLastShow, _gold);
                 _nextShow = 0f;
                 _coinsEarnedSinceLastShow = 0;
             }

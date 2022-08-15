@@ -177,7 +177,7 @@ namespace Dice
                 {
                     foreach (var face in rolledFaces)
                     {
-                        face.Die.ShowAmountEarned(face.Face.GiveReward(0));
+                        face.Die.ShowAmountEarned(face.Face.GiveReward(0), face.Face.Resource);
                     }
                 }
             }
@@ -193,7 +193,7 @@ namespace Dice
 
             if (rolledFaces.Count % rolledFaces[0].Face.ComboNeeded == 0)
             {
-                rolledFaces[0].Die.ShowAmountEarnedCombo(rolledFaces[0].Face.GiveCombo(minReward));
+                rolledFaces[0].Die.ShowAmountEarnedCombo(rolledFaces[0].Face.GiveCombo(minReward), rolledFaces[0].Face.ComboResource);
             }
             else
             {
@@ -202,7 +202,7 @@ namespace Dice
             
             foreach (var rolledFace in rolledFaces)
             {
-                rolledFace.Die.ShowAmountEarned(rolledFace.Face.GiveReward(minReward));
+                rolledFace.Die.ShowAmountEarned(rolledFace.Face.GiveReward(minReward), rolledFace.Face.Resource);
             }
         }
 
