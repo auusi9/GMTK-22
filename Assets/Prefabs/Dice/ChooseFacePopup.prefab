@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 7285374908236454949}
   - component: {fileID: 3554586162810601026}
   m_Layer: 5
-  m_Name: ChooseFacePopup_NEW
+  m_Name: ChooseFacePopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
