@@ -103,10 +103,10 @@ namespace CityBuilder
             return buildings;
         }
         
-        public Point WorldPositionToGrid(Vector2 position)
+        public Point WorldPositionToGrid(Vector2 position, Vector2 pivot)
         {
-            float percentX = (position.x - _padding.x) / ((_x-1) * _tileSize.x + (_x-1) * _spacing.x);
-            float percentY = (Mathf.Abs(position.y) - _padding.y) / ((_y-1) * _tileSize.x + (_y-1) * _spacing.y);
+            float percentX = (position.x - _padding.x + _tileSize.x * pivot.x) / ((_x-1) * _tileSize.x + (_x-1) * _spacing.x);
+            float percentY = (Mathf.Abs(position.y) - _padding.y + _tileSize.y * pivot.y) / ((_y-1) * _tileSize.y + (_y-1) * _spacing.y);
             percentX = Mathf.Clamp01(percentX);
             percentY = Mathf.Clamp01(percentY);
 
@@ -117,7 +117,8 @@ namespace CityBuilder
 
         public void SetTileAtPosition(CityTile tile)
         {
-            Point point = WorldPositionToGrid(((RectTransform)tile.transform).anchoredPosition);
+            var rectTransform = (RectTransform)tile.transform;
+            Point point = WorldPositionToGrid(rectTransform.anchoredPosition, rectTransform.pivot);
             
             tile.SetPosition(point.X, point.Y);
             if (_grid[point.X, point.Y] == null)
