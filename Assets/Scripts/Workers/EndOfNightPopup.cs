@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Dice;
+using Dice.FaceUIBehaviours;
 using Resources;
 using TMPro;
 using UIGeneric;
@@ -17,21 +18,28 @@ namespace Workers
         [SerializeField] private Resource _folks;
         [SerializeField] private Resource _food;
         [SerializeField] private TextMeshProUGUI _foodText;
-        [SerializeField] private TextMeshProUGUI _requiredfoodText;
-        [SerializeField] private TextMeshProUGUI _foodxFolkText;
         [SerializeField] private TextMeshProUGUI _folksText;
-        [SerializeField] private TextMeshProUGUI _workersDying;
-        [SerializeField] private TextMeshProUGUI _remainingFolks;
-        [SerializeField] private TextMeshProUGUI _noWorkersDied;
-        [SerializeField] private GameObject _line;
-        [SerializeField] private Button _aceiteButton;
-        [SerializeField] private Button _finishGameButton;
-        [SerializeField] private string _workersDyingDescription = "{0} will die from starvation";
-        [SerializeField] private string _workersRemainingDescription = "{0} folks remain";
-        [SerializeField] private string _foodxFolkTextDescription = "x{0} FoodxFolk";
-        [SerializeField] private float _timeBetweenFields = 0.1f;
-        [SerializeField] private float _timeLerpValue = 0.5f;
+        [SerializeField] private TextMeshProUGUI _requiredFoodText;
+        [SerializeField] private Image _requiredFoodColorChange;
+        [SerializeField] private Color _notEnoughFoodColor;
+        [SerializeField] private Color _enoughFoodColor;
+        [SerializeField] private GameObject _workersDied;
+        [SerializeField] private TextMeshProUGUI _workersDiedText;
+        [SerializeField] private UIBehaviour _workerDiedColorBlink;
+        [SerializeField] private float _timeBetweenWorkers;
+        [SerializeField] private Button _feedButton;
+        [SerializeField] private Button _nextDay;
+        [SerializeField] private TextMeshProUGUI _nextDayText;
+        [SerializeField] private string _requiredFoodDescription = "x{0} Food required";
+        [SerializeField] private string _townFolksHaveDied = "x{0} Townfolks have died";
+        [SerializeField] private string _skipDescription = "Skip";
+        [SerializeField] private string _nextDayDescription = "Next day";
+        [SerializeField] private string _mainMenu = "Main menu";
         [SerializeField] private TimeManager _timeManager;
+
+        private int _deadPeople = 0;
+        private bool _playingAnimation = false;
+        private Coroutine _animationCoroutine;
         
         private void Awake()
         {
@@ -48,100 +56,99 @@ namespace Workers
         {
             _timeManager.PauseGame(GetHashCode());
 
-            _finishGameButton.gameObject.SetActive(false);
-            _aceiteButton.gameObject.SetActive(false);
             gameObject.SetActive(true);
-            List<Animation> animations = new List<Animation>();
+            _nextDay.gameObject.SetActive(false);
+            _feedButton.gameObject.SetActive(true);
 
-            animations.Add(new Animation(_folksText.transform.parent.gameObject, _folksText, true, true, 0, _folks.Value, false, string.Empty));
-            animations.Add(new Animation(_foodText.transform.parent.gameObject, _foodText,true, true, 0, _food.Value, false, string.Empty));
-            animations.Add(new Animation(_foodxFolkText.transform.parent.gameObject, _foodxFolkText,true, false, 0, _dayNight.FoodXFolk, true, _foodxFolkTextDescription));
-            animations.Add(new Animation(_line, null, false,false, 0, 0, false, string.Empty));
-            
-            int deadPeople = _dayNight.WorkersToRemove(out int neededFood);
-            _noWorkersDied.gameObject.SetActive(false);
-            _workersDying.gameObject.SetActive(false);
-
-            animations.Add(new Animation(_requiredfoodText.transform.parent.gameObject, _requiredfoodText, true,true, _food.Value, neededFood, false, string.Empty));
-
-            if (deadPeople > 0)
-            {
-                animations.Add(new Animation(_workersDying.gameObject, _workersDying,true, true, _folks.Value, deadPeople, true, _workersDyingDescription));
-                animations.Add(new Animation(_remainingFolks.gameObject, _remainingFolks,true, true, _folks.Value, _folks.Value - deadPeople, true, _workersRemainingDescription));
-            }
-            else
-            {
-                animations.Add(new Animation(_noWorkersDied.gameObject, null,false, false, 0, _food.Value, false, string.Empty));
-            }
-
-            foreach (var anim in animations)
-            {
-                anim.Parent.gameObject.SetActive(false);
-            }
-
-            StartCoroutine(PlayAnimation(animations));
+            _deadPeople = _dayNight.WorkersToRemove(out int neededFood);
+            _folksText.text = _folks.Value.ToString();
+            _foodText.text = _food.Value.ToString();
+            _requiredFoodText.text = string.Format(_requiredFoodDescription, neededFood.ToString());
+            _workersDied.SetActive(false);
+            _requiredFoodColorChange.color = neededFood > _food.Value ? _notEnoughFoodColor : _enoughFoodColor;
         }
 
-        private IEnumerator PlayAnimation(List<Animation> animations)
+        public void Feed()
         {
-            foreach (var anim in animations)
+            _feedButton.gameObject.SetActive(false);
+            _nextDay.gameObject.SetActive(true);
+            _nextDayText.text = _skipDescription;
+            
+            _playingAnimation = true;
+            _animationCoroutine = StartCoroutine(StartFeedAnimation());
+        }
+
+        private IEnumerator StartFeedAnimation()
+        {
+            int folks = _folks.Value;
+            int food = _food.Value;
+            int deadFolks = 0;
+            for (int i = 0; i < folks; i++)
             {
-                anim.Parent.gameObject.SetActive(true);
+                food -= _dayNight.FoodXFolk;
 
-                if (anim.HasValue)
+                if (food < 0)
                 {
-                    if (anim.HasAnimationValue)
-                    {
-                        float time = 0f;
-                        while (_timeLerpValue > time)
-                        {
-                            int value = (int)Mathf.Lerp(anim.InitialValue, anim.FinalValue, time / _timeLerpValue);
-                        
-                            if(anim.HasCustomText)
-                            {
-                                anim.TextMeshProUGUI.text = string.Format(anim.CustomText, value);
-                            }
-                            else
-                            {
-                                anim.TextMeshProUGUI.text = value.ToString();
-                            }
-
-                            yield return new WaitForEndOfFrame();
-                            time += Time.unscaledDeltaTime;
-                        }
-                    }
-                
-                    if(anim.HasCustomText)
-                    {
-                        anim.TextMeshProUGUI.text = string.Format(anim.CustomText, anim.FinalValue);
-                    }
-                    else
-                    {
-                        anim.TextMeshProUGUI.text = anim.FinalValue.ToString();
-                    }
+                    food = 0;
+                    deadFolks++;
+                    _workersDiedText.text = string.Format(_townFolksHaveDied, deadFolks.ToString());
+                    _folksText.text = (_folks.Value - deadFolks).ToString();
+                    _workerDiedColorBlink.DoBehaviour();
+                    _workersDied.SetActive(true);
                 }
+                
+                _foodText.text = food.ToString();
+                yield return new WaitForSecondsRealtime(_timeBetweenWorkers);
+            }
 
-                yield return new WaitForSecondsRealtime(_timeBetweenFields);
+            AnimationFinished();
+        }
+
+        private void AnimationFinished()
+        {
+            _playingAnimation = false;
+            
+            if (_deadPeople > 0)
+            {
+                _workersDiedText.text = string.Format(_townFolksHaveDied, _deadPeople.ToString());
+                _workersDied.SetActive(true);
             }
             
             _dayNight.RemoveWorkers();
+            _foodText.text = _food.Value.ToString();
+            _folksText.text = _folks.Value.ToString();
 
-            if (_folks.Value <= 0)
+            if (_folks.Value > 0)
             {
-                _finishGameButton.gameObject.SetActive(true);
+                _nextDayText.text = _nextDayDescription;
             }
             else
             {
-                _aceiteButton.gameObject.SetActive(true);
+                _nextDayText.text = _mainMenu;
             }
         }
 
-        public void MainMenuButton()
+        public void AceiteButton()
         {
-            SceneManager.LoadScene(0);
+            if (_playingAnimation)
+            {
+                StopCoroutine(_animationCoroutine);
+                AnimationFinished();
+                return;
+            }
+            
+            if (_folks.Value > 0)
+            {
+                AcceptButton();
+            }
+            else
+            {
+                ClosePopup();
+                SceneManager.LoadScene(0);
+            }
         }
 
-        public void AcceptButton()
+        private void AcceptButton()
         {
             _dayNight.StartNewDay();
             ClosePopup();
@@ -151,30 +158,6 @@ namespace Workers
         {
             _timeManager.ResumeGame(GetHashCode());
             gameObject.SetActive(false);
-        }
-        
-        private class Animation
-        {
-            public GameObject Parent;
-            public TextMeshProUGUI TextMeshProUGUI;
-            public bool HasValue;
-            public bool HasAnimationValue;
-            public int InitialValue;
-            public int FinalValue;
-            public bool HasCustomText;
-            public string CustomText;
-
-            public Animation(GameObject parent, TextMeshProUGUI textMeshProUGUI, bool hasValue, bool hasAnimationValue, int initialValue, int finalValue, bool hasCustomText, string customText)
-            {
-                Parent = parent;
-                TextMeshProUGUI = textMeshProUGUI;
-                HasValue = hasValue;
-                HasAnimationValue = hasAnimationValue;
-                InitialValue = initialValue;
-                FinalValue = finalValue;
-                HasCustomText = hasCustomText;
-                CustomText = customText;
-            }
         }
     }
 }
