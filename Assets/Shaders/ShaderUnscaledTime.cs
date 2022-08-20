@@ -11,4 +11,9 @@ public class ShaderUnscaledTime : MonoBehaviour
     {
         _image.material.SetFloat(UnscaledTime, Time.unscaledTime);
     }
+
+    private void OnDisable()
+    {
+        _image.material.SetFloat(UnscaledTime, 0f);
+    }
 }
