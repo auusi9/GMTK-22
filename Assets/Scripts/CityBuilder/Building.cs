@@ -21,6 +21,7 @@ namespace CityBuilder
         [SerializeField] private Factory _factory;
         [SerializeField] private string _buildingName;
         [SerializeField] private string _buildingDescription;
+        [SerializeField] private GameObject _hover;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
@@ -151,6 +152,16 @@ namespace CityBuilder
             }
             
             NewNeighbour?.Invoke();
+        }
+
+        public void Hover()
+        {
+            _hover.SetActive(true);
+        }
+
+        public void StopHover()
+        {
+            _hover.SetActive(false);
         }
     }
 

@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 277645729833336938}
   - component: {fileID: 277645729833336937}
   - component: {fileID: 8579144841935812074}
+  - component: {fileID: 6325680201063240823}
   m_Layer: 5
   m_Name: DiceFace (4)
   m_TagString: Untagged
@@ -192,6 +193,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &6325680201063240823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277645729833336935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 8579144841935812074}
 --- !u!1 &379959113466854453
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +930,7 @@ GameObject:
   - component: {fileID: 2804120626802548872}
   - component: {fileID: 2804120626802548875}
   - component: {fileID: 5926569211223790856}
+  - component: {fileID: 3205858483480636440}
   m_Layer: 5
   m_Name: DiceFace (3)
   m_TagString: Untagged
@@ -1004,6 +1019,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &3205858483480636440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804120626802548869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 5926569211223790856}
 --- !u!1 &2841786189753002173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1044,7 @@ GameObject:
   - component: {fileID: 2841786189753002160}
   - component: {fileID: 2841786189753002163}
   - component: {fileID: 6027319255970422064}
+  - component: {fileID: 349033738028749114}
   m_Layer: 5
   m_Name: DiceFace (5)
   m_TagString: Untagged
@@ -1104,6 +1133,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &349033738028749114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841786189753002173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 6027319255970422064}
 --- !u!1 &3124984503916613464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,13 +1159,14 @@ GameObject:
   - component: {fileID: 3024575069563331943}
   - component: {fileID: 5849512781324205878}
   - component: {fileID: 3733866108911081753}
+  - component: {fileID: 4837154231992853829}
   m_Layer: 5
   m_Name: InfoMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &891721351246198357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1201,6 +1244,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 5849512781324205878}
+--- !u!114 &4837154231992853829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3124984503916613464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &3167975029855623439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,6 +1697,7 @@ GameObject:
   - component: {fileID: 4221888138720558359}
   - component: {fileID: 4221888138720558356}
   - component: {fileID: 5639196619937417367}
+  - component: {fileID: 234263929744284755}
   m_Layer: 5
   m_Name: DiceFace
   m_TagString: Untagged
@@ -1725,6 +1786,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &234263929744284755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221888138720558362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 5639196619937417367}
 --- !u!1 &4602859026913773671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,6 +1887,7 @@ GameObject:
   - component: {fileID: 4656889519657959788}
   - component: {fileID: 4656889519657959791}
   - component: {fileID: 3780142752740177132}
+  - component: {fileID: 4524075282398484273}
   m_Layer: 5
   m_Name: DiceFace (2)
   m_TagString: Untagged
@@ -1901,6 +1976,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &4524075282398484273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656889519657959777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 3780142752740177132}
 --- !u!1 &5055727878870678092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,7 +3073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
@@ -3263,6 +3351,7 @@ GameObject:
   - component: {fileID: 8558705392052629803}
   - component: {fileID: 8558705392052629800}
   - component: {fileID: 149738791537460395}
+  - component: {fileID: 5171104184801946219}
   m_Layer: 5
   m_Name: DiceFace (1)
   m_TagString: Untagged
@@ -3351,6 +3440,19 @@ MonoBehaviour:
   _faceUISet: {fileID: 0}
   _faceUISelected: {fileID: 0}
   _button: {fileID: 0}
+--- !u!114 &5171104184801946219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558705392052629798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcc0b0ccab24c4cb1123819bc2ecb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faceUI: {fileID: 149738791537460395}
 --- !u!1 &8583420221016132498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,7 +3789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770730374930728789, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4280624429
+      value: 4294047992
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b55edb939239d46a341ab56b8dab81, type: 3}
