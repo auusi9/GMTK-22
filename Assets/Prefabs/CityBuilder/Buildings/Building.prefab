@@ -405,7 +405,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 128, y: 128}
+  m_SizeDelta: {x: 60, y: 63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &397435294891419883
 CanvasRenderer:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d19f76c44861824abbf0ce0bb09c8e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d4df170c75090f438cdf1f0b120046c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -622,9 +622,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5396256698222121391
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -691,6 +691,10 @@ MonoBehaviour:
   _buildingName: 
   _buildingDescription: 
   _hover: {fileID: 5877985092402327442}
+  _punchDuration: 0.12
+  _punchStrenght: -0.25
+  _punchVibrato: 12
+  _punchElasticity: 1
 --- !u!114 &-1328291159500940739
 MonoBehaviour:
   m_ObjectHideFlags: 0
