@@ -8,6 +8,7 @@ using Workers;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using MainMenu;
 
 namespace CityBuilder
 {
@@ -42,18 +43,13 @@ namespace CityBuilder
         public string BuildingName => _buildingName;
         public string BuildingDescription => _buildingDescription;
 
-        public event Action Spawned;
+        public event Action<List<SaveWorkerSpot>> Spawned;
         public event Action Destroyed;
         public event Action NewNeighbour;
 
         private Face _face;
+        public Face Face => _face;
         private int _x, _y;
-
-        private void Start()
-        {
-            if(_grantFace != null)
-                _grantFace.NewFace += NewFace;
-        }
 
         private void OnDestroy()
         {
@@ -62,10 +58,7 @@ namespace CityBuilder
                 _face.Destroying -= Destroying;
                 _face = null;
             }
-            
-            if(_grantFace != null)
-                _grantFace.NewFace -= NewFace;
-            
+
             _cityMapLocator.RemoveBuildingFromPosition(this, _x, _y);
             _buildingLibrary.DestroyedBuilding(this);
 
@@ -106,14 +99,19 @@ namespace CityBuilder
             {
                 cost.Resource.RemoveResource(cost.Cost);
             }
+            
+            Spawn();
+        }
 
+        public void Spawn(SaveFace saveFace = null, List<SaveWorkerSpot> saveWorkerSpots = null)
+        {
             if (_grantFace != null)
             {
-                _grantFace.Grant(this);
+                _grantFace.Grant(this, saveFace);
             }
             
             _buildingLibrary.NewBuilding(this);
-            Spawned?.Invoke();
+            Spawned?.Invoke(saveWorkerSpots);
         }
 
         public bool CanAfford()
@@ -131,13 +129,19 @@ namespace CityBuilder
             return _workerSpots.FirstOrDefault(x => x.Available);
         }
 
-        public void SetPosition(int currentTileX, int currentTileY)
+        public void SetPosition(CityTile currentTile)
         {
-            _x = currentTileX;
-            _y = currentTileY;
+            _x = currentTile.X;
+            _y = currentTile.Y;
 
             PlaceBuildAnim();
             NotifyNeighbours();
+            
+            transform.SetParent(currentTile.transform);
+            transform.localPosition = Vector3.zero;
+            
+            Destroy(_draggableObject);
+            _draggableObject = null;
         }
 
         private void NotifyNeighbours()

@@ -20,10 +20,15 @@ namespace Workers
         public DraggableWorker DraggableWorker => _draggableWorker;
         public bool IsTired => _energy <= 0;
         public bool IsFullyRested => _energy >= _maxEnergy;
+        public float Energy
+        {
+            get => _energy;
+            set => _energy = value;
+        }
 
         private float _energy;
 
-        private void Start()
+        private void Awake()
         {
             _energy = _maxEnergy;
             _workerInventory.AddWorker(this);

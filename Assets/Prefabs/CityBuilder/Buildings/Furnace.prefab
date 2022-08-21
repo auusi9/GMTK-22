@@ -338,6 +338,7 @@ MonoBehaviour:
   _seconds: 10
   _showAmountEarned: {fileID: 9024140251822864240}
   _showAmountEarnedDelay: 2
+  _worker: {fileID: 1582941479751766320, guid: 7c25c3e7ef6dd50498c2d7797eaf4929, type: 3}
 --- !u!224 &6868264206331096106 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5396256698222121377, guid: 864f5785df3e2c64ab8b05f8807fbf20, type: 3}

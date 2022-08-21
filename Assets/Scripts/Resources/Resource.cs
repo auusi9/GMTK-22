@@ -69,5 +69,16 @@ namespace Resources
                 RemovedResource?.Invoke(-delta);
             }
         }
+
+        public void SetDefaultValue(int value)
+        {
+            _currentValue = value;
+        }
+
+        public void ResetValue()
+        {
+            _currentValue = _defaultValue;
+            _currentMaxValue = _maxValue;
+        }
     }
 }

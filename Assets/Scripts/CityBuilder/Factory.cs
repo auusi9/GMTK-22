@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using MainMenu;
 using Resources;
 using UnityEngine;
 using Workers;
@@ -13,6 +15,7 @@ namespace CityBuilder
         [SerializeField] private float _seconds;
         [SerializeField] private ShowAmountEarned _showAmountEarned;
         [SerializeField] private float _showAmountEarnedDelay;
+        [SerializeField] private Worker _worker;
 
         private float _nextCoin = 0f;
         private float _nextShow = 0f;
@@ -27,7 +30,33 @@ namespace CityBuilder
                 ResourceName = _gold.ResourceName
             };
         }
-        
+
+        private void Awake()
+        {
+            _building.Spawned += BuildingOnSpawned;
+        }
+
+        private void OnDestroy()
+        {
+            _building.Spawned -= BuildingOnSpawned;
+        }
+
+        private void BuildingOnSpawned(List<SaveWorkerSpot> saveWorkerSpots)
+        {
+            if(saveWorkerSpots == null)
+                return;
+            
+            for (int i = 0; i < saveWorkerSpots.Count; i++)
+            {
+                if (saveWorkerSpots[i].Worker != null)
+                {
+                    Worker worker = Instantiate(_worker, transform);
+                    worker.Energy = saveWorkerSpots[i].Worker.CurrentEnergy;
+                    _building.WorkerSpots[i].SetWorker(worker);
+                }
+            }
+        }
+
         private void Update()
         {
             float coinsCreated = _nextCoin;

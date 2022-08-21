@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using Dice;
+using MainMenu;
+using UIGeneric;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +18,9 @@ namespace CityBuilder
         [SerializeField] private Vector2 _padding;
         [SerializeField] private CityTile _tilePrefab;
         [SerializeField] private CityMapLocator _cityMapLocator;
+        [SerializeField] private DiceInventory _diceInventory;
+        [SerializeField] private List<Building> _allBuildings;
+        [SerializeField] private GridCanvas _gridCanvas;
         
         private CityTile[,] _grid;
 
@@ -138,6 +145,97 @@ namespace CityBuilder
             {
                 _grid[x, y].Building = null;
             }
+        }
+
+        public SaveBuilding[] GetBuildingsToSave()
+        {
+            SaveBuilding[] saveBuildings = new SaveBuilding[_grid.GetLength(0) * _grid.GetLength(1)];
+            
+            for (int i = 0; i < _grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < _grid.GetLength(1); j++)
+                {
+                    saveBuildings[j * _grid.GetLength(0) + i] = GetSaveBuilding(_grid[i, j]);
+                }
+            }
+
+            return saveBuildings;
+        }
+
+        private SaveBuilding GetSaveBuilding(CityTile cityTile)
+        {
+            if (cityTile == null || cityTile.Building == null)
+            {
+                return null;
+            }
+
+            return new SaveBuilding()
+            {
+                BuildingId = cityTile.Building.BuildingName,
+                SaveFace = GetSaveFace(cityTile.Building),
+                Spots = GetWorkerSpots(cityTile.Building)
+            };
+        }
+
+        private List<SaveWorkerSpot> GetWorkerSpots(Building cityTileBuilding)
+        {
+            List<SaveWorkerSpot> workerSpots = new List<SaveWorkerSpot>();
+
+            foreach (var workerSpot in cityTileBuilding.WorkerSpots)
+            {
+                workerSpots.Add(new SaveWorkerSpot()
+                {
+                    Worker = workerSpot.Worker ? new SaveWorker()
+                    {
+                        CurrentEnergy = workerSpot.Worker.Energy
+                    }: null
+                });
+            }
+
+            return workerSpots;
+        }
+
+        private SaveFace GetSaveFace(Building cityTileBuilding)
+        {
+            if (cityTileBuilding.Face == null)
+                return new SaveFace()
+                {
+                    HasFace = false
+                };
+            
+            return new SaveFace()
+            {
+                DiceId = _diceInventory.GetFaceIndex(cityTileBuilding.Face, out int index),
+                Position = index,
+                HasFace = true
+            };
+        }
+
+        public void SetSavedBuildings(SaveBuilding[] saveDataBuildings)
+        {
+            for (int i = 0; i < _grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < _grid.GetLength(1); j++)
+                {
+                    if (_grid[i, j] != null && saveDataBuildings[j * _grid.GetLength(0) + i] != null)
+                    {
+                        SpawnBuildingAtPosition(i, j, saveDataBuildings[j * _grid.GetLength(0) + i]);
+                    }
+                }
+            }
+        }
+
+        private void SpawnBuildingAtPosition(int i, int j, SaveBuilding saveDataBuilding)
+        {
+            Building building = _allBuildings.FirstOrDefault(x => saveDataBuilding.BuildingId == x.BuildingName);
+            
+            if(building == null || string.IsNullOrEmpty(saveDataBuilding.BuildingId))
+                return;
+
+            Building buildingSpawned = Instantiate(building, _gridCanvas.Parent);
+            _grid[i, j].Building = buildingSpawned;
+            buildingSpawned.SetPosition(_grid[i, j]);
+            buildingSpawned.Spawn(saveDataBuilding.SaveFace, saveDataBuilding.Spots);
         }
     }
 }

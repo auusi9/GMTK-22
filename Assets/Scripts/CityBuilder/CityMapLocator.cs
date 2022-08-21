@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MainMenu;
 using UnityEngine;
 
 namespace CityBuilder
@@ -7,6 +8,7 @@ namespace CityBuilder
     public class CityMapLocator : ScriptableObject
     {
         private CityMap _cityMap;
+
 
         public void SetCityMap(CityMap cityMap)
         {
@@ -36,6 +38,19 @@ namespace CityBuilder
         public List<Building> GetBuildingsInRadius(int x, int y, int radius)
         {
             return _cityMap.GetBuildingsInRadius(x, y, radius);
+        }
+
+        public SaveBuilding[] GetBuildingsToSave()
+        {
+            if (_cityMap == null)
+                return null;
+            
+            return _cityMap.GetBuildingsToSave();
+        }
+
+        public void SetSavedBuildings(SaveBuilding[] saveDataBuildings)
+        {
+            _cityMap.SetSavedBuildings(saveDataBuildings);
         }
     }
 }

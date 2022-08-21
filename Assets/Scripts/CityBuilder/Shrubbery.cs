@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using MainMenu;
 using UnityEngine;
 
 namespace CityBuilder
@@ -10,13 +12,13 @@ namespace CityBuilder
 
         private bool _active = false;
         
-        private void Start()
+        private void Awake()
         {
             _building.NewNeighbour += NewNeighbour;
             _building.Spawned += BuildingOnSpawned;
         }
 
-        private void BuildingOnSpawned()
+        private void BuildingOnSpawned(List<SaveWorkerSpot> saveWorkerSpots)
         {
             CheckForNewHouses();
         }

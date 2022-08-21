@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Resources;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Dice
 {
@@ -66,6 +68,26 @@ namespace Dice
         public void AcceptedNewFace(Face face)
         {
             NewFaceAccepted?.Invoke(face);
+        }
+
+        public int GetFaceIndex(Face face, out int index)
+        {
+            index = 0;
+            for (var i = 0; i < _dice.Count; i++)
+            {
+                var dice = _dice[i];
+                for (var j = 0; j < dice.Faces.Length; j++)
+                {
+                    var diceFace = dice.Faces[j];
+                    index = j;
+                    if (Equals(diceFace, face))
+                    {  
+                        return i;
+                    }
+                }
+            }
+
+            return 0;
         }
     }
 }

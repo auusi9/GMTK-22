@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Resources;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
+using MainMenu;
 using UnityEngine;
 using Workers;
 
@@ -14,12 +11,10 @@ namespace CityBuilder
         [SerializeField] private Worker _worker;
         [SerializeField] private WorkerSpot[] _hiddenSpots;
         [SerializeField] private HouseInventory _houseInventory;
-
-        private List<Worker> _workers = new List<Worker>();
-
+        
         private bool _hiddenSpotsShown = false;
-
-        private void Start()
+        private List<SaveWorkerSpot> _saveWorkerSpots;
+        private void Awake()
         {
             _building.Spawned += Spawned;
         }
@@ -30,8 +25,35 @@ namespace CityBuilder
             _houseInventory.RemoveHouse(this);
         }
 
-        private void Spawned()
+        private void Spawned(List<SaveWorkerSpot> saveWorkerSpots)
         {
+            if (saveWorkerSpots != null)
+            {
+                foreach (var workerSpot in _building.WorkerSpots)
+                {
+                    workerSpot.IsResting = true;
+                }
+
+                if (saveWorkerSpots.Count != _building.WorkerSpots.Count)
+                {
+                    _saveWorkerSpots = saveWorkerSpots;
+                }
+                
+                for (var i = 0; i < saveWorkerSpots.Count; i++)
+                {
+                    var saveWorkerSpot = saveWorkerSpots[i];
+
+                    if (i < _building.WorkerSpots.Count && saveWorkerSpot.Worker != null)
+                    {
+                        _building.WorkerSpots[i].IsResting = true;
+                        Worker worker = Instantiate(_worker, transform);
+                        worker.Energy = saveWorkerSpot.Worker.CurrentEnergy;
+                        _building.WorkerSpots[i].SetWorker(worker);
+                    }
+                }
+                return;
+            }
+            
             foreach (var workerSpot in _building.WorkerSpots)
             {
                 workerSpot.IsResting = true;
@@ -63,19 +85,39 @@ namespace CityBuilder
                 workerSpot.gameObject.SetActive(false);
                 _building.WorkerSpots.Remove(workerSpot);
             }
-
-            foreach (var worker in _workers)
-            {
-                Destroy(worker);
-            }
-            
-            _workers.Clear();
         }
         
         public void EnableHiddenSpots()
         {
             if(_hiddenSpotsShown)
                 return;
+
+            if (_saveWorkerSpots != null)
+            {
+                foreach (var workerSpot in _hiddenSpots)
+                {
+                    workerSpot.IsResting = true;
+                    workerSpot.gameObject.SetActive(true);
+                }
+
+                int oldSpots = _building.WorkerSpots.Count;
+                _building.WorkerSpots.AddRange(_hiddenSpots);
+                for (var i = oldSpots; i < _saveWorkerSpots.Count; i++)
+                {
+                    var saveWorkerSpot = _saveWorkerSpots[i];
+
+                    if (saveWorkerSpot.Worker != null)
+                    {
+                        Worker worker = Instantiate(_worker, transform);
+                        worker.Energy = saveWorkerSpot.Worker.CurrentEnergy;
+                        _building.WorkerSpots[i].SetWorker(worker);
+                    }
+                }
+
+                _hiddenSpotsShown = true;
+                _saveWorkerSpots = null;
+                return;
+            }
             
             foreach (var workerSpot in _hiddenSpots)
             {
@@ -83,7 +125,6 @@ namespace CityBuilder
                 workerSpot.gameObject.SetActive(true);
                 Worker worker = Instantiate(_worker, transform);
                 workerSpot.SetWorker(worker);
-                _workers.Add(worker);
             }
             
             _building.WorkerSpots.AddRange(_hiddenSpots);

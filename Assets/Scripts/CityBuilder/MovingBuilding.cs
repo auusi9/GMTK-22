@@ -49,12 +49,9 @@ namespace CityBuilder
                 Destroy(gameObject);
                 return;
             }
-
-            _building.SetPosition(currentTile.X, currentTile.Y);
+            
+            _building.SetPosition(currentTile);
             _building.PayCost();
-            transform.SetParent(currentTile.transform);
-            transform.localPosition = Vector3.zero;
-            Destroy(this);
         }
 
         public override void OnDrag(PointerEventData eventData)

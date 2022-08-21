@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dice;
 using Resources;
@@ -13,7 +14,12 @@ namespace Workers
         [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private Resource _workerResource;
         private List<Worker> _workers = new List<Worker>();
-        
+
+        private void OnDisable()
+        {
+            _workers.Clear();
+        }
+
         public void AddWorker(Worker worker)
         {
             if (!_workers.Contains(worker))

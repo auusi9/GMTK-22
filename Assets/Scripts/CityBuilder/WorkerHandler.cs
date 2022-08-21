@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MainMenu;
 using UnityEngine;
 using Workers;
 
@@ -25,7 +26,7 @@ namespace CityBuilder
             _building.Spawned -= BuildingOnSpawned;
         }
 
-        private void BuildingOnSpawned()
+        private void BuildingOnSpawned(List<SaveWorkerSpot> saveWorkerSpots)
         {
             _spawned = true;
         }
