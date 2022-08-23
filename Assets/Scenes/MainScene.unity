@@ -264,6 +264,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1252245221}
     m_Modifications:
+    - target: {fileID: 468929390512395540, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468929390512395540, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468929390512395540, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468929390512395540, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 157.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 468929390512395540, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 995758680325539256, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -278,15 +298,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 995758680325539256, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 121.4
+      value: 122.4
       objectReference: {fileID: 0}
     - target: {fileID: 995758680325539256, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1038900463816027029, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1643374183668638968, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_Name
-      value: EndDayPopup_NEW
+      value: EndDayPopup
       objectReference: {fileID: 0}
     - target: {fileID: 1643374183668638968, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_IsActive
@@ -454,6 +478,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5026988310463385961, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407799048160357990, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407799048160357990, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407799048160357990, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407799048160357990, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6000327084171204849, guid: e007757fc7e6cbb4d97d9dba3dc9b8d0, type: 3}
@@ -1821,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903934468504374118, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_Name
-      value: BottomUI_NEW
+      value: BottomUI
       objectReference: {fileID: 0}
     - target: {fileID: 7903934468504374118, guid: 66adc8053e2ae9f4bbc6e712b85710fe, type: 3}
       propertyPath: m_IsActive
@@ -2178,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859078127978368837, guid: 587569806177d3548b4b983f3973f5d8, type: 3}
       propertyPath: m_Name
-      value: ChooseFacePopup_NEW
+      value: ChooseFacePopup
       objectReference: {fileID: 0}
     - target: {fileID: 5265764646626354740, guid: 587569806177d3548b4b983f3973f5d8, type: 3}
       propertyPath: m_AnchorMax.y
