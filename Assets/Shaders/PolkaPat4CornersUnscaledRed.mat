@@ -50,7 +50,7 @@ Material:
     - _PolkaRange: 0.2
     - _PolkaSize: 8
     - _SmoothStep: 0.05
-    - _UnscaledTime: 174.90112
+    - _UnscaledTime: 0
     - _UseUnscaledTime: 1
     m_Colors:
     - _Color: {r: 0.9882353, g: 0.40392157, b: 0.40392157, a: 1}

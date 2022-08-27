@@ -20,12 +20,14 @@ namespace Workers
         [SerializeField] private TextMeshProUGUI _foodText;
         [SerializeField] private TextMeshProUGUI _folksText;
         [SerializeField] private TextMeshProUGUI _requiredFoodText;
-        [SerializeField] private Image _requiredFoodColorChange;
-        [SerializeField] private Color _notEnoughFoodColor;
-        [SerializeField] private Color _enoughFoodColor;
         [SerializeField] private GameObject _workersDied;
+        [SerializeField] private GameObject _noWorkersDied;
+        [SerializeField] private GameObject _gameover;
         [SerializeField] private TextMeshProUGUI _workersDiedText;
         [SerializeField] private UIBehaviour _workerDiedColorBlink;
+        [SerializeField] private Image _bg;
+        [SerializeField] private Material _normalPolkadot;
+        [SerializeField] private Material _redPolkadot;
         [SerializeField] private float _timeBetweenWorkers;
         [SerializeField] private Button _feedButton;
         [SerializeField] private Button _nextDay;
@@ -65,7 +67,9 @@ namespace Workers
             _foodText.text = _food.Value.ToString();
             _requiredFoodText.text = string.Format(_requiredFoodDescription, neededFood.ToString());
             _workersDied.SetActive(false);
-            _requiredFoodColorChange.color = neededFood > _food.Value ? _notEnoughFoodColor : _enoughFoodColor;
+            _noWorkersDied.SetActive(false);
+            _gameover.SetActive(false);
+            _bg.material = neededFood > _food.Value ? _redPolkadot : _normalPolkadot;
         }
 
         public void Feed()
@@ -113,6 +117,10 @@ namespace Workers
                 _workersDiedText.text = string.Format(_townFolksHaveDied, _deadPeople.ToString());
                 _workersDied.SetActive(true);
             }
+            else
+            {
+                _noWorkersDied.SetActive(true);
+            }
             
             _dayNight.RemoveWorkers();
             _foodText.text = _food.Value.ToString();
@@ -125,6 +133,9 @@ namespace Workers
             else
             {
                 _nextDayText.text = _mainMenu;
+                _noWorkersDied.SetActive(false);
+                _gameover.SetActive(true);
+                _workersDied.SetActive(false);
             }
         }
 

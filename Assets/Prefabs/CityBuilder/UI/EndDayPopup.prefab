@@ -982,12 +982,14 @@ MonoBehaviour:
   _foodText: {fileID: 6853536817653490480}
   _folksText: {fileID: 602392658640619484}
   _requiredFoodText: {fileID: 6123944276699213053}
-  _requiredFoodColorChange: {fileID: 4157215573942383191}
-  _notEnoughFoodColor: {r: 0.9882353, g: 0.40392157, b: 0.40392157, a: 1}
-  _enoughFoodColor: {r: 0.1764706, g: 0.14509805, b: 0.14509805, a: 1}
   _workersDied: {fileID: 1933960886131644569}
+  _noWorkersDied: {fileID: 3069083947124375610}
+  _gameover: {fileID: 8085479442822037256}
   _workersDiedText: {fileID: 4314712822744056302}
   _workerDiedColorBlink: {fileID: 4248592632039151330}
+  _bg: {fileID: 4808765209327888974}
+  _normalPolkadot: {fileID: 2100000, guid: b690a90515bdef6469797da34cde14fc, type: 2}
+  _redPolkadot: {fileID: 2100000, guid: c93207816b0d5f1468ffe26ddc098698, type: 2}
   _timeBetweenWorkers: 0.2
   _feedButton: {fileID: 2161693517123027485}
   _nextDay: {fileID: 3123395108942274410}
@@ -998,9 +1000,6 @@ MonoBehaviour:
   _nextDayDescription: Next day
   _mainMenu: Main menu
   _timeManager: {fileID: 11400000, guid: 9f337c0c691069c41a4b92a713fcbe43, type: 2}
-  _bgImage: {fileID: 4808765209327888974}
-  _polkadotBlue: {fileID: 2100000, guid: b690a90515bdef6469797da34cde14fc, type: 2}
-  _polkadotRed: {fileID: 2100000, guid: c93207816b0d5f1468ffe26ddc098698, type: 2}
 --- !u!222 &8064641354865327837
 CanvasRenderer:
   m_ObjectHideFlags: 0
