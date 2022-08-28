@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DayNight
   m_EditorClassIdentifier: 
   _workerInventory: {fileID: 11400000, guid: 01e9a45467d1da64395db7e0e5e4de61, type: 2}
+  _diceInventory: {fileID: 11400000, guid: 2b9c86738ba368845903bdb459863479, type: 2}
   _worker: {fileID: 11400000, guid: 86fc9755a1482f647974bf621a766037, type: 2}
   _food: {fileID: 11400000, guid: 5a61bd989679da54aa229a3862d26c6e, type: 2}
   _foodXFolk: 2
-  _dayDuration: 0.25
-  DayCount: 29
+  _dayDuration: 5
+  DayCount: 31

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CityBuilder;
 using Resources;
 using UnityEngine;
@@ -37,6 +38,7 @@ namespace Dice
         public Resource ComboResource => _combo.ResourceReward;
         
         private int _currentReward;
+        private List<Scenery> _currentSceneries = new List<Scenery>();
 
         private void OnEnable()
         {
@@ -71,12 +73,16 @@ namespace Dice
 
         public int GiveReward(int comboGiven)
         {
-            if (_currentReward - comboGiven <= 0)
+            int reward = _currentReward - comboGiven;
+            
+            if (reward <= 0)
                 return 0;
             
-            _resource.AddResource(_currentReward - comboGiven);
-            Debug.Log(_resource.name + " Given reward " + (_currentReward - comboGiven));
-            return (_currentReward - comboGiven);
+            _resource.AddResource(reward);
+            Debug.Log(_resource.name + " Given reward " + (reward));
+            SpendSceneries();
+            CalculateLevel();
+            return (reward);
         }
 
         public int GiveCombo(int combo)
@@ -100,20 +106,58 @@ namespace Dice
             if(_building == null)
                 return;
 
+            ClearSceneries();
+            
             Building[] buildings = _building.Get4NearBuildings();
 
             int number = _reward;
 
             foreach (var building in buildings)
             {
-                if (building != null && building.Scenery != null && building.Scenery.Resource == _resource)
+                if (building != null && building.Scenery != null && building.Scenery.Resource == _resource && building.Scenery.CurrentValue > 0)
                 {
                     number++;
+                    building.Scenery.SceneryAmountChanged += SceneryChanged;
+                    _currentSceneries.Add(building.Scenery);
                 }
             }
 
             _currentReward = number;
             RewardChanged?.Invoke();
+        }
+
+        private void ClearSceneries()
+        {
+            foreach (Scenery scenery in _currentSceneries)
+            {
+                scenery.SceneryAmountChanged -= SceneryChanged;
+            }
+            
+            _currentSceneries.Clear();
+        }
+
+        private void SceneryChanged(Face obj)
+        {
+            if(obj == this)
+                return;
+            
+            CalculateLevel();
+        }
+
+        private void SpendSceneries()
+        {
+            foreach (var scenery in _currentSceneries)
+            {
+                scenery.SpendScenery(this);
+            }
+        }
+
+        public void ResetSceneries()
+        {
+            foreach (var scenery in _currentSceneries)
+            {
+                scenery.ResetScenery();
+            }
         }
     }
     

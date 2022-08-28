@@ -126,5 +126,17 @@ namespace Dice
 
             return _faces[Random.Range(0, _faces.Length)];
         }
+
+        public void CalculatePrice()
+        {
+            for (var i = 0; i < _faces.Length; i++)
+            {
+                if (_faces[i] != null)
+                {
+                    _faces[i].ResetSceneries();
+                    _faces[i].CalculateLevel();
+                }
+            }
+        }
     }
 }

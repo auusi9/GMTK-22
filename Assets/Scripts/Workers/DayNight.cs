@@ -1,4 +1,5 @@
 ﻿using System;
+using Dice;
 using Resources;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Workers
     public class DayNight : ScriptableObject
     {
         [SerializeField] private WorkerInventory _workerInventory;
+        [SerializeField] private DiceInventory _diceInventory;
         [SerializeField] private Resource _worker;
         [SerializeField] private Resource _food;
         [SerializeField] private int _foodXFolk ;
@@ -35,6 +37,8 @@ namespace Workers
         {
             StartDay?.Invoke();
             DayCount++;
+
+            _diceInventory.CalculateLevels();
         }
 
         public int WorkersToRemove(out int neededFood)

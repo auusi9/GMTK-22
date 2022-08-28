@@ -89,5 +89,13 @@ namespace Dice
 
             return 0;
         }
+
+        public void CalculateLevels()
+        {
+            foreach (var die in _dice)
+            {
+                die.CalculatePrice();
+            }
+        }
     }
 }
