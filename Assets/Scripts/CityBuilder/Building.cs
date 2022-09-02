@@ -6,8 +6,6 @@ using Resources;
 using UnityEngine;
 using Workers;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Options;
 using MainMenu;
 
 namespace CityBuilder
@@ -26,11 +24,6 @@ namespace CityBuilder
         [SerializeField] private string _buildingName;
         [SerializeField] private string _buildingDescription;
         [SerializeField] private GameObject _hover;
-
-        [SerializeField] private float _punchDuration = 0.25f;
-        [SerializeField] private float _punchStrenght = 10f;
-        [SerializeField] private int _punchVibrato = 10;
-        [SerializeField] private float _punchElasticity = 1.0f;
 
         public MovingBuilding DraggableObject => _draggableObject;
         public BuildingCost[] Cost => _cost;
@@ -134,7 +127,6 @@ namespace CityBuilder
             _x = currentTile.X;
             _y = currentTile.Y;
 
-            PlaceBuildAnim();
             NotifyNeighbours();
             
             transform.SetParent(currentTile.transform);
@@ -175,11 +167,6 @@ namespace CityBuilder
         public void StopHover()
         {
             _hover.SetActive(false);
-        }
-
-        private void PlaceBuildAnim()
-        {
-            transform.DOPunchScale(new Vector3(_punchStrenght, _punchStrenght, _punchStrenght), _punchDuration, _punchVibrato, _punchElasticity);
         }
     }
 
