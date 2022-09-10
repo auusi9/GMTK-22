@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: General_SpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1f6bd389e098729499dcc0023ca449f6, type: 3}
+    - {fileID: 102900000, guid: 69f27dd61a1f34f4e9a4021eb0377c7f, type: 3}
+    - {fileID: 102900000, guid: 2358d97a223be3d4286bbc6e05102fec, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1d4df170c75090f438cdf1f0b120046c, type: 3}
+  - {fileID: 21300000, guid: b104e990bb175dc4f8470efb4c1521fa, type: 3}
+  - {fileID: 21300000, guid: b3a5fd9025c3725468cc8ff92ae37d3b, type: 3}
+  - {fileID: 21300000, guid: be1633b05dbfd094bb879c7041418ad4, type: 3}
+  - {fileID: 21300000, guid: 86fe31d096012a446a3a7f5a9bd47db8, type: 3}
+  - {fileID: 21300000, guid: c76004e01bc4f3f45a154cd0da029d5a, type: 3}
+  - {fileID: 21300000, guid: 9d27a6b19b453514c80ce4eb70327f19, type: 3}
+  - {fileID: 21300000, guid: c04c83d1aad9b7c42b09c85833a98a0e, type: 3}
+  - {fileID: 21300000, guid: bea18722dbba3d94fb519818d948e914, type: 3}
+  - {fileID: 21300000, guid: 7ba4afa202efdf445ad677086f4e6dff, type: 3}
+  - {fileID: 21300000, guid: 32b241d286065dc4fb1c2e41d7adbb67, type: 3}
+  - {fileID: 21300000, guid: 3600cdd223a965348a2bea9a9749bbfa, type: 3}
+  - {fileID: 21300000, guid: 483c3023e9417ba4dafc8d50d4332cd7, type: 3}
+  - {fileID: 21300000, guid: 85c8e893e12d40f46af27e789da20313, type: 3}
+  - {fileID: 21300000, guid: 268fe0f314af38640b31be826170dfe4, type: 3}
+  - {fileID: 21300000, guid: 957e8d042732ec54482db803f2e53ac1, type: 3}
+  - {fileID: 21300000, guid: 12fe8744ee8263d49930143d74125f24, type: 3}
+  - {fileID: 21300000, guid: d11a66641d3fe394091fb462edca5500, type: 3}
+  - {fileID: 21300000, guid: 669cf7749af892a4e9e9f8ba01e33230, type: 3}
+  - {fileID: 21300000, guid: 139f3d8438d6dd64b9664d90e5952a05, type: 3}
+  - {fileID: 21300000, guid: c91506b4246d37a4a9b52252942e9e08, type: 3}
+  - {fileID: 21300000, guid: a83c5ac46eebebd48bc8b980b8c9b274, type: 3}
+  - {fileID: 21300000, guid: 6d76e2251ad675a4fa806e604a489104, type: 3}
+  - {fileID: 21300000, guid: b0103e067118b48479d177cf5270dffb, type: 3}
+  - {fileID: 21300000, guid: 1ab8c2d6338ae514ba33a9ed02ef4ef8, type: 3}
+  - {fileID: 21300000, guid: ffd9ad57cc07d97468bbf9b226406a7c, type: 3}
+  - {fileID: 21300000, guid: 21f1b5f7af1dcb442800722dc71bfdce, type: 3}
+  - {fileID: 21300000, guid: f08c20388713ee84982045ea607b35ac, type: 3}
+  - {fileID: 21300000, guid: b4f6d8e8048f52f409f22548114156ed, type: 3}
+  - {fileID: 21300000, guid: 9c7b32f8e6b44db42bcf2a36effbcd3e, type: 3}
+  - {fileID: 21300000, guid: ce9197091f22c5d4db4e2fb7ac5c8c38, type: 3}
+  - {fileID: 21300000, guid: 26e8cb0990c9bf44a905334b5f6b43a9, type: 3}
+  - {fileID: 21300000, guid: 86aa8419f3b45324f87aeec1e92e4903, type: 3}
+  - {fileID: 21300000, guid: da3e0e194fb39f643b0e1d73e7f97fbf, type: 3}
+  - {fileID: 21300000, guid: eba11129a6284e044a696d13003c6214, type: 3}
+  - {fileID: 21300000, guid: 818a6b2953236bc4193f00104cd34770, type: 3}
+  - {fileID: 21300000, guid: 9a6f1d594947de1409b6eb874515d8ab, type: 3}
+  - {fileID: 21300000, guid: e3c91369b929eff4db89642631d97afb, type: 3}
+  - {fileID: 21300000, guid: 1ac0bf699d3bd4e4d94f44470066fbd1, type: 3}
+  - {fileID: 21300000, guid: 2f855b79806250947a857a05c10a5e40, type: 3}
+  - {fileID: 21300000, guid: f71001d922b4c0e4f9cc00cd2ed0f7c8, type: 3}
+  - {fileID: 21300000, guid: d09643d95d2fd4d45ad37df2e787381d, type: 3}
+  - {fileID: 21300000, guid: c958c70afb4efb74c82e8a9e5d0af00c, type: 3}
+  - {fileID: 21300000, guid: 256ea03a0b16b514ba90ff97da98bd40, type: 3}
+  - {fileID: 21300000, guid: b0d13f3a0af12744f8030b0cb421d465, type: 3}
+  - {fileID: 21300000, guid: f8dbc46acae74304fb24cea8dfade9e0, type: 3}
+  - {fileID: 21300000, guid: 7dfcbb9a4a582e04fa949cf1aa98248c, type: 3}
+  - {fileID: 21300000, guid: 366eb5aa0ea364b4fa7114da77ee1104, type: 3}
+  - {fileID: 21300000, guid: ec93bbaa889fd9b40b7448f5cd2ca4f8, type: 3}
+  - {fileID: 21300000, guid: 1b1ee2faa615c2743996e7ee873fae78, type: 3}
+  - {fileID: 21300000, guid: 680778fad4011f54289e0b4dbe84f8f7, type: 3}
+  - {fileID: 21300000, guid: f5239a1b2e2828e42add1937daa7257f, type: 3}
+  - {fileID: 21300000, guid: 7760373beabc1914daa2e7a616bffe37, type: 3}
+  - {fileID: 21300000, guid: 73335b4b8df455d4fb2a9b4c94177751, type: 3}
+  - {fileID: 21300000, guid: ea407b4b5548928439e8007603c7465e, type: 3}
+  - {fileID: 21300000, guid: e72af09b2f7b3dd4d9936a865c99434a, type: 3}
+  - {fileID: 21300000, guid: e57561cbd21fd714ca595ccd78c5cbc8, type: 3}
+  - {fileID: 21300000, guid: 960394dbcfc7d6d44b54357266dc707f, type: 3}
+  - {fileID: 21300000, guid: 5d390ceb27ad204488aa91ef6b44e5dd, type: 3}
+  - {fileID: 21300000, guid: 50db9afb844e0c04b99637081eac0161, type: 3}
+  - {fileID: 21300000, guid: c293b21cd4828f1449550c95fcbdd44c, type: 3}
+  - {fileID: 21300000, guid: 49d00a1cd0b054b419a6c682052b6be2, type: 3}
+  - {fileID: 21300000, guid: cc91233ce1ed3ed4b9b7f7401be445c9, type: 3}
+  - {fileID: 21300000, guid: 60fe525c71ba7714083086d7164d6f8f, type: 3}
+  - {fileID: 21300000, guid: fcaf017c932ea5e409b4819574ada84d, type: 3}
+  - {fileID: 21300000, guid: 08f5988c4509a77448c14aa587b6a02f, type: 3}
+  - {fileID: 21300000, guid: 67bf90bce711e4341bd7bf1f721026e2, type: 3}
+  - {fileID: 21300000, guid: 46e42c1da40903148acdd33c713c3796, type: 3}
+  - {fileID: 21300000, guid: 26a78c4d4f820e14d89909462d907b5c, type: 3}
+  - {fileID: 21300000, guid: fd325d4dcea5cc34f8fd2c27fc87c168, type: 3}
+  - {fileID: 21300000, guid: c40b7b5d77dfa8c4bae23ce6e0cd87a9, type: 3}
+  - {fileID: 21300000, guid: d2f1a8ddd9cc74540989413bc43dec65, type: 3}
+  - {fileID: 21300000, guid: 103ae6fdbd46d954c8367bded3116ce2, type: 3}
+  - {fileID: 21300000, guid: 3e8b803e633f61949b12a7b2f67989c0, type: 3}
+  - {fileID: 21300000, guid: 6527413ea4bb622458641bd7750d2b74, type: 3}
+  - {fileID: 21300000, guid: 6b36135e43a23fa4386515c3e22e1291, type: 3}
+  - {fileID: 21300000, guid: eef277fe43d73704683e64e7b22007c9, type: 3}
+  - {fileID: 21300000, guid: bede413ff737f95478ce35665218d9f9, type: 3}
+  - {fileID: 21300000, guid: 4db5588f0db417045a47d9df9691dc89, type: 3}
+  - {fileID: 21300000, guid: 59757ecf348879d408da75e29b8e3c75, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - House
+  - ForgeSmoke
+  - Coin
+  - Farmland
+  - Farm
+  - TownsfolkMarkerFill
+  - GradientHorizontal
+  - IconFastBlack
+  - Market
+  - Furnace
+  - IconShrub
+  - IconStar
+  - RoundedBoxOutline3px
+  - IconPlay
+  - IconCross
+  - Pixel
+  - IconSettingsDots
+  - Food
+  - Circle128px
+  - MenuBoxRounded_5px
+  - Frame
+  - RoundedBox19_5pxOutline
+  - Fence
+  - RoundedBox5pxShadow
+  - IconPlus
+  - Boulder
+  - OuterGradient
+  - Brick
+  - TownsfolkEmpty
+  - CraftMenuInfoBox
+  - IconFences
+  - IconForge
+  - Clay
+  - CampsiteNoFire
+  - TownsfolkMarker
+  - Plank
+  - IconMountain
+  - EarnedBg
+  - CampsiteSmoke
+  - Forge
+  - Woods
+  - FrameShadow
+  - IconWoods
+  - CraftMenu_x3
+  - IconDiceBlack
+  - GradientVertical
+  - Stone
+  - IconTick
+  - IconWheat
+  - CraftMenu_x2
+  - Ingot
+  - Quarry
+  - IconTraining
+  - IconHammerBlack
+  - Townsfolk
+  - LumberMill
+  - IconHouse
+  - ClayDeposit
+  - DiceDefault
+  - Campsite
+  - Rocks
+  - Stable
+  - Ore
+  - FurnaceSmoke
+  - RoundedBox3px
+  - Wood
+  - DiceSellected
+  - Shrubbery
+  - IconCow
+  - IconBox
+  - PolishedStone
+  - IconCamp
+  - GuardTower
+  - IconCrossBlack
+  - Sword
+  - IconPause
+  - RoundedBox19_5pxFill
+  - Mine
+  - RoundedBoxOutline10px
+  - RoundedBoxOutline14px
+  m_RenderDataMap: {}
+  m_Tag: General_SpriteAtlas
+  m_IsVariant: 0
