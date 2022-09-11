@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 2859078127978368839}
   - component: {fileID: 7285374908236454949}
   - component: {fileID: 3554586162810601026}
+  - component: {fileID: 2485602965379439831}
   m_Layer: 5
   m_Name: ChooseFacePopup
   m_TagString: Untagged
@@ -520,6 +521,9 @@ MonoBehaviour:
   _chooseFacePopup: {fileID: 2859078127978368833}
   _newAcceptButton: {fileID: 8020862933434861789}
   _timeManager: {fileID: 11400000, guid: 9f337c0c691069c41a4b92a713fcbe43, type: 2}
+  _canvasGroup: {fileID: 2485602965379439831}
+  _popupTransform: {fileID: 2859078128413987723}
+  _popupAnimDuration: 0.14
 --- !u!114 &2859078127978368833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +621,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &2485602965379439831
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859078127978368837}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2859078128318841602
 GameObject:
   m_ObjectHideFlags: 0

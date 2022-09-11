@@ -783,9 +783,6 @@ MonoBehaviour:
   _buildingName: 
   _buildingDescription: 
   _hover: {fileID: 5877985092402327442}
-  _punchDuration: 0.15
-  _punchStrenght: -0.2
-  _punchVibrato: 25
 --- !u!114 &-1328291159500940739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,8 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5396256698222121377}
-  _punchDuration: 0.15
-  _punchStrenght: -0.15
+  _punchDuration: 0.11
+  _punchStrenght: -0.11
   _punchVibrato: 20
 --- !u!1 &5877985092402327442
 GameObject:

@@ -5,18 +5,17 @@ using DG.Tweening;
 
 namespace UIGeneric
 {
-    public class ButtonAnimations : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    public class ButtonAnimations : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private RectTransform _targetTransform;
         [SerializeField] private Image _targetImage;
         [SerializeField] private CanvasGroup _canvasGroup;
         [Header("Hover Animation")]
-        [SerializeField] private float _animDuration = 0.1f;
+        [SerializeField] private float _hoverAnimDuration = 0.1f;
         [SerializeField] private float _scaleAmount = 1.1f;
         [Header("On Pointer Down Animation")]
-        [SerializeField] private float _punchStrenght = 10f;
-        [SerializeField] private int _punchVibrato = 10;
-        [SerializeField] private float _punchElasticity = 1.0f;
+        [SerializeField] private float _pointerDownDuration = 0.1f;
+        [SerializeField] private float _pointerDownScale = 0.9f;
         [Header("Disabled")]
         [SerializeField] private bool _enabled = true;
 
@@ -28,22 +27,33 @@ namespace UIGeneric
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _targetTransform.DOScale(_scaleAmount, _animDuration).SetUpdate(true);
-            _targetImage.DOFillAmount(1f, _animDuration * 1.5f).SetUpdate(true);
+            AnimFill(_scaleAmount, 1f);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _targetTransform.DOScale(1f, _animDuration).SetUpdate(true);
-            _targetImage.DOFillAmount(0f, _animDuration * 1.5f).SetUpdate(true);
+            AnimFill(1f, 0f);
+        }
+
+        private void AnimFill(float finalScale, float finalFill)
+        {
+            _targetTransform.DOScale(finalScale, _hoverAnimDuration).SetUpdate(true);
+            _targetImage.DOFillAmount(finalFill, _hoverAnimDuration * 1.4f).SetUpdate(true);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                _targetTransform.DOPunchScale(new Vector3(_punchStrenght, _punchStrenght, _punchStrenght),
-                    _animDuration, _punchVibrato, _punchElasticity).SetUpdate(true);
+                _targetTransform.DOScale(_pointerDownScale, _pointerDownDuration).SetUpdate(true);
+            }
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                _targetTransform.DOScale(1f, _pointerDownDuration * 1.5f).SetEase(Ease.OutBack).SetUpdate(true);
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UIGeneric;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 namespace Dice
@@ -15,17 +16,23 @@ namespace Dice
         [SerializeField] private ChooseFacePopup _chooseFacePopup;
         [SerializeField] private ButtonAnimations _newAcceptButton;
         [SerializeField] private TimeManager _timeManager;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Transform _popupTransform;
 
         private List<DieUI> _diceUI = new List<DieUI>();
         private DieUI _currentSelected;
 
         private Face _selectingFace;
+        private float _popupAnimDuration = 0.13f;
+        private float _popupInitialScale = 0.4f;
+        private float _closeAnimDelay = 0.075f;
 
         private void Awake()
         {
             _diceInventory.NewFaceAdded += ShowPopup;
             _chooseFacePopup.FaceSelected += FaceSelected;
             gameObject.SetActive(false);
+            _canvasGroup.interactable = false;
         }
 
         private void OnDestroy()
@@ -71,6 +78,10 @@ namespace Dice
             _newAcceptButton.SetEnable(false);
             _currentSelected = null;
             gameObject.SetActive(true);
+            
+            _canvasGroup.alpha = 0f;
+            _popupTransform.localScale = new Vector3(_popupInitialScale, _popupInitialScale, _popupInitialScale);
+            OpenPopupAnim();
         }
 
         private void DieStopHover(DieUI dieUI)
@@ -123,8 +134,21 @@ namespace Dice
             _newAcceptButton.SetEnable(true);
         }
 
+        private void OpenPopupAnim()
+        {
+            _canvasGroup.DOFade(1f, _popupAnimDuration * 1.5f).SetUpdate(true);
+            _popupTransform.DOScale(1f, _popupAnimDuration * 2f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => _canvasGroup.interactable = true);
+        }
+
+        private void ClosePopupAnim()
+        {
+            _canvasGroup.DOFade(0f, _popupAnimDuration).SetUpdate(true).SetDelay(_closeAnimDelay);
+            _popupTransform.DOScale(_popupInitialScale, _popupAnimDuration).SetUpdate(true).SetEase(Ease.InCubic).SetDelay(_closeAnimDelay).OnComplete(()=>ClosePopup());
+        }
+
         private void ClosePopup()
         {
+            _canvasGroup.interactable = false;
             _timeManager.ResumeGame(GetHashCode());
             gameObject.SetActive(false);
         }
@@ -133,13 +157,13 @@ namespace Dice
         {
             _selectingFace.ToDestroy();
             _diceInventory.DiscardedNewFace();
-            ClosePopup();
+            ClosePopupAnim();
         }
 
         public void AcceptDice()
         {
             _chooseFacePopup.AcceptChange();
-            ClosePopup();
+            ClosePopupAnim();
         }
     }
 }
