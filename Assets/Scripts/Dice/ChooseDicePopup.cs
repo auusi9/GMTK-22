@@ -18,14 +18,14 @@ namespace Dice
         [SerializeField] private TimeManager _timeManager;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private Transform _popupTransform;
+        [SerializeField] private float _popupAnimDuration = 0.13f;
+        [SerializeField] private float _popupInitialScale = 0.4f;
+        [SerializeField]private float _closeAnimDelay = 0.075f;
 
         private List<DieUI> _diceUI = new List<DieUI>();
         private DieUI _currentSelected;
 
         private Face _selectingFace;
-        private float _popupAnimDuration = 0.13f;
-        private float _popupInitialScale = 0.4f;
-        private float _closeAnimDelay = 0.075f;
 
         private void Awake()
         {

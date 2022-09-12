@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Dice;
 using Dice.FaceUIBehaviours;
 using Resources;
@@ -38,7 +39,12 @@ namespace Workers
         [SerializeField] private string _nextDayDescription = "Next day";
         [SerializeField] private string _mainMenu = "Main menu";
         [SerializeField] private TimeManager _timeManager;
-
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Transform _popupTransform;
+        [SerializeField] private float _popupAnimDuration = 0.13f;
+        [SerializeField] private float _popupInitialScale = 0.4f;
+        [SerializeField]private float _closeAnimDelay = 0.075f;
+        
         private int _deadPeople = 0;
         private bool _playingAnimation = false;
         private Coroutine _animationCoroutine;
@@ -47,6 +53,7 @@ namespace Workers
         {
             _dayNight.DayFinished += DayFinished;
             gameObject.SetActive(false);
+            _canvasGroup.interactable = false;
         }
 
         private void OnDestroy()
@@ -70,6 +77,10 @@ namespace Workers
             _noWorkersDied.SetActive(false);
             _gameover.SetActive(false);
             _bg.material = neededFood > _food.Value ? _redPolkadot : _normalPolkadot;
+            
+            _canvasGroup.alpha = 0f;
+            _popupTransform.localScale = new Vector3(_popupInitialScale, _popupInitialScale, _popupInitialScale);
+            OpenPopupAnim();
         }
 
         public void Feed()
@@ -154,7 +165,7 @@ namespace Workers
             }
             else
             {
-                ClosePopup();
+                ClosePopupAnim();
                 SceneManager.LoadScene(0);
             }
         }
@@ -162,11 +173,24 @@ namespace Workers
         private void AcceptButton()
         {
             _dayNight.StartNewDay();
-            ClosePopup();
+            ClosePopupAnim();
         }
 
+        private void OpenPopupAnim()
+        {
+            _canvasGroup.DOFade(1f, _popupAnimDuration * 1.5f).SetUpdate(true);
+            _popupTransform.DOScale(1f, _popupAnimDuration * 2f).SetEase(Ease.OutBack).SetUpdate(true).OnComplete(() => _canvasGroup.interactable = true);
+        }
+
+        private void ClosePopupAnim()
+        {
+            _canvasGroup.DOFade(0f, _popupAnimDuration).SetUpdate(true).SetDelay(_closeAnimDelay);
+            _popupTransform.DOScale(_popupInitialScale, _popupAnimDuration).SetUpdate(true).SetEase(Ease.InCubic).SetDelay(_closeAnimDelay).OnComplete(()=>ClosePopup());
+        }
+        
         private void ClosePopup()
         {
+            _canvasGroup.interactable = false;
             _timeManager.ResumeGame(GetHashCode());
             gameObject.SetActive(false);
         }

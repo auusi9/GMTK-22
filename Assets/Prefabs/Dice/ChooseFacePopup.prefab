@@ -523,7 +523,9 @@ MonoBehaviour:
   _timeManager: {fileID: 11400000, guid: 9f337c0c691069c41a4b92a713fcbe43, type: 2}
   _canvasGroup: {fileID: 2485602965379439831}
   _popupTransform: {fileID: 2859078128413987723}
-  _popupAnimDuration: 0.14
+  _popupAnimDuration: 0.13
+  _popupInitialScale: 0.4
+  _closeAnimDelay: 0.075
 --- !u!114 &2859078127978368833
 MonoBehaviour:
   m_ObjectHideFlags: 0
